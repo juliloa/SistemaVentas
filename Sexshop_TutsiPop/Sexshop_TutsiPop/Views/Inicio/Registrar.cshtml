@@ -1,0 +1,104 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrar</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site2.css" asp-append-version="true" />
+</head>
+<body>
+   
+    <div class="row justify-content-center mt-5">
+
+        <div class="col-5">
+
+            <div class="card">
+                <div class="card-header"><h3 class="text-center">Registrar cuenta</h3></div>
+                <div class="card-body">
+
+                    @if (ViewBag.Creado == null)
+                    {
+                        <form action="@Url.Action("Registrar","Inicio")" method="post">
+
+                            <div class="mb-3">
+                                <label>Nombre</label>
+                                <input type="text" class="form-control" name="nombre" value="@(ViewBag.Nombre != null ? ViewBag.Nombre : "")" required />
+                            </div>
+                            <div class="mb-3">
+                                <label>Correo</label>
+                                <input type="email" class="form-control" name="email" value="@(ViewBag.Correo != null ? ViewBag.Correo : "")" required />
+                            </div>
+                            <div class="mb-3">
+                                <label>Contraseña</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="contrasenna" name="contrasenna" required />
+                                    <button class="btn btn-outline-secondary" type="button" id="btnShowPassword" onclick="togglePassword('contrasenna')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zm-8 4a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-1.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label>Confirmar Contraseña</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="confirmar_contrasenna" name="confirmar_contrasenna" required />
+                                    <button class="btn btn-outline-secondary" type="button" id="btnShowConfirmPassword" onclick="togglePassword('confirmar_contrasenna')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zm-8 4a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-1.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            @if (ViewBag.Mensaje != null)
+                            {
+                                <div class="alert alert-danger">
+                                    @ViewBag.Mensaje
+                                </div>
+                            }
+
+                            <div class="mb-3">
+                                <div class="d-grid">
+                                    <button class="btn btn-primary" type="submit" style="background-color: #f1bed4; border-color: #f1bed4;">
+                                      Registrarse
+
+                                    </button>
+                                    <a class="btn btn-link" href="@Url.Action("Login","Inicio")">¿Ya tienes una cuenta? Inicia sesión</a>
+                                </div>
+                            </div>
+
+                        </form>
+                    }
+                    else
+                    {
+                        <div class="alert alert-success">
+                            <p>@ViewBag.Mensaje</p>
+                            <a class="btn btn-success" href="@Url.Action("Login","Inicio")">Ingresar</a>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function togglePassword(fieldId) {
+            var passwordField = document.getElementById(fieldId);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿@model Sexshop_TutsiPop.Models.Usuarios
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Usuarios</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.contrasenna)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.contrasenna)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.token)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.token)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.confirmado)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.confirmado)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.restablecer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.restablecer)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.confirmar_contrasenna)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.confirmar_contrasenna)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.id_usuario">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

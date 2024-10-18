@@ -1,0 +1,104 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TutsiPop +18</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #f8b7b3, #f06f6e);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            border: 2px solid #e88d8d;
+            background-color: #c24f4f;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+            .buttons a {
+                display: inline-block;
+                padding: 15px 30px;
+                margin: 10px;
+                font-size: 1rem;
+                font-weight: bold;
+                text-decoration: none;
+                border-radius: 25px;
+                transition: background-color 0.3s ease, transform 0.3s ease;
+            }
+
+                .buttons a.enter {
+                    background-color: #ff4d4d;
+                    color: white;
+                }
+
+                .buttons a.exit {
+                    background-color: #ff9c9c;
+                    color: white;
+                }
+
+                .buttons a:hover {
+                    opacity: 0.8;
+                    transform: scale(1.05);
+                }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #ffffff;
+        }
+
+            .footer a {
+                color: #ffcc00;
+                text-decoration: none;
+            }
+
+                .footer a:hover {
+                    text-decoration: underline;
+                }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido a TutsiPop +18</h1>
+        <p>
+            Este sitio web contiene material restringido a menores de edad, que incluye desnudez y representaciones explícitas de actividad sexual.
+            Al entrar, afirmas que tienes por lo menos 18 años de edad o la mayoría de edad en la jurisdicción desde donde estás accediendo al sitio web y das tu consentimiento para ver contenido sexualmente explícito.
+        </p>
+        <div class="buttons">
+            <a class="enter" asp-area="" asp-controller="Home" asp-action="Index">Tengo 18 años o más - Entrar</a>
+            <a href="https://es.wikipedia.org/wiki/Iglesia_de_San_Ignacio_(Medell%C3%ADn)" class="exit">Soy menor de 18 años - Salir</a>
+        </div>
+
+    </div>
+</body>
+</html>

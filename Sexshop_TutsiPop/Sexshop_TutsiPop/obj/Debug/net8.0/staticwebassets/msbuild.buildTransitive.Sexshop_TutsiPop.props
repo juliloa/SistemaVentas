@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Sexshop_TutsiPop.props" />
+</Project>

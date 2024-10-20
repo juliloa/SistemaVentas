@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Sexshop_TutsiPop.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<Sexshop_TutsiPopContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Sexshop_TutsiPopContext") ?? throw new InvalidOperationException("Connection string 'Sexshop_TutsiPopContext' not found.")));
@@ -24,5 +25,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Alerta}/{id?}");
+
+
 
 app.Run();

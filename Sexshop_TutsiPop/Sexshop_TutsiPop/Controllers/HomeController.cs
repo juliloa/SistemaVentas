@@ -11,8 +11,6 @@ namespace Sexshop_TutsiPop.Controllers
 {
     public class HomeController : Controller
     {
-        
-      
         public IActionResult Alerta()
         {
             return View();
@@ -24,11 +22,13 @@ namespace Sexshop_TutsiPop.Controllers
             _logger = logger;
         }
 
+
         public IActionResult Index()
         {
             return View();
         }
-        public IActionResult Inicio()
+
+		public IActionResult Inicio()
         {
             return View();
         }

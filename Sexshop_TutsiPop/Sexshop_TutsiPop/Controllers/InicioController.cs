@@ -3,18 +3,26 @@ using Sexshop_TutsiPop.Models;
 using Sexshop_TutsiPop.Datos;
 using Sexshop_TutsiPop.Servicios;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
+
 
 namespace Sexshop_TutsiPop.Controllers
 {
+    
     public class InicioController : Controller
     {
+        
         private readonly IWebHostEnvironment _env;
         public InicioController(IWebHostEnvironment env)
         {
             _env = env; // Inicializa el IWebHostEnvironment
         }
 
+
         // GET: Inicio
+
+        
         public ActionResult Login()
         {
             return View();
@@ -190,6 +198,5 @@ namespace Sexshop_TutsiPop.Controllers
 
             return View();
         }
-
     }
 }

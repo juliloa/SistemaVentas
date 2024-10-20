@@ -7,12 +7,18 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Sexshop_TutsiPop.Data;
 using Sexshop_TutsiPop.Models;
+using Microsoft.AspNetCore.Authorization;
+
+
+
 
 namespace Sexshop_TutsiPop.Controllers
 {
     public class UsuariosController : Controller
     {
+        
         private readonly Sexshop_TutsiPopContext _context;
+
 
         public UsuariosController(Sexshop_TutsiPopContext context)
         {

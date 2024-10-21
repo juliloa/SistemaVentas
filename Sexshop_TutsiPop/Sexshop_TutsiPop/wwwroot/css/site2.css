@@ -1,8 +1,16 @@
-﻿/* Estilo del cuerpo y fondo de la página */
+﻿
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+    height: 100%; /* Asegura que el cuerpo cubra toda la pantalla */
+}
+
+/* Estilo del cuerpo y fondo de la página */
 body {
     font-family: Arial, sans-serif;
-    background-image: url('/Images/pixelcut-export.png'); /* Ruta de la imagen */
-    background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+    background-image: url('../images/close-up-sex-toys (3)333.jpg'); /* Ruta de la imagen */
+    background-size: 100% 100%; /* Ajusta el fondo para cubrir todo el ancho y alto */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     background-attachment: fixed; /* Mantiene el fondo fijo mientras se desplaza la página */

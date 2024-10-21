@@ -22,13 +22,12 @@ namespace Sexshop_TutsiPop.Controllers
             _logger = logger;
         }
 
+		public IActionResult Admin()
+		{
+			return View();
+		}
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-		public IActionResult Inicio()
+		public IActionResult Index()
         {
             return View();
         }

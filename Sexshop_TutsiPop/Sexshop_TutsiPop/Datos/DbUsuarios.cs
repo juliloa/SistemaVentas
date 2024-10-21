@@ -11,7 +11,7 @@ namespace Sexshop_TutsiPop.Datos
 {
     public class DbUsuarios
     {
-        private static string CadenaSQL = "server=localhost;username=postgres;database=TutsiPop2;password=1234";
+        private static string CadenaSQL = "Host=ep-billowing-butterfly-a5gnrjz7.us-east-2.aws.neon.tech;Database=TutsiPop2;Username=TutsiPop2_owner;Password=mUkEx9lKaf5c;SslMode=Require";
 
         public static bool Registrar(Usuarios usuario)
         {

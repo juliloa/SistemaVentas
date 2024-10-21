@@ -45,7 +45,7 @@ namespace Sexshop_TutsiPop.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Inicio", "Home");
+                    return RedirectToAction("Admin", "Home");
                 }
 
             }

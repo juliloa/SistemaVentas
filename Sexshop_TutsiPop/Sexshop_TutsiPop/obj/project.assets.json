@@ -7950,11 +7950,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\Source\\Repos\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\Sexshop_TutsiPop.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\Sexshop_TutsiPop.csproj",
       "projectName": "Sexshop_TutsiPop",
-      "projectPath": "C:\\Users\\Usuario\\Source\\Repos\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\Sexshop_TutsiPop.csproj",
+      "projectPath": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\Sexshop_TutsiPop.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\Source\\Repos\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\obj\\",
+      "outputPath": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

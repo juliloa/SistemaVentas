@@ -47,16 +47,60 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link" asp-controller="Proveedores" asp-action="IndexProveedor">
+                        <a class="nav-link" asp-controller="Proveedores" asp-action="Index">
                             <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                             Proveedores
+                        </a>
+                        <a class="nav-link" asp-controller="ventas" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Ventas
+                        </a>
+                        <a class="nav-link" asp-controller="productos" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Productos
+                        </a>
+                        <a class="nav-link" asp-controller="pedidos" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Pedidos
+                        </a>
+                        <a class="nav-link" asp-controller="metodos_pago" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Métodos de Pago
+                        </a>
+                        <a class="nav-link" asp-controller="categorias" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Categorías
+                        </a>
+                        <a class="nav-link" asp-controller="clientes" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Clientes
+                        </a>
+                        <a class="nav-link" asp-controller="detalle_pedido" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Detalle del pedido
+                        </a>
+                        <a class="nav-link" asp-controller="detalle_venta" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Detalle de Venta
+                        </a>
+                        <a class="nav-link" asp-controller="direcciones" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Direcciones
+                        </a>
+                        <a class="nav-link" asp-controller="empleados" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Empleados
+                        </a>
+                        <a class="nav-link" asp-controller="entregas" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Entregas
                         </a>
                      @*    <a class="nav-link" href="@Url.Action("IndexConDirecciones", "proveedores")">
                             <div class="sb-nav-link-icon"><i class="fas fa-user-tie"></i></div>
                             Proveedores
                         </a> *@
 
-                        <div class="sb-sidenav-menu-heading">Interface</div>
+                        @* <div class="sb-sidenav-menu-heading">Interface</div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Empleados
@@ -72,7 +116,7 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             Productos
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
+                        </a> *@
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">

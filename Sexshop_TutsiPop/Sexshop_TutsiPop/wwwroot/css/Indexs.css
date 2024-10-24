@@ -1,0 +1,60 @@
+﻿/* Botón agregar proveedor */
+.btn-add {
+    background-color: #ff9c9c;
+    color: white;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    margin-bottom: 20px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+    .btn-add:hover {
+        background-color: #ff7474;
+    }
+
+/* Encabezado de la tabla con color rosado pastel */
+.modern-table thead {
+    background-color: #ffc0c0;
+}
+
+.modern-table th {
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 12px;
+    font-size: 14px;
+    text-align: left;
+}
+
+/* Estilo de las celdas de la tabla */
+.modern-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: middle;
+}
+
+/* Estilo minimalista para los iconos de acciones */
+.action-cell {
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Iconos de acciones (sin fondo, sin borde, solo iconos) */
+.action-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+    .action-btn actions {
+        color: #333;
+    }
+
+        .action-btn actions:hover {
+            color: #ff7474;
+        }

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Sexshop_TutsiPop.Models.pedidos>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id_proveedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha_pedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_metodo_pago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_proveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_pedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_metodo_pago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_estado)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id_pedido">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id_pedido">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id_pedido">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Sexshop_TutsiPop.Models.direcciones>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.direccion_calle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.barrio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ciudad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.codigo_postal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pais)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.direccion_calle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.barrio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ciudad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codigo_postal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pais)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id_direccion">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id_direccion">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id_direccion">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

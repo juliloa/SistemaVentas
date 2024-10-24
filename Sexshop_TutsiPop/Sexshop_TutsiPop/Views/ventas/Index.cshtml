@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Sexshop_TutsiPop.Models.ventas>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.cedula_cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cedula_empleado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha_venta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_metodo_pago)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.cedula_cliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cedula_empleado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_venta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_metodo_pago)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id_venta">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id_venta">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id_venta">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

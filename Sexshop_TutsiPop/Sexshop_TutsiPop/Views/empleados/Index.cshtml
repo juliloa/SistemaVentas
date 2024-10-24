@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Sexshop_TutsiPop.Models.empleados>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.numero_telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha_contratacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.salario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.activo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numero_telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_contratacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.salario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.activo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.cedula_empleado">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.cedula_empleado">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.cedula_empleado">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

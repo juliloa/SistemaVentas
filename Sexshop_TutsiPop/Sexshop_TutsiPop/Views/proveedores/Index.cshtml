@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Sexshop_TutsiPop.Models.Proveedores>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre_empresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre_contacto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.numero_contacto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pais)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ciudad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.activo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre_empresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre_contacto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numero_contacto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ciudad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.activo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id_proveedor">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id_proveedor">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id_proveedor">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

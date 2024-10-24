@@ -25,6 +25,10 @@
             background-color: #c24f4f;
             border-radius: 15px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         h1 {
@@ -38,10 +42,14 @@
             font-size: 1.2rem;
             line-height: 1.5;
             margin-bottom: 30px;
+            text-align: justify;
         }
 
         .buttons {
             margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
             .buttons a {
@@ -53,6 +61,7 @@
                 text-decoration: none;
                 border-radius: 25px;
                 transition: background-color 0.3s ease, transform 0.3s ease;
+                width: 80%; /* Asegura que los botones sean más equitativos */
             }
 
                 .buttons a.enter {
@@ -84,7 +93,6 @@
                 .footer a:hover {
                     text-decoration: underline;
                 }
-
     </style>
 </head>
 <body>
@@ -98,7 +106,6 @@
             <a class="enter" asp-area="" asp-controller="Home" asp-action="Index">Tengo 18 años o más - Entrar</a>
             <a href="https://es.wikipedia.org/wiki/Iglesia_de_San_Ignacio_(Medell%C3%ADn)" class="exit">Soy menor de 18 años - Salir</a>
         </div>
-
     </div>
 </body>
 </html>

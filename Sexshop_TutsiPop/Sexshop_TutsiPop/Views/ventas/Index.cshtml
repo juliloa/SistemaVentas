@@ -1,55 +1,75 @@
 ﻿@model IEnumerable<Sexshop_TutsiPop.Models.ventas>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de ventas";
 }
+
+<!-- Importar estilos de FontAwesome y Boxicons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="~/css/Indexs.css" />
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<!-- Encabezado de la página -->
+<h1>Lista de ventas</h1>
+
+<!-- Botón para agregar nuevo proveedor -->
+<a href="@Url.Action("Create", "ventas")" class="btn-add">
+    + Agregar Nuevo ventas
+</a>
+
+
+<!-- Tabla de proveedores -->
+<table class="modern-table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.cedula_cliente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.cedula_empleado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fecha_venta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.id_metodo_pago)
-            </th>
-            <th></th>
+            <th>@Html.DisplayNameFor(model => model.id_venta)</th>
+            <th>@Html.DisplayNameFor(model => model.cedula_cliente)</th>
+            <th>@Html.DisplayNameFor(model => model.cedula_empleado)</th>
+            <th>@Html.DisplayNameFor(model => model.fecha_venta)</th>
+            <th>@Html.DisplayNameFor(model => model.id_metodo_pago)</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.cedula_cliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cedula_empleado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fecha_venta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.id_metodo_pago)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id_venta">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id_venta">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id_venta">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.id_venta)</td>
+                <td>@Html.DisplayFor(modelItem => item.cedula_cliente)</td>
+                <td>@Html.DisplayFor(modelItem => item.cedula_empleado)</td>
+                <td>@Html.DisplayFor(modelItem => item.fecha_venta)</td>
+                <td>@Html.DisplayFor(modelItem => item.id_metodo_pago)</td>
+                <td class="action-cell">
+                    <!-- Botón Editar -->
+                    <button class="action-btn" title="Editar">
+                        <a asp-action="Edit" asp-route-id="@item.id_venta">
+                            <i class='bx bx-edit'></i>
+                        </a>
+                    </button>
+
+                    <!-- Botón Detalles -->
+                    <button class="action-btn" title="Detalles">
+                        <a asp-action="Details" asp-route-id="@item.id_venta">
+                            <i class='bx bx-show-alt'></i>
+                        </a>
+                    </button>
+
+                    <!-- Botón Eliminar -->
+                    <button class="action-btn" title="Eliminar">
+                        <a asp-action="Delete" asp-route-id="@item.id_venta">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </button>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<div>
+
+</div>
+<!-- Botón para exportar a Excel -->
+<a href="@Url.Action("ExportToExcel", "ventas")" class="btn-export">
+    <i class='bx bx-table'> Descargar Excel</i>
+</a>
+<link rel="stylesheet" href="~/css/ExcelStyle.css" />

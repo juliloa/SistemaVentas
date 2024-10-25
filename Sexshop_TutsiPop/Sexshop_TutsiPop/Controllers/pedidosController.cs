@@ -19,6 +19,8 @@ namespace Sexshop_TutsiPop.Controllers
             _context = context;
         }
 
+
+
         // GET: pedidos
         public async Task<IActionResult> Index()
         {

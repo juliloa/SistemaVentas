@@ -1,60 +1,68 @@
 ﻿@model IEnumerable<Sexshop_TutsiPop.Models.direcciones>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de direciones";
 }
+
+<!-- Importar estilos de FontAwesome y Boxicons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-<h1>Index</h1>
+<link rel="stylesheet" href="~/css/Indexs.css" />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<!-- Encabezado de la página -->
+<h1>Lista de Proveedores</h1>
+
+<!-- Botón para agregar nuevo proveedor -->
+<a href="@Url.Action("Create", "direcciones")" class="btn-add">
+    + Agregar Nueva direccion
+</a>
+
+<!-- Tabla de proveedores -->
+<table class="modern-table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.direccion_calle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.barrio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ciudad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.codigo_postal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.pais)
-            </th>
-            <th></th>
+            <th>@Html.DisplayNameFor(model => model.id_direccion)</th>
+            <th>@Html.DisplayNameFor(model => model.direccion_calle)</th>
+            <th>@Html.DisplayNameFor(model => model.barrio)</th>
+            <th>@Html.DisplayNameFor(model => model.ciudad)</th>
+            <th>@Html.DisplayNameFor(model => model.codigo_postal)</th>
+            <th>@Html.DisplayNameFor(model => model.pais)</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.direccion_calle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.barrio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ciudad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.codigo_postal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pais)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id_direccion">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id_direccion">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id_direccion">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.id_direccion)</td>
+                <td>@Html.DisplayFor(modelItem => item.direccion_calle)</td>
+                <td>@Html.DisplayFor(modelItem => item.barrio)</td>
+                <td>@Html.DisplayFor(modelItem => item.ciudad)</td>
+                <td>@Html.DisplayFor(modelItem => item.codigo_postal)</td>
+                <td>@Html.DisplayFor(modelItem => item.pais)</td>
+                <td class="action-cell">
+                    <!-- Botón Editar -->
+                    <button class="action-btn" title="Editar">
+                        <a asp-action="Edit" asp-route-id="@item.id_direccion">
+                            <i class='bx bx-edit'></i>
+                        </a>
+                    </button>
+
+                    <!-- Botón Detalles -->
+                    <button class="action-btn" title="Detalles">
+                        <a asp-action="Details" asp-route-id="@item.id_direccion">
+                            <i class='bx bx-show-alt'></i>
+                        </a>
+                    </button>
+
+                    <!-- Botón Eliminar -->
+                    <button class="action-btn" title="Eliminar">
+                        <a asp-action="Delete" asp-route-id="@item.id_direccion">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </button>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

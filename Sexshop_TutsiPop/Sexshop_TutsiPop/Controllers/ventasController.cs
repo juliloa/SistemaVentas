@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Sexshop_TutsiPop.Data;
 using Sexshop_TutsiPop.Models;
+using OfficeOpenXml; // Librería para manipular Excel
+using OfficeOpenXml.Style;
 
 namespace Sexshop_TutsiPop.Controllers
 {
@@ -18,6 +20,62 @@ namespace Sexshop_TutsiPop.Controllers
         {
             _context = context;
         }
+
+        // Acción para exportar datos a Excel
+        public IActionResult ExportToExcel()
+        {
+            // Establecer el contexto de la licencia (NonCommercial License)
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            // Obtener los datos de la base de datos
+            var ventas = _context.ventas.ToList();
+
+            // Crear archivo Excel
+            using (var package = new ExcelPackage())
+            {
+                var worksheet = package.Workbook.Worksheets.Add("Ventas");
+
+                // Definir las cabeceras
+                worksheet.Cells[1, 1].Value = "ID Venta";
+                worksheet.Cells[1, 2].Value = "Cédula Cliente";
+                worksheet.Cells[1, 3].Value = "Cédula Empleado";
+                worksheet.Cells[1, 4].Value = "Fecha Venta";
+                worksheet.Cells[1, 5].Value = "ID Método Pago";
+
+                // Establecer formato de cabeceras (opcional)
+                using (var range = worksheet.Cells[1, 1, 1, 5])
+                {
+                    range.Style.Font.Bold = true;
+                    range.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    range.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightPink);
+                    range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                }
+
+                // Agregar datos a las filas
+                int row = 2;
+                foreach (var venta in ventas)
+                {
+                    worksheet.Cells[row, 1].Value = venta.id_venta;
+                    worksheet.Cells[row, 2].Value = venta.cedula_cliente;
+                    worksheet.Cells[row, 3].Value = venta.cedula_empleado;
+                    worksheet.Cells[row, 4].Value = venta.fecha_venta.ToString("dd/MM/yyyy");
+                    worksheet.Cells[row, 5].Value = venta.id_metodo_pago;
+                    row++;
+                }
+
+                // Ajustar ancho de las columnas
+                worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+
+                // Retornar el archivo Excel como un archivo descargable
+                var stream = new MemoryStream();
+                package.SaveAs(stream);
+                stream.Position = 0;
+                string excelName = $"Ventas-{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx";
+
+                return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
+            }
+        }
+
 
         // GET: ventas
         public async Task<IActionResult> Index()

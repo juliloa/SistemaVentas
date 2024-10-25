@@ -1,0 +1,16 @@
+﻿.btn-export {
+    background-color: lightgreen;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-export:hover {
+        background-color: forestgreen /* Rosa más oscuro */
+    }

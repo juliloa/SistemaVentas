@@ -9,6 +9,8 @@
     <title>Dashboard - SB Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="/css/styles.css" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
@@ -52,7 +54,7 @@
                             Proveedores
                         </a>
                         <a class="nav-link" asp-controller="ventas" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            <div class="sb-nav-link-icon"><i class='bx bxs-dollar-circle'></i></div>
                             Ventas
                         </a>
                         <a class="nav-link" asp-controller="productos" asp-action="Index">
@@ -60,39 +62,39 @@
                             Productos
                         </a>
                         <a class="nav-link" asp-controller="pedidos" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            <div class="sb-nav-link-icon"><i class='bx bxs-package'></i></div>
                             Pedidos
                         </a>
                         <a class="nav-link" asp-controller="metodos_pago" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            <div class="sb-nav-link-icon"><i class='bx bx-credit-card'></i></div>
                             Métodos de Pago
                         </a>
                         <a class="nav-link" asp-controller="categorias" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            <div class="sb-nav-link-icon"><i class='bx bx-category'></i></div>
                             Categorías
                         </a>
                         <a class="nav-link" asp-controller="clientes" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            <div class="sb-nav-link-icon"><i class='bx bx-male-female'></i></div>
                             Clientes
                         </a>
                         <a class="nav-link" asp-controller="detalle_pedido" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            <div class="sb-nav-link-icon"><i class='bx bxs-file-blank'></i></div>
                             Detalle del pedido
                         </a>
                         <a class="nav-link" asp-controller="detalle_venta" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            <div class="sb-nav-link-icon"><i class='bx bxs-file-blank'></i></div>
                             Detalle de Venta
                         </a>
                         <a class="nav-link" asp-controller="direcciones" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            <div class="sb-nav-link-icon"><i class='bx bxs-home'></i></div>
                             Direcciones
                         </a>
                         <a class="nav-link" asp-controller="empleados" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            <div class="sb-nav-link-icon"><i class='bx bx-male'></i></div>
                             Empleados
                         </a>
                         <a class="nav-link" asp-controller="entregas" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            <div class="sb-nav-link-icon"><i class='bx bxs-car'></i></div>
                             Entregas
                         </a>
                      @*    <a class="nav-link" href="@Url.Action("IndexConDirecciones", "proveedores")">

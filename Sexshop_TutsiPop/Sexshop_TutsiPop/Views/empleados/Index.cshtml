@@ -1,78 +1,75 @@
 ﻿@model IEnumerable<Sexshop_TutsiPop.Models.empleados>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de Proveedores";
 }
+
+<!-- Importar estilos de FontAwesome y Boxicons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-<h1>Index</h1>
+<link rel="stylesheet" href="~/css/Indexs.css" />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<!-- Encabezado de la página -->
+<h1>Lista de empleados</h1>
+
+<!-- Botón para agregar nuevo proveedor -->
+<a href="@Url.Action("Create", "empleados")" class="btn-add">
+    + Agregar Nuevo empleados
+</a>
+
+<!-- Tabla de proveedores -->
+<table class="modern-table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.apellido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.correo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.numero_telefono)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fecha_contratacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.rol)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.salario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.activo)
-            </th>
-            <th></th>
+            <th>@Html.DisplayNameFor(model => model.cedula_empleado)</th>
+            <th>@Html.DisplayNameFor(model => model.nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.apellido)</th>
+            <th>@Html.DisplayNameFor(model => model.correo)</th>
+            <th>@Html.DisplayNameFor(model => model.numero_telefono)</th>
+            <th>@Html.DisplayNameFor(model => model.fecha_contratacion)</th>
+            <th>@Html.DisplayNameFor(model => model.activo)</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.correo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.numero_telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fecha_contratacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.rol)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.salario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.activo)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.cedula_empleado">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.cedula_empleado">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.cedula_empleado">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.cedula_empleado)</td>
+                <td>@Html.DisplayFor(modelItem => item.nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.apellido)</td>
+                <td>@Html.DisplayFor(modelItem => item.correo)</td>
+                <td>@Html.DisplayFor(modelItem => item.numero_telefono)</td>
+                <td>@Html.DisplayFor(modelItem => item.fecha_contratacion)</td>
+                <td>@Html.DisplayFor(modelItem => item.activo)</td>
+                <td class="action-cell">
+                    <!-- Botón Editar -->
+                    <button class="action-btn" title="Editar">
+                        <a asp-action="Edit" asp-route-id="@item.cedula_empleado">
+                            <i class='bx bx-edit'></i>
+                        </a>
+                    </button>
+
+                    <!-- Botón Detalles -->
+                    <button class="action-btn" title="Detalles">
+                        <a asp-action="Details" asp-route-id="@item.cedula_empleado">
+                            <i class='bx bx-show-alt'></i>
+                        </a>
+                    </button>
+
+                    <!-- Botón Eliminar -->
+                    <button class="action-btn" title="Eliminar">
+                        <a asp-action="Delete" asp-route-id="@item.cedula_empleado">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </button>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<!-- Botón para exportar a Excel -->
+<a href="@Url.Action("ExportToExcel", "empleados")" class="btn-export">
+    <i class='bx bx-table'> Descargar Excel</i>
+</a>
+<link rel="stylesheet" href="~/css/ExcelStyle.css" />

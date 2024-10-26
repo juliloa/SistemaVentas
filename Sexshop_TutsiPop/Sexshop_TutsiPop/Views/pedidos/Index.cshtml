@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Sexshop_TutsiPop.Models.pedidos>
+﻿@model IEnumerable<Sexshop_TutsiPop.Models.pedidosinfo>
 
 @{
     ViewData["Title"] = "Lista de pedidos";
@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="~/css/Indexs.css" />
 
 <!-- Encabezado de la página -->
-<h1>Lista de Proveedores</h1>
+<h1>Lista de Pedidos</h1>
 
 
 <a href="@Url.Action("Create", "pedidos")" class="btn-add">
@@ -21,12 +21,16 @@
 <table class="modern-table">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.id_pedido)</th>
-            <th>@Html.DisplayNameFor(model => model.id_proveedor)</th>
-            <th>@Html.DisplayNameFor(model => model.fecha_pedido)</th>
-            <th>@Html.DisplayNameFor(model => model.id_direccion)</th>
-            <th>@Html.DisplayNameFor(model => model.id_metodo_pago)</th>
-            <th>@Html.DisplayNameFor(model => model.id_estado)</th>
+            <th>@Html.DisplayNameFor(model => model.IdPedido)</th>
+            <th>@Html.DisplayNameFor(model => model.NombreProveedor)</th>
+            <th>@Html.DisplayNameFor(model => model.EstadoPedido)</th>
+            <th>@Html.DisplayNameFor(model => model.MetodoPago)</th>
+            <th>@Html.DisplayNameFor(model => model.DireccionEntrega)</th>
+            <th>@Html.DisplayNameFor(model => model.Barrio)</th>
+            <th>@Html.DisplayNameFor(model => model.Ciudad)</th>
+            <th>@Html.DisplayNameFor(model => model.CodigoPostal)</th>
+            <th>@Html.DisplayNameFor(model => model.Pais)</th>
+            <th>@Html.DisplayNameFor(model => model.FechaPedido)</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -34,31 +38,35 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.id_pedido)</td>
-                <td>@Html.DisplayFor(modelItem => item.id_proveedor)</td>
-                <td>@Html.DisplayFor(modelItem => item.fecha_pedido)</td>
-                <td>@Html.DisplayFor(modelItem => item.id_direccion)</td>
-                <td>@Html.DisplayFor(modelItem => item.id_metodo_pago)</td>
-                <td>@Html.DisplayFor(modelItem => item.id_estado)</td>
+                <td>@Html.DisplayFor(modelItem => item.IdPedido)</td>
+                <td>@Html.DisplayFor(modelItem => item.NombreProveedor)</td>
+                <td>@Html.DisplayFor(modelItem => item.EstadoPedido)</td>
+                <td>@Html.DisplayFor(modelItem => item.MetodoPago)</td>
+                <td>@Html.DisplayFor(modelItem => item.DireccionEntrega)</td>
+                <td>@Html.DisplayFor(modelItem => item.Barrio)</td>
+                <td>@Html.DisplayFor(modelItem => item.Ciudad)</td>
+                <td>@Html.DisplayFor(modelItem => item.CodigoPostal)</td>
+                <td>@Html.DisplayFor(modelItem => item.Pais)</td>
+                <td>@Html.DisplayFor(modelItem => item.FechaPedido)</td>
 
                 <td class="action-cell">
                     <!-- Botón Editar -->
                     <button class="action-btn" title="Editar">
-                        <a asp-action="Edit" asp-route-id="@item.id_pedido">
+                        <a asp-action="Edit" asp-route-id="@item.IdPedido">
                             <i class='bx bx-edit'></i>
                         </a>
                     </button>
 
                     <!-- Botón Detalles -->
                     <button class="action-btn" title="Detalles">
-                        <a asp-action="Details" asp-route-id="@item.id_pedido">
+                        <a asp-action="Details" asp-route-id="@item.IdPedido">
                             <i class='bx bx-show-alt'></i>
                         </a>
                     </button>
 
                     <!-- Botón Eliminar -->
                     <button class="action-btn" title="Eliminar">
-                        <a asp-action="Delete" asp-route-id="@item.id_pedido">
+                        <a asp-action="Delete" asp-route-id="@item.IdPedido">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </button>

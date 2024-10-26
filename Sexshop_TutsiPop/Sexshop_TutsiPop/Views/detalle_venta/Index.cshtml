@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Sexshop_TutsiPop.Models.detalle_venta>
+﻿@model IEnumerable<Sexshop_TutsiPop.Models.detalleventaInfo>
 
 @{
     ViewData["Title"] = "Lista de detalles de ventas";
@@ -12,10 +12,10 @@
 <!-- Encabezado de la página -->
 <h1>Lista de detalles de venta</h1>
 
-<!-- Botón para agregar nuevo proveedor -->
+@* 
 <a href="@Url.Action("Create", "detalle_ventas")" class="btn-add">
     + Agregar Nuevos detalles de ventas
-</a>
+</a> *@
 
 <!-- Tabla de proveedores -->
 <table class="modern-table">
@@ -23,9 +23,11 @@
         <tr>
             <th>@Html.DisplayNameFor(model => model.id_detalle)</th>
             <th>@Html.DisplayNameFor(model => model.id_venta)</th>
-            <th>@Html.DisplayNameFor(model => model.id_producto)</th>
+            <th>@Html.DisplayNameFor(model => model.nombre_producto)</th>
             <th>@Html.DisplayNameFor(model => model.cantidad)</th>
             <th>@Html.DisplayNameFor(model => model.descuento)</th>
+   
+           
 
             <th>Acciones</th>
         </tr>
@@ -36,9 +38,13 @@
             <tr>
                 <td>@Html.DisplayFor(modelItem => item.id_detalle)</td>
                 <td>@Html.DisplayFor(modelItem => item.id_venta)</td>
-                <td>@Html.DisplayFor(modelItem => item.id_producto)</td>
+                <td>@Html.DisplayFor(modelItem => item.nombre_producto)</td>
                 <td>@Html.DisplayFor(modelItem => item.cantidad)</td>
                 <td>@Html.DisplayFor(modelItem => item.descuento)</td>
+
+    
+            
+
                 <td class="action-cell">
                     <!-- Botón Editar -->
                     <button class="action-btn" title="Editar">

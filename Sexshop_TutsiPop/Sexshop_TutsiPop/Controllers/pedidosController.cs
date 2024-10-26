@@ -70,7 +70,26 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: pedidos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.pedidos.ToListAsync());
+            var pedidosinfo = await _context.pedidoinfos
+                .FromSqlRaw(@"SELECT p.id_pedido AS IdPedido,
+                         pr.nombre_empresa AS NombreProveedor,
+                         ep.nombre_estado AS EstadoPedido,
+                         mp.metodo_pago AS MetodoPago,
+                         d.direccion_calle AS DireccionEntrega,
+                         d.barrio AS Barrio,
+                         d.ciudad AS Ciudad,
+                         d.codigo_postal AS CodigoPostal,
+                         d.pais AS Pais,
+                         p.fecha_pedido AS FechaPedido
+                  FROM pedidos p
+                  JOIN proveedores pr ON p.id_proveedor = pr.id_proveedor
+                  JOIN estado_pedido ep ON p.id_estado = ep.id_estado
+                  LEFT JOIN metodos_pago mp ON p.id_metodo_pago = mp.id_metodo
+                  JOIN direcciones d ON p.id_direccion = d.id_direccion;")
+                .ToListAsync();
+
+            return View("Index", pedidosinfo);
+            //return View(await _context.pedidos.ToListAsync());
         }
 
         // GET: pedidos/Details/5

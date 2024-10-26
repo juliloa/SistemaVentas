@@ -34,7 +34,7 @@ namespace Sexshop_TutsiPop.Controllers
             // Crear archivo Excel
             using (var package = new ExcelPackage())
             {
-                var worksheet = package.Workbook.Worksheets.Add("Productos");
+                var worksheet = package.Workbook.Worksheets.Add("productosInfo");
 
                 // Definir las cabeceras
                 worksheet.Cells[1, 1].Value = "Nombre Producto";
@@ -79,7 +79,25 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: productos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.productos.ToListAsync());
+            var productosinfo = await _context.productosInfo
+                .FromSqlRaw(@"SELECT 
+                        p.id_producto,
+                        p.nombre_producto,
+                        c.nombre_categoria AS categoria,
+                        pr.nombre_empresa AS proveedor,
+                        p.unidades_stock,
+                        p.precio,
+                        p.activo
+                    FROM 
+                        productos p
+                    JOIN 
+                        categorias c ON p.id_categoria = c.id_categoria
+                    JOIN 
+                        proveedores pr ON p.id_proveedor = pr.id_proveedor;")
+                .ToListAsync();
+
+            return View("Index", productosinfo);
+            //return View(await _context.productos.ToListAsync());
         }
 
         // GET: productos/Details/5

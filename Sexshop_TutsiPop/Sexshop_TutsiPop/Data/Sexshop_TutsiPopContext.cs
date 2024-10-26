@@ -13,6 +13,11 @@ namespace Sexshop_TutsiPop.Data
             : base(options)
         {
         }
+        public DbSet<Sexshop_TutsiPop.Models.entregasInfo> entregasInfo { get; set; }
+        public DbSet<Sexshop_TutsiPop.Models.detalleventaInfo> detalleventasInfo { get; set; }
+        public DbSet<Sexshop_TutsiPop.Models.detallepedidoInfo> detallepedidoInfo { get; set; }
+        public DbSet<Sexshop_TutsiPop.Models.productosInfo> productosInfo { get; set; }
+        public DbSet<Sexshop_TutsiPop.Models.pedidosinfo> pedidoinfos { get; set; }
         public DbSet<Sexshop_TutsiPop.Models.ProveedoresDireccion> ProveedoresDireccion { get; set; } 
         public DbSet<Sexshop_TutsiPop.Models.Usuarios> Usuarios { get; set; } = default!;
         public DbSet<Sexshop_TutsiPop.Models.estado_pedido> estado_pedido { get; set; }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Sexshop_TutsiPop.Models.productos>
+﻿@model IEnumerable<Sexshop_TutsiPop.Models.productosInfo>
 
 @{
     ViewData["Title"] = "Lista de productos";
@@ -23,8 +23,8 @@
         <tr>
             <th>@Html.DisplayNameFor(model => model.id_producto)</th>
             <th>@Html.DisplayNameFor(model => model.nombre_producto)</th>
-            <th>@Html.DisplayNameFor(model => model.id_categoria)</th>
-            <th>@Html.DisplayNameFor(model => model.id_proveedor)</th>
+            <th>@Html.DisplayNameFor(model => model.categoria)</th>
+            <th>@Html.DisplayNameFor(model => model.proveedor)</th>
             <th>@Html.DisplayNameFor(model => model.unidades_stock)</th>
             <th>@Html.DisplayNameFor(model => model.precio)</th>
             <th>@Html.DisplayNameFor(model => model.activo)</th>
@@ -37,8 +37,8 @@
             <tr>
                 <td>@Html.DisplayFor(modelItem => item.id_producto)</td>
                 <td>@Html.DisplayFor(modelItem => item.nombre_producto)</td>
-                <td>@Html.DisplayFor(modelItem => item.id_categoria)</td>
-                <td>@Html.DisplayFor(modelItem => item.id_proveedor)</td>
+                <td>@Html.DisplayFor(modelItem => item.categoria)</td>
+                <td>@Html.DisplayFor(modelItem => item.proveedor)</td>
                 <td>@Html.DisplayFor(modelItem => item.unidades_stock)</td>
                 <td>@Html.DisplayFor(modelItem => item.precio)</td>
                 <td>@Html.DisplayFor(modelItem => item.activo)</td>
@@ -69,7 +69,7 @@
     </tbody>
 </table>
 <!-- Botón para exportar a Excel -->
-<a href="@Url.Action("ExportToExcel", "productos")" class="btn-export">
+<a href="@Url.Action("ExportToExcel", "Productos")" class="btn-export">
     <i class='bx bx-table'> Descargar Excel</i>
 </a>
 <link rel="stylesheet" href="~/css/ExcelStyle.css" />

@@ -22,7 +22,25 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: detalle_venta
         public async Task<IActionResult> Index()
         {
-            return View(await _context.detalle_venta.ToListAsync());
+            var detalleventainfo = await _context.detalleventasInfo
+              .FromSqlRaw(@"SELECT 
+                    dv.id_detalle,
+                    v.id_venta,
+                    p.nombre_producto,
+                    dv.cantidad,
+                    dv.descuento
+                FROM 
+                    detalle_venta dv
+                JOIN 
+                    ventas v ON dv.id_venta = v.id_venta
+                JOIN 
+                    productos p ON dv.id_producto = p.id_producto;
+
+                ")
+              .ToListAsync();
+
+            return View("Index", detalleventainfo);
+            // return View(await _context.detalle_venta.ToListAsync());
         }
 
         // GET: detalle_venta/Details/5

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Sexshop_TutsiPop.Models.entregas>
+﻿@model IEnumerable<Sexshop_TutsiPop.Models.entregasInfo>
 
 @{
     ViewData["Title"] = "Lista de entregas";
@@ -23,10 +23,12 @@
         <tr>
             <th>@Html.DisplayNameFor(model => model.id_entrega)</th>
             <th>@Html.DisplayNameFor(model => model.id_pedido)</th>
-            <th>@Html.DisplayNameFor(model => model.id_direccion_entrega)</th>
+            <th>@Html.DisplayNameFor(model => model.direccion_entrega)</th>
+            <th>@Html.DisplayNameFor(model => model.ciudad_entrega)</th>
+            <th>@Html.DisplayNameFor(model => model.barrio_entrega)</th>
+            <th>@Html.DisplayNameFor(model => model.nombre_empleado)</th>
             <th>@Html.DisplayNameFor(model => model.fecha_entrega)</th>
             <th>@Html.DisplayNameFor(model => model.estado_entrega)</th>
-            <th>@Html.DisplayNameFor(model => model.cedula_empleado)</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -36,10 +38,12 @@
             <tr>
                 <td>@Html.DisplayFor(modelItem => item.id_entrega)</td>
                 <td>@Html.DisplayFor(modelItem => item.id_pedido)</td>
-                <td>@Html.DisplayFor(modelItem => item.id_direccion_entrega)</td>
+                <td>@Html.DisplayFor(modelItem => item.direccion_entrega)</td>
+                <td>@Html.DisplayFor(modelItem => item.ciudad_entrega)</td>
+                <td>@Html.DisplayFor(modelItem => item.barrio_entrega)</td>
+                <td>@Html.DisplayFor(modelItem => item.nombre_empleado)</td>
                 <td>@Html.DisplayFor(modelItem => item.fecha_entrega)</td>
                 <td>@Html.DisplayFor(modelItem => item.estado_entrega)</td>
-                <td>@Html.DisplayFor(modelItem => item.cedula_empleado)</td>
                 <td class="action-cell">
                     <!-- Botón Editar -->
                     <button class="action-btn" title="Editar">

@@ -21,20 +21,43 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: entregas
         public async Task<IActionResult> Index()
         {
-            // Convertir fechas a UTC antes de pasarlas a la vista
-            var entregas = await _context.entregas
-                .Select(e => new entregas
-                {
-                    id_entrega = e.id_entrega,
-                    id_pedido = e.id_pedido,
-                    id_direccion_entrega = e.id_direccion_entrega,
-                    fecha_entrega = e.fecha_entrega.ToUniversalTime(),
-                    estado_entrega = e.estado_entrega,
-                    cedula_empleado = e.cedula_empleado
-                })
-                .ToListAsync();
+            var entregasinfo = await _context.entregasInfo
+              .FromSqlRaw(@"SELECT 
+                    e.id_entrega,
+                    p.id_pedido,
+                    d_entrega.direccion_calle AS direccion_entrega,
+                    d_entrega.ciudad AS ciudad_entrega,
+                    d_entrega.barrio AS barrio_entrega,
+                    em.nombre AS nombre_empleado,
+                    e.fecha_entrega,
+                    e.estado_entrega
+                FROM 
+                    entregas e
+                JOIN 
+                    pedidos p ON e.id_pedido = p.id_pedido
+                JOIN 
+                    direcciones d_entrega ON e.id_direccion_entrega = d_entrega.id_direccion
+                LEFT JOIN 
+                    empleados em ON e.cedula_empleado = em.cedula_empleado;
 
-            return View(entregas);
+                ")
+              .ToListAsync();
+
+            return View("Index", entregasinfo);
+            //// Convertir fechas a UTC antes de pasarlas a la vista
+            //var entregas = await _context.entregas
+            //    .Select(e => new entregas
+            //    {
+            //        id_entrega = e.id_entrega,
+            //        id_pedido = e.id_pedido,
+            //        id_direccion_entrega = e.id_direccion_entrega,
+            //        fecha_entrega = e.fecha_entrega.ToUniversalTime(),
+            //        estado_entrega = e.estado_entrega,
+            //        cedula_empleado = e.cedula_empleado
+            //    })
+            //    .ToListAsync();
+
+            //return View(entregas);
         }
 
         // GET: entregas/Details/5

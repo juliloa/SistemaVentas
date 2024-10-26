@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Sexshop_TutsiPop.Data;
 using Sexshop_TutsiPop.Models;
@@ -22,7 +21,20 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: entregas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.entregas.ToListAsync());
+            // Convertir fechas a UTC antes de pasarlas a la vista
+            var entregas = await _context.entregas
+                .Select(e => new entregas
+                {
+                    id_entrega = e.id_entrega,
+                    id_pedido = e.id_pedido,
+                    id_direccion_entrega = e.id_direccion_entrega,
+                    fecha_entrega = e.fecha_entrega.ToUniversalTime(),
+                    estado_entrega = e.estado_entrega,
+                    cedula_empleado = e.cedula_empleado
+                })
+                .ToListAsync();
+
+            return View(entregas);
         }
 
         // GET: entregas/Details/5
@@ -40,6 +52,8 @@ namespace Sexshop_TutsiPop.Controllers
                 return NotFound();
             }
 
+            entregas.fecha_entrega = entregas.fecha_entrega.ToUniversalTime(); // Asegúrate de mostrarlo en UTC
+
             return View(entregas);
         }
 
@@ -50,14 +64,13 @@ namespace Sexshop_TutsiPop.Controllers
         }
 
         // POST: entregas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("id_entrega,id_pedido,id_direccion_entrega,fecha_entrega,estado_entrega,cedula_empleado")] entregas entregas)
         {
             if (ModelState.IsValid)
             {
+                entregas.fecha_entrega = entregas.fecha_entrega.ToUniversalTime(); // Convertir a UTC
                 _context.Add(entregas);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -78,12 +91,11 @@ namespace Sexshop_TutsiPop.Controllers
             {
                 return NotFound();
             }
+            entregas.fecha_entrega = entregas.fecha_entrega.ToUniversalTime(); // Convertir a UTC
             return View(entregas);
         }
 
         // POST: entregas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id_entrega,id_pedido,id_direccion_entrega,fecha_entrega,estado_entrega,cedula_empleado")] entregas entregas)
@@ -97,6 +109,7 @@ namespace Sexshop_TutsiPop.Controllers
             {
                 try
                 {
+                    entregas.fecha_entrega = entregas.fecha_entrega.ToUniversalTime(); // Convertir a UTC
                     _context.Update(entregas);
                     await _context.SaveChangesAsync();
                 }
@@ -130,6 +143,8 @@ namespace Sexshop_TutsiPop.Controllers
             {
                 return NotFound();
             }
+
+            entregas.fecha_entrega = entregas.fecha_entrega.ToUniversalTime(); // Asegúrate de mostrarlo en UTC
 
             return View(entregas);
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO; // Asegúrate de incluir esta directiva para MemoryStream
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -58,7 +59,7 @@ namespace Sexshop_TutsiPop.Controllers
                     worksheet.Cells[row, 1].Value = venta.id_venta;
                     worksheet.Cells[row, 2].Value = venta.cedula_cliente;
                     worksheet.Cells[row, 3].Value = venta.cedula_empleado;
-                    worksheet.Cells[row, 4].Value = venta.fecha_venta.ToString("dd/MM/yyyy");
+                    worksheet.Cells[row, 4].Value = venta.fecha_venta.ToUniversalTime().ToString("dd/MM/yyyy HH:mm:ss"); // Asegúrate de mostrar la fecha en UTC
                     worksheet.Cells[row, 5].Value = venta.id_metodo_pago;
                     row++;
                 }
@@ -75,7 +76,6 @@ namespace Sexshop_TutsiPop.Controllers
                 return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
             }
         }
-
 
         // GET: ventas
         public async Task<IActionResult> Index()
@@ -108,14 +108,14 @@ namespace Sexshop_TutsiPop.Controllers
         }
 
         // POST: ventas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("id_venta,cedula_cliente,cedula_empleado,fecha_venta,id_metodo_pago")] ventas ventas)
         {
             if (ModelState.IsValid)
             {
+                // Convertir a UTC antes de guardar
+                ventas.fecha_venta = ventas.fecha_venta.ToUniversalTime();
                 _context.Add(ventas);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -140,8 +140,6 @@ namespace Sexshop_TutsiPop.Controllers
         }
 
         // POST: ventas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id_venta,cedula_cliente,cedula_empleado,fecha_venta,id_metodo_pago")] ventas ventas)
@@ -155,6 +153,8 @@ namespace Sexshop_TutsiPop.Controllers
             {
                 try
                 {
+                    // Convertir a UTC antes de guardar
+                    ventas.fecha_venta = ventas.fecha_venta.ToUniversalTime();
                     _context.Update(ventas);
                     await _context.SaveChangesAsync();
                 }

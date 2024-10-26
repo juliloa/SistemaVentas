@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -24,18 +25,12 @@ namespace Sexshop_TutsiPop.Controllers
         // Acción para exportar datos a Excel
         public IActionResult ExportToExcel()
         {
-            // Establecer el contexto de la licencia (NonCommercial License)
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-
-            // Obtener los datos de la base de datos
             var Empleados = _context.empleados.ToList();
 
-            // Crear archivo Excel
             using (var package = new ExcelPackage())
             {
                 var worksheet = package.Workbook.Worksheets.Add("Empleados");
-
-                // Definir las cabeceras
                 worksheet.Cells[1, 1].Value = "Cedula Empleado";
                 worksheet.Cells[1, 2].Value = "Nombre";
                 worksheet.Cells[1, 3].Value = "Apellido";
@@ -44,8 +39,6 @@ namespace Sexshop_TutsiPop.Controllers
                 worksheet.Cells[1, 6].Value = "Rol";
                 worksheet.Cells[1, 7].Value = "Salario";
 
-
-                // Establecer formato de cabeceras (opcional)
                 using (var range = worksheet.Cells[1, 1, 1, 7])
                 {
                     range.Style.Font.Bold = true;
@@ -54,7 +47,6 @@ namespace Sexshop_TutsiPop.Controllers
                     range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
                 }
 
-                // Agregar datos a las filas
                 int row = 2;
                 foreach (var empleados in Empleados)
                 {
@@ -62,22 +54,17 @@ namespace Sexshop_TutsiPop.Controllers
                     worksheet.Cells[row, 2].Value = empleados.nombre;
                     worksheet.Cells[row, 3].Value = empleados.apellido;
                     worksheet.Cells[row, 4].Value = empleados.correo;
-                    worksheet.Cells[row, 5].Value = empleados.fecha_contratacion;
+                    worksheet.Cells[row, 5].Value = empleados.fecha_contratacion.ToString("o"); // Formato UTC
                     worksheet.Cells[row, 6].Value = empleados.rol;
                     worksheet.Cells[row, 7].Value = empleados.salario;
-
-
                     row++;
                 }
 
-                // Ajustar ancho de las columnas
                 worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
-
-                // Retornar el archivo Excel como un archivo descargable
                 var stream = new MemoryStream();
                 package.SaveAs(stream);
                 stream.Position = 0;
-                string excelName = $"Empleados-{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx";
+                string excelName = $"Empleados-{DateTime.UtcNow.ToString("yyyyMMddHHmmss")}.xlsx";
 
                 return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
             }
@@ -114,14 +101,14 @@ namespace Sexshop_TutsiPop.Controllers
         }
 
         // POST: empleados/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("cedula_empleado,nombre,apellido,correo,numero_telefono,fecha_contratacion,rol,salario,activo")] empleados empleados)
         {
             if (ModelState.IsValid)
             {
+                // Convertir a UTC antes de guardar
+                empleados.fecha_contratacion = DateTime.SpecifyKind(empleados.fecha_contratacion, DateTimeKind.Utc);
                 _context.Add(empleados);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -146,8 +133,6 @@ namespace Sexshop_TutsiPop.Controllers
         }
 
         // POST: empleados/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("cedula_empleado,nombre,apellido,correo,numero_telefono,fecha_contratacion,rol,salario,activo")] empleados empleados)
@@ -161,6 +146,8 @@ namespace Sexshop_TutsiPop.Controllers
             {
                 try
                 {
+                    // Convertir a UTC antes de actualizar
+                    empleados.fecha_contratacion = DateTime.SpecifyKind(empleados.fecha_contratacion, DateTimeKind.Utc);
                     _context.Update(empleados);
                     await _context.SaveChangesAsync();
                 }

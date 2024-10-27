@@ -3,12 +3,13 @@
 @{
     ViewData["Title"] = "Delete";
 }
+<head>
+    <link rel="stylesheet" href="~/css/Styledetails.css" />
 
-<h1>Delete</h1>
+</head>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Esta seguro de elimiar esto?</h3>
 <div>
-    <h4>Usuarios</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -57,7 +58,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="id_usuario" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index">Regresar</a>
     </form>
 </div>

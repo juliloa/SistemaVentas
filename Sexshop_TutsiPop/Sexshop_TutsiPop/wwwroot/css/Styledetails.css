@@ -1,0 +1,112 @@
+﻿/* Definir colores */
+:root {
+    --palo-de-rosa: #f7b2b7; /* Color suave de fondo */
+    --boton-palo-de-rosa: #e48e8e; /* Color palo de rosa para los botones y enlaces */
+    --fondo-claro: #f9f9f9;
+    --gris-oscuro: #444;
+    --gris-claro: #777;
+    --fondo-contenedor: #ffffff;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--fondo-claro);
+    color: var(--gris-oscuro);
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: var(--gris-oscuro);
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h4 {
+    color: var(--palo-de-rosa);
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 900px; /* Aumenta el ancho máximo */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+/* Contenedor de detalles */
+dl.row {
+    background-color: var(--fondo-contenedor);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    border-left: 5px solid var(--palo-de-rosa);
+}
+
+/* Etiquetas de campo */
+dt {
+    font-weight: 600;
+    color: var(--gris-oscuro);
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+/* Valores de campo */
+dd {
+    color: var(--gris-claro);
+    font-size: 1rem;
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+
+/* Alineación de etiquetas y valores */
+.dl-horizontal dt {
+    text-align: left;
+}
+
+/* Enlaces de navegación */
+a {
+    color: var(--boton-palo-de-rosa);
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 10px;
+    transition: color 0.3s;
+}
+
+    a:hover {
+        color: #cc7a7a;
+        text-decoration: underline;
+    }
+
+/* Botón de enlace */
+.btn-link {
+    color: var(--boton-palo-de-rosa);
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 2px solid var(--boton-palo-de-rosa);
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center;
+}
+
+    .btn-link:hover {
+        background-color: var(--boton-palo-de-rosa);
+        color: #fff;
+    }
+
+/* Espaciado entre elementos */
+.row > dt,
+.row > dd {
+    margin-bottom: 15px;
+}

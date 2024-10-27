@@ -3,11 +3,14 @@
 @{
     ViewData["Title"] = "Details";
 }
+<head>
+    <link rel="stylesheet" href="~/css/Styledetails.css" />
 
-<h1>Details</h1>
+</head>
+<h1>Empleado</h1>
 
 <div>
-    <h4>empleados</h4>
+    
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -62,5 +65,5 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.cedula_empleado">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Regresar</a>
 </div>

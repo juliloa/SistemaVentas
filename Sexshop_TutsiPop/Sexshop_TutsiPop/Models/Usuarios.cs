@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Sexshop_TutsiPop.Models
 {
-    public class Usuarios
+    public class usuarios
     {
         [Key]public int id_usuario { get; set; }
         public string nombre { get; set; }

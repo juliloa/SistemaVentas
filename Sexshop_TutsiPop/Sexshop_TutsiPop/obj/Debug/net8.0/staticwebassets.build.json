@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nXmi+U8+hlGoUFEByyBUJqQn37L+diH3e7gyI6HPMa4=",
+  "Hash": "m0b6NUMfQoVM6v8k+P65u6BgZ8kTgsk9OV0cOUaLDtg=",
   "Source": "Sexshop_TutsiPop",
   "BasePath": "_content/Sexshop_TutsiPop",
   "Mode": "Default",
@@ -243,6 +243,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\stylecreate.css"
+    },
+    {
+      "Identity": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\Styledelete.css",
+      "SourceId": "Sexshop_TutsiPop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\",
+      "BasePath": "_content/Sexshop_TutsiPop",
+      "RelativePath": "css/Styledelete.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Styledelete.css"
     },
     {
       "Identity": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\Styledetails.css",

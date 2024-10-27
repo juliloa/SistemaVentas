@@ -9,11 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Sexshop_TutsiPop.Datos
 {
-    public class DbUsuarios
+    public class Dbusuarios
     {
         private static string CadenaSQL = "Host=ep-steep-wildflower-a5e5pu5u.us-east-2.aws.neon.tech;Database=neondb;Username=neondb_owner;Password=zWXFD19QotKH;SSL Mode=Require";
 
-        public static bool Registrar(Usuarios usuario)
+        public static bool Registrar(usuarios usuario)
         {
             bool respuesta = false;
 
@@ -21,7 +21,7 @@ namespace Sexshop_TutsiPop.Datos
             {
                 using (NpgsqlConnection conexion = new NpgsqlConnection(CadenaSQL))
                 {
-                    string query = "insert into Usuarios (nombre,email,contrasenna,token,confirmado," +
+                    string query = "insert into usuarios (nombre,email,contrasenna,token,confirmado," +
                         "restablecer)";
                     query += " values (@nombre,@email,@contrasenna,@token,@confirmado,@restablecer)";
 
@@ -51,14 +51,14 @@ namespace Sexshop_TutsiPop.Datos
 
         }
 
-        public static Usuarios Validar(string email, string contrasenna)
+        public static usuarios Validar(string email, string contrasenna)
         {
-            Usuarios usuario = null;
+            usuarios usuario = null;
             try
             {
                 using (NpgsqlConnection conexion = new NpgsqlConnection(CadenaSQL))
                 {
-                    string query = "SELECT nombre, restablecer, confirmado FROM Usuarios";
+                    string query = "SELECT nombre, restablecer, confirmado FROM usuarios";
                     query += " WHERE email = @email and contrasenna = @contrasenna";
 
 
@@ -75,7 +75,7 @@ namespace Sexshop_TutsiPop.Datos
                     {
                         if (reader.Read())
                         {
-                            usuario = new Usuarios()
+                            usuario = new usuarios()
                             {
                                 nombre = reader["nombre"].ToString(),
                                 restablecer = (bool)reader["restablecer"],
@@ -94,14 +94,14 @@ namespace Sexshop_TutsiPop.Datos
         }
 
         [HttpPost]
-        public static Usuarios Obtener(string email)
+        public static usuarios Obtener(string email)
         {
-            Usuarios usuario = null;
+            usuarios usuario = null;
             try
             {
                 using (NpgsqlConnection conexion = new NpgsqlConnection(CadenaSQL))
                 {
-                    string query = "select nombre,contrasenna,restablecer,confirmado,token from Usuarios";
+                    string query = "select nombre,contrasenna,restablecer,confirmado,token from usuarios";
                     query += " where email=@email";
 
                     NpgsqlCommand cmd = new NpgsqlCommand(query, conexion);
@@ -115,7 +115,7 @@ namespace Sexshop_TutsiPop.Datos
                     {
                         if (dr.Read())
                         {
-                            usuario = new Usuarios()
+                            usuario = new usuarios()
                             {
                                 nombre = dr["nombre"].ToString(),
                                 contrasenna = dr["contrasenna"].ToString(),
@@ -145,7 +145,7 @@ namespace Sexshop_TutsiPop.Datos
             {
                 using (NpgsqlConnection conexion = new NpgsqlConnection(CadenaSQL))
                 {
-                    string query = @"UPDATE Usuarios SET " +
+                    string query = @"UPDATE usuarios SET " +
                         "restablecer = @restablecer, " +
                         "contrasenna = @contrasenna " +
                         "WHERE token = @token";
@@ -178,7 +178,7 @@ namespace Sexshop_TutsiPop.Datos
             {
                 using (NpgsqlConnection conexion = new NpgsqlConnection(CadenaSQL))
                 {
-                    string query = @"UPDATE Usuarios SET " +
+                    string query = @"UPDATE usuarios SET " +
                         "confirmado = true " +
                         "WHERE token = @token";
 

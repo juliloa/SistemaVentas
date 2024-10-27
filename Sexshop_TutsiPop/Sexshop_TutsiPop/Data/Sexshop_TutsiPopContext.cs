@@ -19,7 +19,7 @@ namespace Sexshop_TutsiPop.Data
         public DbSet<Sexshop_TutsiPop.Models.productosInfo> productosInfo { get; set; }
         public DbSet<Sexshop_TutsiPop.Models.pedidosinfo> pedidoinfos { get; set; }
         public DbSet<Sexshop_TutsiPop.Models.ProveedoresDireccion> ProveedoresDireccion { get; set; } 
-        public DbSet<Sexshop_TutsiPop.Models.Usuarios> Usuarios { get; set; } = default!;
+        public DbSet<Sexshop_TutsiPop.Models.usuarios> usuarios { get; set; } = default!;
         public DbSet<Sexshop_TutsiPop.Models.estado_pedido> estado_pedido { get; set; }
         public DbSet<Sexshop_TutsiPop.Models.categorias> categorias { get; set; }
         public DbSet<Sexshop_TutsiPop.Models.metodos_pago> metodos_pago { get; set; }

@@ -14,24 +14,24 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Sexshop_TutsiPop.Controllers
 {
-    public class UsuariosController : Controller
+    public class usuariosController : Controller
     {
         
         private readonly Sexshop_TutsiPopContext _context;
 
 
-        public UsuariosController(Sexshop_TutsiPopContext context)
+        public usuariosController(Sexshop_TutsiPopContext context)
         {
             _context = context;
         }
 
-        // GET: Usuarios
+        // GET: usuarios
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Usuarios.ToListAsync());
+            return View(await _context.usuarios.ToListAsync());
         }
 
-        // GET: Usuarios/Details/5
+        // GET: usuarios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,7 +39,7 @@ namespace Sexshop_TutsiPop.Controllers
                 return NotFound();
             }
 
-            var usuarios = await _context.Usuarios
+            var usuarios = await _context.usuarios
                 .FirstOrDefaultAsync(m => m.id_usuario == id);
             if (usuarios == null)
             {
@@ -49,18 +49,18 @@ namespace Sexshop_TutsiPop.Controllers
             return View(usuarios);
         }
 
-        // GET: Usuarios/Create
+        // GET: usuarios/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Usuarios/Create
+        // POST: usuarios/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id_usuario,nombre,email,contrasenna,token,confirmado,restablecer,confirmar_contrasenna")] Usuarios usuarios)
+        public async Task<IActionResult> Create([Bind("id_usuario,nombre,email,contrasenna,token,confirmado,restablecer,confirmar_contrasenna")] usuarios usuarios)
         {
             if (ModelState.IsValid)
             {
@@ -71,7 +71,7 @@ namespace Sexshop_TutsiPop.Controllers
             return View(usuarios);
         }
 
-        // GET: Usuarios/Edit/5
+        // GET: usuarios/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -79,7 +79,7 @@ namespace Sexshop_TutsiPop.Controllers
                 return NotFound();
             }
 
-            var usuarios = await _context.Usuarios.FindAsync(id);
+            var usuarios = await _context.usuarios.FindAsync(id);
             if (usuarios == null)
             {
                 return NotFound();
@@ -87,12 +87,12 @@ namespace Sexshop_TutsiPop.Controllers
             return View(usuarios);
         }
 
-        // POST: Usuarios/Edit/5
+        // POST: usuarios/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id_usuario,nombre,email,contrasenna,token,confirmado,restablecer,confirmar_contrasenna")] Usuarios usuarios)
+        public async Task<IActionResult> Edit(int id, [Bind("id_usuario,nombre,email,contrasenna,token,confirmado,restablecer,confirmar_contrasenna")] usuarios usuarios)
         {
             if (id != usuarios.id_usuario)
             {
@@ -108,7 +108,7 @@ namespace Sexshop_TutsiPop.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsuariosExists(usuarios.id_usuario))
+                    if (!usuariosExists(usuarios.id_usuario))
                     {
                         return NotFound();
                     }
@@ -122,7 +122,7 @@ namespace Sexshop_TutsiPop.Controllers
             return View(usuarios);
         }
 
-        // GET: Usuarios/Delete/5
+        // GET: usuarios/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,7 +130,7 @@ namespace Sexshop_TutsiPop.Controllers
                 return NotFound();
             }
 
-            var usuarios = await _context.Usuarios
+            var usuarios = await _context.usuarios
                 .FirstOrDefaultAsync(m => m.id_usuario == id);
             if (usuarios == null)
             {
@@ -140,24 +140,24 @@ namespace Sexshop_TutsiPop.Controllers
             return View(usuarios);
         }
 
-        // POST: Usuarios/Delete/5
+        // POST: usuarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var usuarios = await _context.Usuarios.FindAsync(id);
+            var usuarios = await _context.usuarios.FindAsync(id);
             if (usuarios != null)
             {
-                _context.Usuarios.Remove(usuarios);
+                _context.usuarios.Remove(usuarios);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UsuariosExists(int id)
+        private bool usuariosExists(int id)
         {
-            return _context.Usuarios.Any(e => e.id_usuario == id);
+            return _context.usuarios.Any(e => e.id_usuario == id);
         }
     }
 }

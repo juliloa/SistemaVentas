@@ -31,7 +31,7 @@ namespace Sexshop_TutsiPop.Controllers
         [HttpPost]
         public ActionResult Login(string email, string contrasenna)
         {
-            Usuarios usuario = DbUsuarios.Validar(email, UtilidadServicio.ConvertirSHA256(contrasenna));
+            usuarios usuario = Dbusuarios.Validar(email, UtilidadServicio.ConvertirSHA256(contrasenna));
 
             if (usuario != null)
             {
@@ -63,7 +63,7 @@ namespace Sexshop_TutsiPop.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registrar(Usuarios usuario)
+        public ActionResult Registrar(usuarios usuario)
         {
             if (usuario.contrasenna != usuario.confirmar_contrasenna)
             {
@@ -73,14 +73,14 @@ namespace Sexshop_TutsiPop.Controllers
                 return View();
             }
 
-            if (DbUsuarios.Obtener(usuario.email) == null)
+            if (Dbusuarios.Obtener(usuario.email) == null)
             {
                 usuario.contrasenna = UtilidadServicio.ConvertirSHA256(usuario.contrasenna);
                 usuario.token = UtilidadServicio.GenerarToken();
                 usuario.restablecer = false;
                 usuario.confirmado = false;
 
-                bool respuesta = DbUsuarios.Registrar(usuario);
+                bool respuesta = Dbusuarios.Registrar(usuario);
 
                 if (respuesta)
                 {
@@ -121,7 +121,7 @@ namespace Sexshop_TutsiPop.Controllers
         }
         public ActionResult Confirmar(string token)
         {
-            ViewBag.Respuesta = DbUsuarios.Confirmar(token);
+            ViewBag.Respuesta = Dbusuarios.Confirmar(token);
             return View();
         }
         public ActionResult Restablecer()
@@ -132,11 +132,11 @@ namespace Sexshop_TutsiPop.Controllers
         [HttpPost]
         public ActionResult Restablecer(string email)
         {
-            Usuarios usuario = DbUsuarios.Obtener(email);
+            usuarios usuario = Dbusuarios.Obtener(email);
             ViewBag.Correo = email;
             if (usuario != null)
             {
-                bool respuesta = DbUsuarios.RestablecerActualizar(true, usuario.contrasenna, usuario.token);
+                bool respuesta = Dbusuarios.RestablecerActualizar(true, usuario.contrasenna, usuario.token);
 
                 if (respuesta)
                 {
@@ -189,7 +189,7 @@ namespace Sexshop_TutsiPop.Controllers
                 return View();
             }
 
-            bool respuesta = DbUsuarios.RestablecerActualizar(false, UtilidadServicio.ConvertirSHA256(contrasenna), token);
+            bool respuesta = Dbusuarios.RestablecerActualizar(false, UtilidadServicio.ConvertirSHA256(contrasenna), token);
 
             if (respuesta)
                 ViewBag.Restablecido = true;

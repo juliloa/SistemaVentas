@@ -33,6 +33,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.confirmar_contrasenna)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rol)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -60,6 +63,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.confirmar_contrasenna)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rol)
+                </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.id_usuario">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.id_usuario">Details</a> |

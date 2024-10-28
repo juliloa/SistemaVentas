@@ -3,27 +3,23 @@
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
-
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site2.css" asp-append-version="true" />
 </head>
 <body>
- 
     <div class="row justify-content-center mt-5">
-
         <div class="col-5">
-
             <div class="card">
-                <div class="card-header"><h3 class="text-center">Login</h3></div>
+                <div class="card-header">
+                    <h3 class="text-center">Login</h3>
+                </div>
                 <div class="card-body">
-
-                    <form asp-action="Login" method="post">
-
+                    <!-- Formulario para iniciar sesión -->
+                    <form asp-controller="Inicio" asp-action="Login" method="post">
                         <div class="mb-3">
                             <label>Correo</label>
                             <input type="email" class="form-control" name="email" required />
@@ -38,7 +34,6 @@
                                         <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zm-8 4a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-1.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
                                     </svg>
                                 </button>
-
                             </div>
                         </div>
 
@@ -58,16 +53,10 @@
                                 <a class="btn btn-link" asp-area="" asp-controller="Inicio" asp-action="Registrar">¿No tienes una cuenta? Regístrate</a>
                             </div>
                         </div>
-
-                        
-
                     </form>
-
                 </div>
             </div>
-
         </div>
-
     </div>
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

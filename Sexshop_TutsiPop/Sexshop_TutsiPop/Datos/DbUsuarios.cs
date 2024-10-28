@@ -1,4 +1,4 @@
-﻿using Sexshop_TutsiPop.Models;
+﻿                                                                                                using Sexshop_TutsiPop.Models;
 using Npgsql;
 using System.Data.SqlClient;
 using System.Data;
@@ -51,6 +51,7 @@ namespace Sexshop_TutsiPop.Datos
 
         }
 
+
         public static usuarios Validar(string email, string contrasenna)
         {
             usuarios usuario = null;
@@ -58,16 +59,10 @@ namespace Sexshop_TutsiPop.Datos
             {
                 using (NpgsqlConnection conexion = new NpgsqlConnection(CadenaSQL))
                 {
-                    string query = "SELECT nombre, restablecer, confirmado FROM usuarios";
-                    query += " WHERE email = @email and contrasenna = @contrasenna";
-
-
-
+                    string query = "SELECT nombre, restablecer, confirmado, rol FROM usuarios WHERE email = @email AND contrasenna = @contrasenna";
                     NpgsqlCommand cmd = new NpgsqlCommand(query, conexion);
                     cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@contrasenna", contrasenna);
-
-                    cmd.CommandType = CommandType.Text;
 
                     conexion.Open();
 
@@ -79,19 +74,28 @@ namespace Sexshop_TutsiPop.Datos
                             {
                                 nombre = reader["nombre"].ToString(),
                                 restablecer = (bool)reader["restablecer"],
-                                confirmado = (bool)reader["confirmado"]
+                                confirmado = (bool)reader["confirmado"],
+                                rol = reader["rol"].ToString()
                             };
+
+                            Console.WriteLine("Usuario encontrado: " + usuario.nombre);
+                            Console.WriteLine("Rol: " + usuario.rol);
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se encontró el usuario o la contraseña es incorrecta.");
                         }
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Console.WriteLine("Error en la validación: " + ex.Message);
                 throw;
             }
             return usuario;
         }
+
 
         [HttpPost]
         public static usuarios Obtener(string email)

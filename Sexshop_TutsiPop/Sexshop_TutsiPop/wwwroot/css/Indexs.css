@@ -1,12 +1,11 @@
-﻿
-.btn-add {
+﻿.btn-add {
     background-color: #ff9c9c;
     color: white;
     border-radius: 30px;
     padding: 10px 20px;
     font-size: 16px;
     border: none;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Puedes ajustar este margen para acercar el botón a la tabla */
     display: inline-block;
     text-decoration: none;
 }
@@ -51,10 +50,10 @@
     font-size: 18px;
 }
 
-    .action-btn actions {
+    .action-btn i { /* Cambiado para aplicar a los iconos dentro de .action-btn */
         color: #333;
     }
 
-        .action-btn actions:hover {
+        .action-btn i:hover { /* Cambiado para aplicar al hover de los iconos */
             color: #ff7474;
         }

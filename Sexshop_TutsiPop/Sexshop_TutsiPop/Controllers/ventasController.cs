@@ -10,6 +10,10 @@ using Sexshop_TutsiPop.Data;
 using Sexshop_TutsiPop.Models;
 using OfficeOpenXml; // Librería para manipular Excel
 using OfficeOpenXml.Style;
+using Microsoft.Data.SqlClient;
+using static Microsoft.IO.RecyclableMemoryStreamManager;
+using System.Configuration;
+
 
 namespace Sexshop_TutsiPop.Controllers
 {
@@ -211,5 +215,6 @@ namespace Sexshop_TutsiPop.Controllers
         {
             return _context.ventas.Any(e => e.id_venta == id);
         }
+
     }
 }

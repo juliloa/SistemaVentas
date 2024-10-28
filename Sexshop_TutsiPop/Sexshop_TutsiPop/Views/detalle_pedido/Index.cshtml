@@ -1,71 +1,151 @@
 ﻿@model IEnumerable<Sexshop_TutsiPop.Models.detallepedidoInfo>
 
 @{
-    ViewData["Title"] = "Lista de detalles de pedidos";
+    ViewData["Title"] = "Lista de Detalles de Pedidos";
+    Layout = null;
 }
 
-<!-- Importar estilos de FontAwesome y Boxicons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-<link rel="stylesheet" href="~/css/Indexs.css" />
-
-<!-- Encabezado de la página -->
-<h1>Lista de detalles de pedidos</h1>
-
-@* <a href="@Url.Action("Create", "detalle_pedido")" class="btn-add">
-    + Agregar Nuevos detalles de pedido
-</a> *@
-
-
-<!-- Tabla de proveedores -->
-<table class="modern-table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.id_detalle)</th>
-            <th>@Html.DisplayNameFor(model => model.id_pedido)</th>
-            <th>@Html.DisplayNameFor(model => model.nombre_producto)</th>
-            <th>@Html.DisplayNameFor(model => model.cantidad)</th>
-            <th>@Html.DisplayNameFor(model => model.descuento)</th>
-            <th>@Html.DisplayNameFor(model => model.fecha_pedido)</th>
-            <th>@Html.DisplayNameFor(model => model.estado)</th>
-   
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.id_detalle)</td>
-                <td>@Html.DisplayFor(modelItem => item.id_pedido)</td>
-                <td>@Html.DisplayFor(modelItem => item.nombre_producto)</td>
-                <td>@Html.DisplayFor(modelItem => item.cantidad)</td>
-                <td>@Html.DisplayFor(modelItem => item.descuento)</td>
-                <td>@Html.DisplayFor(modelItem => item.fecha_pedido)</td>
-                <td>@Html.DisplayFor(modelItem => item.estado)</td>
-                <td class="action-cell">
-                    <!-- Botón Editar -->
-                    <button class="action-btn" title="Editar">
-                        <a asp-action="Edit" asp-route-id="@item.id_detalle">
-                            <i class='bx bx-edit'></i>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>@ViewData["Title"] - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="~/css/Indexs.css" />
+    <link rel="stylesheet" href="~/css/nav.css" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" asp-controller="Home" asp-action="Admin">Administrador</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Index">Cerrar Sesión</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" asp-controller="Proveedores" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Proveedores
                         </a>
-                    </button>
-
-                    <!-- Botón Detalles -->
-                    <button class="action-btn" title="Detalles">
-                        <a asp-action="Details" asp-route-id="@item.id_detalle">
-                            <i class='bx bx-show-alt'></i>
+                        <a class="nav-link" asp-controller="ventas" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class='bx bxs-dollar-circle'></i></div>
+                            Ventas
                         </a>
-                    </button>
-
-                    <!-- Botón Eliminar -->
-                    <button class="action-btn" title="Eliminar">
-                        <a asp-action="Delete" asp-route-id="@item.id_detalle">
-                            <i class="fas fa-trash-alt"></i>
+                        <a class="nav-link" asp-controller="productos" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Productos
                         </a>
-                    </button>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                        <a class="nav-link" asp-controller="pedidos" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class='bx bxs-package'></i></div>
+                            Pedidos
+                        </a>
+                        <a class="nav-link" asp-controller="metodos_pago" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class='bx bx-credit-card'></i></div>
+                            Métodos de Pago
+                        </a>
+                        <a class="nav-link" asp-controller="categorias" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class='bx bx-category'></i></div>
+                            Categorías
+                        </a>
+                        <a class="nav-link" asp-controller="clientes" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class='bx bx-male-female'></i></div>
+                            Clientes
+                        </a>
+                        <a class="nav-link" asp-controller="detalle_pedido" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class='bx bxs-file-blank'></i></div>
+                            Detalle del Pedido
+                        </a>
+                        <a class="nav-link" asp-controller="detalle_venta" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class='bx bxs-file-blank'></i></div>
+                            Detalle de Venta
+                        </a>
+                        <a class="nav-link" asp-controller="direcciones" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class='bx bxs-home'></i></div>
+                            Direcciones
+                        </a>
+                        <a class="nav-link" asp-controller="empleados" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class='bx bx-male'></i></div>
+                            Empleados
+                        </a>
+                        <a class="nav-link" asp-controller="entregas" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class='bx bxs-car'></i></div>
+                            Entregas
+                        </a>
+                        <a class="nav-link" asp-controller="usuarios" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class='bx bxs-car'></i></div>
+                            Usuarios
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main class="mt-4">
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Lista de Detalles de Pedidos</h1>
+
+                <table class="modern-table">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.id_detalle)</th>
+                            <th>@Html.DisplayNameFor(model => model.id_pedido)</th>
+                            <th>@Html.DisplayNameFor(model => model.nombre_producto)</th>
+                            <th>@Html.DisplayNameFor(model => model.cantidad)</th>
+                            <th>@Html.DisplayNameFor(model => model.descuento)</th>
+                            <th>@Html.DisplayNameFor(model => model.fecha_pedido)</th>
+                            <th>@Html.DisplayNameFor(model => model.estado)</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.id_detalle)</td>
+                                <td>@Html.DisplayFor(modelItem => item.id_pedido)</td>
+                                <td>@Html.DisplayFor(modelItem => item.nombre_producto)</td>
+                                <td>@Html.DisplayFor(modelItem => item.cantidad)</td>
+                                <td>@Html.DisplayFor(modelItem => item.descuento)</td>
+                                <td>@Html.DisplayFor(modelItem => item.fecha_pedido)</td>
+                                <td>@Html.DisplayFor(modelItem => item.estado)</td>
+                                <td class="action-cell">
+                                    <a class="action-btn" title="Editar" asp-action="Edit" asp-route-id="@item.id_detalle">
+                                        <i class='bx bx-edit'></i>
+                                    </a>
+                                    <a class="action-btn" title="Detalles" asp-action="Details" asp-route-id="@item.id_detalle">
+                                        <i class='bx bx-show-alt'></i>
+                                    </a>
+                                    <a class="action-btn" title="Eliminar" asp-action="Delete" asp-route-id="@item.id_detalle">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="/js/scripts.js"></script>
+</body>
+</html>

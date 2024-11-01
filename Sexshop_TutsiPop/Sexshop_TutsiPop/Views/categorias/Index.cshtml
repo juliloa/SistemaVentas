@@ -40,60 +40,69 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" asp-controller="Proveedores" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                            Proveedores
-                        </a>
-                        <a class="nav-link" asp-controller="ventas" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class='bx bxs-dollar-circle'></i></div>
-                            Ventas
-                        </a>
-                        <a class="nav-link" asp-controller="productos" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+
+                        <!-- Productos -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProductos" aria-expanded="false" aria-controls="collapseProductos">
+                            <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
                             Productos
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <a class="nav-link" asp-controller="pedidos" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class='bx bxs-package'></i></div>
+                        <div class="collapse" id="collapseProductos" aria-labelledby="headingProductos" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" asp-controller="Productos" asp-action="Index">Lista De Productos</a>
+                                <a class="nav-link" asp-controller="Proveedores" asp-action="Index">Lista De Proveedores</a>
+                                <a class="nav-link" asp-controller="Categorias" asp-action="Index">Lista De Categorias</a>
+                            </nav>
+                        </div>
+
+                        <!-- Ventas -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseVentas" aria-expanded="false" aria-controls="collapseVentas">
+                            <div class="sb-nav-link-icon"><i class="fas fa-cash-register"></i></div>
+                            Ventas
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseVentas" aria-labelledby="headingVentas" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" asp-controller="ventas" asp-action="Index">Lista De Ventas</a>
+                                <a class="nav-link" asp-controller="clientes" asp-action="Index">Lista De Clientes</a>
+                                <a class="nav-link" asp-controller="detalle_venta" asp-action="Index">Lista De detalles de venta</a>
+                            </nav>
+                        </div>
+
+                        <!-- Pedidos -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePedidos" aria-expanded="false" aria-controls="collapsePedidos">
+                            <div class="sb-nav-link-icon"><i class="fas fa-truck"></i></div>
                             Pedidos
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <a class="nav-link" asp-controller="metodos_pago" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class='bx bx-credit-card'></i></div>
-                            Métodos de Pago
-                        </a>
-                        <a class="nav-link" asp-controller="categorias" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class='bx bx-category'></i></div>
-                            Categorías
-                        </a>
-                        <a class="nav-link" asp-controller="clientes" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class='bx bx-male-female'></i></div>
-                            Clientes
-                        </a>
-                        <a class="nav-link" asp-controller="detalle_pedido" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class='bx bxs-file-blank'></i></div>
-                            Detalle del pedido
-                        </a>
-                        <a class="nav-link" asp-controller="detalle_venta" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class='bx bxs-file-blank'></i></div>
-                            Detalle de Venta
-                        </a>
+                        <div class="collapse" id="collapsePedidos" aria-labelledby="headingPedidos" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" asp-controller="pedidos" asp-action="Index">Lista De Pedidos</a>
+                                <a class="nav-link" asp-controller="metodos_pago" asp-action="Index">Lista De metodos de pago</a>
+                                <a class="nav-link" asp-controller="detalle_pedido" asp-action="Index">Lista De detalles de venta</a>
+                            </nav>
+                        </div>
+
+                        <!-- Otros enlaces -->
                         <a class="nav-link" asp-controller="direcciones" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class='bx bxs-home'></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-map-marker-alt"></i></div>
                             Direcciones
                         </a>
                         <a class="nav-link" asp-controller="empleados" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class='bx bx-male'></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-user-tie"></i></div>
                             Empleados
                         </a>
                         <a class="nav-link" asp-controller="entregas" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class='bx bxs-car'></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-truck-loading"></i></div>
                             Entregas
                         </a>
                         <a class="nav-link" asp-controller="usuarios" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class='bx bxs-car'></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                             Usuarios
                         </a>
                     </div>
                 </div>
+
 
             </nav>
         </div>

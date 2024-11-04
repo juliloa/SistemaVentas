@@ -1278,3 +1278,11 @@ C:\Users\Usuario\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop\bin\Deb
 C:\Users\Usuario\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
 C:\Users\Usuario\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\Usuario\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\gabri\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop\bin\Debug\net8.0\EPPlus.dll
+C:\Users\gabri\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop\bin\Debug\net8.0\EPPlus.Interfaces.dll
+C:\Users\gabri\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop\bin\Debug\net8.0\EPPlus.System.Drawing.dll
+C:\Users\gabri\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\gabri\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\gabri\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\gabri\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\gabri\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

@@ -48,7 +48,7 @@ namespace Sexshop_TutsiPop.Controllers
                     }
                     else if (usuario.rol == "cliente")
                     {
-                        return RedirectToAction("Index", "Home"); 
+                        return RedirectToAction("IndexUsuario", "Home"); 
                     }
                 }
             }

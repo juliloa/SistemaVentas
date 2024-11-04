@@ -37,6 +37,11 @@ namespace Sexshop_TutsiPop.Controllers
             return View();
         }
 
+        public IActionResult IndexUsuario()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

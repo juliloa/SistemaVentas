@@ -1,0 +1,115 @@
+﻿@model Sexshop_TutsiPop.Models.usuarios
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = null; // Usamos una vista sin layout
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TutsiPop</title>
+    <!-- ICONOS -->
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
+    <!-- SWIPER -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/StyleIndex.css" />
+    <style>
+        .navbar {
+            background-color: #d97878; /* Color de fondo de la barra de navegación */
+            padding: 10px;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            margin-right: auto; /* Permite que el logo se mueva a la izquierda */
+        }
+
+        .navbar-links {
+            display: flex; /* Alinea los enlaces en línea */
+            align-items: center; /* Centra verticalmente los enlaces */
+        }
+
+        .navbar-login {
+            color: #ffffff; /* Color del texto e ícono */
+            text-decoration: none;
+            display: flex; /* Para alinear el ícono y el texto en línea */
+            align-items: center;
+            margin-left: 15px; /* Espacio entre los enlaces */
+        }
+
+            .navbar-login span {
+                margin-left: 5px; /* Espacio entre el ícono y el texto */
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">TutsiPop</a>
+            <div class="navbar-links">
+                <!-- Contenedor para los enlaces -->
+                <a class="navbar-login" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class='bx bxs-log-out'></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slider main container (fuera del navbar) -->
+    <div class="swiper swiper-hero">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide"><img src="~/images/close-up-sex-toys (2).jpg" /></div>
+            <div class="swiper-slide"><img src="~/images/close-up-sex-toys.jpg" /></div>
+            <div class="swiper-slide"><img src="~/images/freepik__upload__51895.jpeg" /></div>
+            <div class="swiper-slide"><img src="~/images/freepik__upload__3037.jpeg" /></div>
+        </div>
+
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper-hero', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            allowTouchMove: true,
+            effect: "fade",
+            autoplay: {
+                delay: 5000,
+                pauseOnMouseEnter: true,
+                disableOnInteraction: false,
+            },
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+</body>
+</html>

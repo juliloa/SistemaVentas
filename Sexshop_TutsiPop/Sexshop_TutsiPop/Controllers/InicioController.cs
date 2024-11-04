@@ -40,6 +40,7 @@ namespace Sexshop_TutsiPop.Controllers
                 }
                 else
                 {
+                    //retorna una vista dependiendo de quien ingrese
                     
                     if (usuario.rol == "administrador")
                     {

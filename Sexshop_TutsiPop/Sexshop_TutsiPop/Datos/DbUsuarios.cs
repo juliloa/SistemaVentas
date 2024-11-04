@@ -1,89 +1,82 @@
-﻿                                                                                                using Sexshop_TutsiPop.Models;
+﻿using Sexshop_TutsiPop.Models;
 using Npgsql;
-using System.Data.SqlClient;
 using System.Data;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
-using NpgsqlTypes;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using NpgsqlTypes;
 
 namespace Sexshop_TutsiPop.Datos
 {
     public class Dbusuarios
     {
-        private static string CadenaSQL = "Host=ep-steep-wildflower-a5e5pu5u.us-east-2.aws.neon.tech;Database=neondb;Username=neondb_owner;Password=zWXFD19QotKH;SSL Mode=Require";
+        private readonly string _connectionString;
 
-        public static bool Registrar(usuarios usuario)
+        public Dbusuarios(IConfiguration configuration)
+        {
+            // Asigna la cadena de conexión a la variable desde el archivo appsettings.json
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
+        }
+
+        public bool Registrar(usuarios usuario)
         {
             bool respuesta = false;
 
             try
             {
-                using (NpgsqlConnection conexion = new NpgsqlConnection(CadenaSQL))
+                using (NpgsqlConnection conexion = new NpgsqlConnection(_connectionString))
                 {
-                    string query = "insert into usuarios (nombre,email,contrasenna,token,confirmado," +
-                        "restablecer)";
-                    query += " values (@nombre,@email,@contrasenna,@token,@confirmado,@restablecer)";
+                    string query = "INSERT INTO usuarios (nombre, email, contrasenna, token, confirmado, restablecer) " +
+                                   "VALUES (@nombre, @email, @contrasenna, @token, @confirmado, @restablecer)";
 
-                    NpgsqlCommand cmd = new NpgsqlCommand(query, conexion);
-                    cmd.Parameters.AddWithValue("@nombre", usuario.nombre);
-                    cmd.Parameters.AddWithValue("@email", usuario.email);
-                    cmd.Parameters.AddWithValue("@contrasenna", usuario.contrasenna);
-                    cmd.Parameters.AddWithValue("@token", usuario.token);
-                    cmd.Parameters.AddWithValue("@confirmado", NpgsqlDbType.Boolean).Value = usuario.confirmado;
-                    cmd.Parameters.AddWithValue("@restablecer", usuario.restablecer);
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(query, conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre", usuario.nombre);
+                        cmd.Parameters.AddWithValue("@email", usuario.email);
+                        cmd.Parameters.AddWithValue("@contrasenna", usuario.contrasenna);
+                        cmd.Parameters.AddWithValue("@token", usuario.token);
+                        cmd.Parameters.AddWithValue("@confirmado", NpgsqlDbType.Boolean).Value = usuario.confirmado;
+                        cmd.Parameters.AddWithValue("@restablecer", usuario.restablecer);
 
-
-                    cmd.CommandType = CommandType.Text;
-
-                    conexion.Open();
-
-                    int filasafectadas = cmd.ExecuteNonQuery();
-                    if (filasafectadas > 0) respuesta = true;
+                        conexion.Open();
+                        int filasafectadas = cmd.ExecuteNonQuery();
+                        if (filasafectadas > 0) respuesta = true;
+                    }
                 }
-                return respuesta;
             }
             catch (Exception)
             {
-
                 throw;
             }
-
+            return respuesta;
         }
 
-
-        public static usuarios Validar(string email, string contrasenna)
+        public usuarios Validar(string email, string contrasenna)
         {
             usuarios usuario = null;
             try
             {
-                using (NpgsqlConnection conexion = new NpgsqlConnection(CadenaSQL))
+                using (NpgsqlConnection conexion = new NpgsqlConnection(_connectionString))
                 {
                     string query = "SELECT nombre, restablecer, confirmado, rol FROM usuarios WHERE email = @email AND contrasenna = @contrasenna";
-                    NpgsqlCommand cmd = new NpgsqlCommand(query, conexion);
-                    cmd.Parameters.AddWithValue("@email", email);
-                    cmd.Parameters.AddWithValue("@contrasenna", contrasenna);
 
-                    conexion.Open();
-
-                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(query, conexion))
                     {
-                        if (reader.Read())
-                        {
-                            usuario = new usuarios()
-                            {
-                                nombre = reader["nombre"].ToString(),
-                                restablecer = (bool)reader["restablecer"],
-                                confirmado = (bool)reader["confirmado"],
-                                rol = reader["rol"].ToString()
-                            };
+                        cmd.Parameters.AddWithValue("@email", email);
+                        cmd.Parameters.AddWithValue("@contrasenna", contrasenna);
 
-                            Console.WriteLine("Usuario encontrado: " + usuario.nombre);
-                            Console.WriteLine("Rol: " + usuario.rol);
-                        }
-                        else
+                        conexion.Open();
+                        using (NpgsqlDataReader reader = cmd.ExecuteReader())
                         {
-                            Console.WriteLine("No se encontró el usuario o la contraseña es incorrecta.");
+                            if (reader.Read())
+                            {
+                                usuario = new usuarios()
+                                {
+                                    nombre = reader["nombre"].ToString(),
+                                    restablecer = (bool)reader["restablecer"],
+                                    confirmado = (bool)reader["confirmado"],
+                                    rol = reader["rol"].ToString()
+                                };
+                            }
                         }
                     }
                 }
@@ -96,113 +89,99 @@ namespace Sexshop_TutsiPop.Datos
             return usuario;
         }
 
-
         [HttpPost]
-        public static usuarios Obtener(string email)
+        public usuarios Obtener(string email)
         {
             usuarios usuario = null;
             try
             {
-                using (NpgsqlConnection conexion = new NpgsqlConnection(CadenaSQL))
+                using (NpgsqlConnection conexion = new NpgsqlConnection(_connectionString))
                 {
-                    string query = "select nombre,contrasenna,restablecer,confirmado,token from usuarios";
-                    query += " where email=@email";
+                    string query = "SELECT nombre, contrasenna, restablecer, confirmado, token FROM usuarios WHERE email = @email";
 
-                    NpgsqlCommand cmd = new NpgsqlCommand(query, conexion);
-                    cmd.Parameters.Add("@email", NpgsqlDbType.Varchar).Value = email;
-                    cmd.CommandType = CommandType.Text;
-
-
-                    conexion.Open();
-
-                    using (NpgsqlDataReader dr = cmd.ExecuteReader())
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(query, conexion))
                     {
-                        if (dr.Read())
+                        cmd.Parameters.AddWithValue("@email", email);
+
+                        conexion.Open();
+                        using (NpgsqlDataReader dr = cmd.ExecuteReader())
                         {
-                            usuario = new usuarios()
+                            if (dr.Read())
                             {
-                                nombre = dr["nombre"].ToString(),
-                                contrasenna = dr["contrasenna"].ToString(),
-                                restablecer = (bool)dr["restablecer"],
-                                confirmado = (bool)dr["confirmado"],
-                                token = dr["token"].ToString()
-                            };
+                                usuario = new usuarios()
+                                {
+                                    nombre = dr["nombre"].ToString(),
+                                    contrasenna = dr["contrasenna"].ToString(),
+                                    restablecer = (bool)dr["restablecer"],
+                                    confirmado = (bool)dr["confirmado"],
+                                    token = dr["token"].ToString()
+                                };
+                            }
                         }
                     }
                 }
-
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                Console.WriteLine("Error en la obtención: " + ex.Message);
+                throw;
             }
-
             return usuario;
         }
 
-        public static bool RestablecerActualizar(bool restablecer, string contrasenna, string token)
+        public bool RestablecerActualizar(bool restablecer, string contrasenna, string token)
         {
             bool respuesta = false;
 
             try
             {
-                using (NpgsqlConnection conexion = new NpgsqlConnection(CadenaSQL))
+                using (NpgsqlConnection conexion = new NpgsqlConnection(_connectionString))
                 {
-                    string query = @"UPDATE usuarios SET " +
-                        "restablecer = @restablecer, " +
-                        "contrasenna = @contrasenna " +
-                        "WHERE token = @token";
+                    string query = "UPDATE usuarios SET restablecer = @restablecer, contrasenna = @contrasenna WHERE token = @token";
 
-                    NpgsqlCommand cmd = new NpgsqlCommand(query, conexion);
-                    cmd.Parameters.AddWithValue("@restablecer", restablecer);
-                    cmd.Parameters.AddWithValue("@contrasenna", contrasenna);
-                    cmd.Parameters.AddWithValue("@token", NpgsqlTypes.NpgsqlDbType.Varchar).Value = token;
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(query, conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@restablecer", restablecer);
+                        cmd.Parameters.AddWithValue("@contrasenna", contrasenna);
+                        cmd.Parameters.AddWithValue("@token", token);
 
-                    cmd.CommandType = CommandType.Text;
-
-                    conexion.Open();
-
-                    int filasafectadas = cmd.ExecuteNonQuery();
-                    if (filasafectadas > 0) respuesta = true;
+                        conexion.Open();
+                        int filasafectadas = cmd.ExecuteNonQuery();
+                        if (filasafectadas > 0) respuesta = true;
+                    }
                 }
-                return respuesta;
             }
             catch (Exception)
             {
-
                 throw;
             }
+            return respuesta;
         }
 
-        public static bool Confirmar(string token)
+        public bool Confirmar(string token)
         {
             bool respuesta = false;
             try
             {
-                using (NpgsqlConnection conexion = new NpgsqlConnection(CadenaSQL))
+                using (NpgsqlConnection conexion = new NpgsqlConnection(_connectionString))
                 {
-                    string query = @"UPDATE usuarios SET " +
-                        "confirmado = true " +
-                        "WHERE token = @token";
+                    string query = "UPDATE usuarios SET confirmado = true WHERE token = @token";
 
-                    NpgsqlCommand cmd = new NpgsqlCommand(query, conexion);
-                    cmd.Parameters.AddWithValue("@token", token);
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(query, conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@token", token);
 
-                    cmd.CommandType = CommandType.Text;
-
-                    conexion.Open();
-
-                    int filasafectadas = cmd.ExecuteNonQuery();
-                    if (filasafectadas > 0) respuesta = true;
+                        conexion.Open();
+                        int filasafectadas = cmd.ExecuteNonQuery();
+                        if (filasafectadas > 0) respuesta = true;
+                    }
                 }
-                return respuesta;
             }
             catch (Exception)
             {
-
                 throw;
             }
+            return respuesta;
         }
     }
 }

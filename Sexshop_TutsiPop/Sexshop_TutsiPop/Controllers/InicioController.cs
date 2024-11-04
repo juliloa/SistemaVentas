@@ -2,18 +2,27 @@
 using Sexshop_TutsiPop.Datos;
 using Sexshop_TutsiPop.Servicios;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Hosting; // Asegúrate de tener esta línea para IWebHostEnvironment
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using System.IO;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
 namespace Sexshop_TutsiPop.Controllers
 {
     public class InicioController : Controller
     {
         private readonly IWebHostEnvironment _env;
+        private readonly Dbusuarios _dbusuarios;
 
-        public InicioController(IWebHostEnvironment env)
+        public InicioController(IWebHostEnvironment env, IConfiguration configuration)
         {
-            _env = env; // Inicializa el IWebHostEnvironment
+            _env = env;
+            _dbusuarios = new Dbusuarios(configuration);
         }
+
+        // -------------------- LOGIN --------------------
 
         // GET: Inicio/Login
         public ActionResult Login()
@@ -23,10 +32,9 @@ namespace Sexshop_TutsiPop.Controllers
 
         // POST: Inicio/Login
         [HttpPost]
-        public ActionResult Login(string email, string contrasenna)
+        public async Task<ActionResult> Login(string email, string contrasenna)
         {
-            // Validar el usuario usando el método de validación
-            usuarios usuario = Dbusuarios.Validar(email, UtilidadServicio.ConvertirSHA256(contrasenna));
+            usuarios usuario = _dbusuarios.Validar(email, UtilidadServicio.ConvertirSHA256(contrasenna));
 
             if (usuario != null)
             {
@@ -40,15 +48,23 @@ namespace Sexshop_TutsiPop.Controllers
                 }
                 else
                 {
-                    //retorna una vista dependiendo de quien ingrese
-                    
+                    var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, usuario.nombre),
+                new Claim(ClaimTypes.Role, usuario.rol)
+            };
+
+                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+
                     if (usuario.rol == "administrador")
                     {
-                        return RedirectToAction("Admin", "Home"); 
+                        return RedirectToAction("Admin", "Home");
                     }
                     else if (usuario.rol == "cliente")
                     {
-                        return RedirectToAction("IndexUsuario", "Home"); 
+                        return RedirectToAction("IndexUsuario", "Home");
                     }
                 }
             }
@@ -57,8 +73,9 @@ namespace Sexshop_TutsiPop.Controllers
                 ViewBag.Mensaje = "No se encontraron coincidencias.";
             }
 
-            return View(); // Retorna la vista de login con mensaje de error
+            return View();
         }
+        // -------------------- REGISTRAR --------------------
 
         // GET: Inicio/Registrar
         public ActionResult Registrar()
@@ -70,7 +87,6 @@ namespace Sexshop_TutsiPop.Controllers
         [HttpPost]
         public ActionResult Registrar(usuarios usuario)
         {
-            // Validar que las contraseñas coincidan
             if (usuario.contrasenna != usuario.confirmar_contrasenna)
             {
                 ViewBag.Nombre = usuario.nombre;
@@ -79,33 +95,18 @@ namespace Sexshop_TutsiPop.Controllers
                 return View();
             }
 
-            // Verificar si el email ya está registrado
-            if (Dbusuarios.Obtener(usuario.email) == null)
+            if (_dbusuarios.Obtener(usuario.email) == null)
             {
-                // Procesar el registro del nuevo usuario
                 usuario.contrasenna = UtilidadServicio.ConvertirSHA256(usuario.contrasenna);
                 usuario.token = UtilidadServicio.GenerarToken();
                 usuario.restablecer = false;
                 usuario.confirmado = false;
 
-                bool respuesta = Dbusuarios.Registrar(usuario);
+                bool respuesta = _dbusuarios.Registrar(usuario);
 
                 if (respuesta)
                 {
-                    // Enviar correo de confirmación
-                    string path = Path.Combine(_env.ContentRootPath, "Plantilla", "Confirmar.html");
-                    string content = System.IO.File.ReadAllText(path);
-                    string url = $"{Request.Scheme}://{Request.Host}/Inicio/Confirmar?token={usuario.token}";
-                    string htmlbody = string.Format(content, usuario.nombre, url);
-
-                    Correo correoDTO = new Correo()
-                    {
-                        Para = usuario.email,
-                        Asunto = "Correo confirmación",
-                        Contenido = htmlbody
-                    };
-
-                    bool enviado = CorreoServicio.Enviar(correoDTO);
+                    EnviarCorreoConfirmacion(usuario);
                     ViewBag.Creado = true;
                     ViewBag.Mensaje = $"Su cuenta ha sido creada. Hemos enviado un mensaje al correo {usuario.email} para confirmar su cuenta.";
                 }
@@ -122,12 +123,16 @@ namespace Sexshop_TutsiPop.Controllers
             return View();
         }
 
+        // -------------------- CONFIRMAR --------------------
+
         // GET: Inicio/Confirmar
         public ActionResult Confirmar(string token)
         {
-            ViewBag.Respuesta = Dbusuarios.Confirmar(token);
+            ViewBag.Respuesta = _dbusuarios.Confirmar(token);
             return View();
         }
+
+        // -------------------- RESTABLECER --------------------
 
         // GET: Inicio/Restablecer
         public ActionResult Restablecer()
@@ -139,29 +144,16 @@ namespace Sexshop_TutsiPop.Controllers
         [HttpPost]
         public ActionResult Restablecer(string email)
         {
-            usuarios usuario = Dbusuarios.Obtener(email);
+            usuarios usuario = _dbusuarios.Obtener(email);
             ViewBag.Correo = email;
 
             if (usuario != null)
             {
-                bool respuesta = Dbusuarios.RestablecerActualizar(true, usuario.contrasenna, usuario.token);
+                bool respuesta = _dbusuarios.RestablecerActualizar(true, usuario.contrasenna, usuario.token);
 
                 if (respuesta)
                 {
-                    // Enviar correo para restablecer contraseña
-                    string path = Path.Combine(_env.ContentRootPath, "Plantilla", "Restablecer.html");
-                    string content = System.IO.File.ReadAllText(path);
-                    string url = $"{Request.Scheme}://{Request.Host}/Inicio/Actualizar?token={usuario.token}";
-                    string htmlbody = string.Format(content, usuario.nombre, url);
-
-                    Correo correoDTO = new Correo()
-                    {
-                        Para = email,
-                        Asunto = "Restablecer cuenta",
-                        Contenido = htmlbody
-                    };
-
-                    bool enviado = CorreoServicio.Enviar(correoDTO);
+                    EnviarCorreoRestablecimiento(usuario);
                     ViewBag.Restablecido = true;
                 }
                 else
@@ -176,6 +168,8 @@ namespace Sexshop_TutsiPop.Controllers
 
             return View();
         }
+
+        // -------------------- ACTUALIZAR --------------------
 
         // GET: Inicio/Actualizar
         public ActionResult Actualizar(string token)
@@ -196,14 +190,54 @@ namespace Sexshop_TutsiPop.Controllers
                 return View();
             }
 
-            bool respuesta = Dbusuarios.RestablecerActualizar(false, UtilidadServicio.ConvertirSHA256(contrasenna), token);
+            bool respuesta = _dbusuarios.RestablecerActualizar(false, UtilidadServicio.ConvertirSHA256(contrasenna), token);
 
             if (respuesta)
+            {
                 ViewBag.Restablecido = true;
+            }
             else
+            {
                 ViewBag.Mensaje = "No se pudo actualizar.";
+            }
 
             return View();
+        }
+
+        // -------------------- MÉTODOS PRIVADOS --------------------
+
+        private void EnviarCorreoConfirmacion(usuarios usuario)
+        {
+            string path = Path.Combine(_env.ContentRootPath, "Plantilla", "Confirmar.html");
+            string content = System.IO.File.ReadAllText(path);
+            string url = $"{Request.Scheme}://{Request.Host}/Inicio/Confirmar?token={usuario.token}";
+            string htmlbody = string.Format(content, usuario.nombre, url);
+
+            Correo correoDTO = new Correo
+            {
+                Para = usuario.email,
+                Asunto = "Correo confirmación",
+                Contenido = htmlbody
+            };
+
+            CorreoServicio.Enviar(correoDTO);
+        }
+
+        private void EnviarCorreoRestablecimiento(usuarios usuario)
+        {
+            string path = Path.Combine(_env.ContentRootPath, "Plantilla", "Restablecer.html");
+            string content = System.IO.File.ReadAllText(path);
+            string url = $"{Request.Scheme}://{Request.Host}/Inicio/Actualizar?token={usuario.token}";
+            string htmlbody = string.Format(content, usuario.nombre, url);
+
+            Correo correoDTO = new Correo
+            {
+                Para = usuario.email,
+                Asunto = "Restablecer cuenta",
+                Contenido = htmlbody
+            };
+
+            CorreoServicio.Enviar(correoDTO);
         }
     }
 }

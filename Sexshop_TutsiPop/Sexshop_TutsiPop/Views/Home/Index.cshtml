@@ -55,15 +55,24 @@
         <div class="navbar-container">
             <a href="#" class="navbar-logo">TutsiPop</a>
             <div class="navbar-links">
-                <!-- Contenedor para los enlaces -->
-                <a class="navbar-login" asp-area="" asp-controller="Inicio" asp-action="Login">
-                    <i class='bx bxs-user-circle'></i>
-                    <span>Iniciar Sesión</span>
-                </a>
-                <a class="navbar-login" asp-area="" asp-controller="Inicio" asp-action="Registrar">
-                    <i class='bx bxs-user-plus'></i> <!-- Cambiado a ícono de registrar -->
-                    <span>Registrarse</span>
-                </a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="navbar-login" asp-area="" asp-controller="Inicio" asp-action="Logout">
+                        <i class='bx bxs-user-circle'></i>
+                        <span>Cerrar Sesión</span>
+                    </a>
+                }
+                else
+                {
+                    <a class="navbar-login" asp-area="" asp-controller="Inicio" asp-action="Login">
+                        <i class='bx bxs-user-circle'></i>
+                        <span>Iniciar Sesión</span>
+                    </a>
+                    <a class="navbar-login" asp-area="" asp-controller="Inicio" asp-action="Registrar">
+                        <i class='bx bxs-user-plus'></i> <!-- Cambiado a ícono de registrar -->
+                        <span>Registrarse</span>
+                    </a>
+                }
             </div>
         </div>
     </nav>

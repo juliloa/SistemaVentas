@@ -239,5 +239,13 @@ namespace Sexshop_TutsiPop.Controllers
 
             CorreoServicio.Enviar(correoDTO);
         }
+        public async Task<IActionResult> Logout()
+        {
+            // Cerrar sesión
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            // Redirige a la vista de inicio o cualquier otra vista
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

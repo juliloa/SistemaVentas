@@ -10,9 +10,11 @@ using OfficeOpenXml.Style;
 using OfficeOpenXml;
 using Sexshop_TutsiPop.Data;
 using Sexshop_TutsiPop.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Sexshop_TutsiPop.Controllers
 {
+    [Authorize(Roles = "administrador")]
     public class proveedoresController : Controller
     {
         private readonly Sexshop_TutsiPopContext _context;

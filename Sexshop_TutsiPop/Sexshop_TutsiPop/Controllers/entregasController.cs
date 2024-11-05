@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Sexshop_TutsiPop.Data;
@@ -9,6 +10,7 @@ using Sexshop_TutsiPop.Models;
 
 namespace Sexshop_TutsiPop.Controllers
 {
+    [Authorize(Roles = "administrador")]
     public class entregasController : Controller
     {
         private readonly Sexshop_TutsiPopContext _context;

@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Sexshop_TutsiPop.Controllers
 {
+    [Authorize(Roles = "administrador")]
     public class usuariosController : Controller
     {
         

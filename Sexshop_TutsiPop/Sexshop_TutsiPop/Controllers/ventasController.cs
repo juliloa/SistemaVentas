@@ -13,10 +13,12 @@ using OfficeOpenXml.Style;
 using Microsoft.Data.SqlClient;
 using static Microsoft.IO.RecyclableMemoryStreamManager;
 using System.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace Sexshop_TutsiPop.Controllers
 {
+    [Authorize(Roles = "administrador")]
     public class ventasController : Controller
     {
         private readonly Sexshop_TutsiPopContext _context;

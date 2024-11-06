@@ -1,4 +1,4 @@
-﻿@model Sexshop_TutsiPop.Models.detalle_pedido
+﻿@model Sexshop_TutsiPop.Models.detallepedidoInfo
 
 @{
     ViewData["Title"] = "Delete";
@@ -12,31 +12,63 @@
 <div>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.id_detalle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.id_detalle)
+        </dd>
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.id_pedido)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.id_pedido)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.id_producto)
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.nombre_producto)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.id_producto)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.nombre_producto)
         </dd>
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.proveedor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.proveedor)
+        </dd>
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.cantidad)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.cantidad)
         </dd>
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.descuento)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.descuento)
         </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fecha_pedido)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fecha_pedido)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.estado)
+        </dd>
     </dl>
+</div>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="id_detalle" />

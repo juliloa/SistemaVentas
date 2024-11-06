@@ -54,20 +54,38 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: detalle_pedido/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+            var detalle_pedidoinfo = await _context.detallepedidoInfo
+                .FromSqlRaw(@"SELECT 
+                dp.id_detalle,
+                dp.id_pedido,
+                p.nombre_producto,
+                pr.nombre_empresa AS proveedor,
+                dp.cantidad,
+                dp.descuento,
+                ped.fecha_pedido,
+                e.nombre_estado AS estado
+            FROM 
+                detalle_pedido dp
+            JOIN 
+                pedidos ped ON dp.id_pedido = ped.id_pedido
+            JOIN 
+                productos p ON dp.id_producto = p.id_producto
+            JOIN 
+                proveedores pr ON p.id_proveedor = pr.id_proveedor
+            JOIN 
+                estado_pedido e ON ped.id_estado = e.id_estado;
+            ")
+                .ToListAsync();
+
+            if (detalle_pedidoinfo == null || !detalle_pedidoinfo.Any())
             {
                 return NotFound();
             }
 
-            var detalle_pedido = await _context.detalle_pedido
-                .FirstOrDefaultAsync(m => m.id_detalle == id);
-            if (detalle_pedido == null)
-            {
-                return NotFound();
-            }
-
-            return View(detalle_pedido);
+            var detalle = detalle_pedidoinfo.FirstOrDefault();
+            return View("Details", detalle);
         }
+
 
         // GET: detalle_pedido/Create
         public IActionResult Create()
@@ -145,19 +163,35 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: detalle_pedido/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+            var detalle_pedidoinfo = await _context.detallepedidoInfo
+                .FromSqlRaw(@"SELECT 
+                        dp.id_detalle,
+                        dp.id_pedido,
+                        p.nombre_producto,
+                        pr.nombre_empresa AS proveedor,
+                        dp.cantidad,
+                        dp.descuento,
+                        ped.fecha_pedido,
+                        e.nombre_estado AS estado
+                    FROM 
+                        detalle_pedido dp
+                    JOIN 
+                        pedidos ped ON dp.id_pedido = ped.id_pedido
+                    JOIN 
+                        productos p ON dp.id_producto = p.id_producto
+                    JOIN 
+                        proveedores pr ON p.id_proveedor = pr.id_proveedor
+                    JOIN 
+                        estado_pedido e ON ped.id_estado = e.id_estado;
+                    ")
+                .ToListAsync();
+            if (detalle_pedidoinfo == null)
             {
                 return NotFound();
             }
 
-            var detalle_pedido = await _context.detalle_pedido
-                .FirstOrDefaultAsync(m => m.id_detalle == id);
-            if (detalle_pedido == null)
-            {
-                return NotFound();
-            }
-
-            return View(detalle_pedido);
+            var detalle = detalle_pedidoinfo.FirstOrDefault();
+            return View("Delete", detalle);
         }
 
         // POST: detalle_pedido/Delete/5

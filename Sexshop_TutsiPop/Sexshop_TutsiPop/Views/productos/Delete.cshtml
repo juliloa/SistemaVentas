@@ -1,56 +1,61 @@
-﻿@model Sexshop_TutsiPop.Models.productos
+﻿@model Sexshop_TutsiPop.Models.productosInfo
 
 @{
     ViewData["Title"] = "Delete";
     Layout = null;
 }
+
 <head>
     <link rel="stylesheet" href="~/css/Styledetails.css" />
-
 </head>
 
-<h3>Esta seguro de elimiar esto?</h3>
+<h3>¿Está seguro de eliminar este producto?</h3>
 <div>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.nombre_producto)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.nombre_producto)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.id_categoria)
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.categoria)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.id_categoria)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.categoria)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.id_proveedor)
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.proveedor)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.id_proveedor)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.proveedor)
         </dd>
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.unidades_stock)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.unidades_stock)
         </dd>
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.precio)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.precio)
         </dd>
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.activo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.activo)
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="id_producto" />
         <input type="submit" value="Eliminar" class="btn btn-danger" /> |

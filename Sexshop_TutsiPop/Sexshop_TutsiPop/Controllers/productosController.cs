@@ -103,6 +103,7 @@ namespace Sexshop_TutsiPop.Controllers
         }
 
         // GET: productos/Details/5
+        // GET: productos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -110,8 +111,25 @@ namespace Sexshop_TutsiPop.Controllers
                 return NotFound();
             }
 
-            var productos = await _context.productos
-                .FirstOrDefaultAsync(m => m.id_producto == id);
+            var productos = await _context.productosInfo
+                .FromSqlRaw(@"SELECT 
+                        p.id_producto,
+                        p.nombre_producto,
+                        c.nombre_categoria AS categoria,
+                        pr.nombre_empresa AS proveedor,
+                        p.unidades_stock,
+                        p.precio,
+                        p.activo
+                    FROM 
+                        productos p
+                    JOIN 
+                        categorias c ON p.id_categoria = c.id_categoria
+                    JOIN 
+                        proveedores pr ON p.id_proveedor = pr.id_proveedor
+                    WHERE 
+                        p.id_producto = {0}", id)
+                .FirstOrDefaultAsync();
+
             if (productos == null)
             {
                 return NotFound();
@@ -119,6 +137,7 @@ namespace Sexshop_TutsiPop.Controllers
 
             return View(productos);
         }
+
 
         // GET: productos/Create
         public IActionResult Create()
@@ -194,6 +213,7 @@ namespace Sexshop_TutsiPop.Controllers
         }
 
         // GET: productos/Delete/5
+        // GET: productos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -201,8 +221,25 @@ namespace Sexshop_TutsiPop.Controllers
                 return NotFound();
             }
 
-            var productos = await _context.productos
-                .FirstOrDefaultAsync(m => m.id_producto == id);
+            var productos = await _context.productosInfo
+                .FromSqlRaw(@"SELECT 
+                        p.id_producto,
+                        p.nombre_producto,
+                        c.nombre_categoria AS categoria,
+                        pr.nombre_empresa AS proveedor,
+                        p.unidades_stock,
+                        p.precio,
+                        p.activo
+                    FROM 
+                        productos p
+                    JOIN 
+                        categorias c ON p.id_categoria = c.id_categoria
+                    JOIN 
+                        proveedores pr ON p.id_proveedor = pr.id_proveedor
+                    WHERE 
+                        p.id_producto = {0}", id)
+                .FirstOrDefaultAsync();
+
             if (productos == null)
             {
                 return NotFound();
@@ -210,6 +247,7 @@ namespace Sexshop_TutsiPop.Controllers
 
             return View(productos);
         }
+
 
         // POST: productos/Delete/5
         [HttpPost, ActionName("Delete")]

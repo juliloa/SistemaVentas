@@ -48,6 +48,10 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: detalle_venta/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
             var detalle_venta = await _context.detalleventasInfo
                 .FromSqlRaw(@"SELECT 
                     dv.id_detalle,
@@ -149,6 +153,11 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: detalle_venta/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+
+            if (id == null)
+            {
+                return NotFound();
+            }
             var detalle_ventainfo = await _context.detalleventasInfo
                 .FromSqlRaw(@"SELECT 
                     dv.id_detalle,

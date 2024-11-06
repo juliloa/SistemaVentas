@@ -1,15 +1,14 @@
-﻿@model Sexshop_TutsiPop.Models.entregasInfo
-
+﻿@model Sexshop_TutsiPop.Models.entregasInfo 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles de Entrega";
     Layout = null;
 }
+
 <head>
     <link rel="stylesheet" href="~/css/Styledetails.css" />
-
 </head>
-<h1>Entrega</h1>
 
+<h1>Detalle de la Entrega</h1>
 
 <div>
     <hr />
@@ -55,12 +54,14 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.nombre_empleado)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.fecha_entrega)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.fecha_entrega)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.estado_entrega)
         </dt>
@@ -69,7 +70,8 @@
         </dd>
     </dl>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.id_entrega">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.id_entrega">Modificar</a> |
+    <a asp-action="Index">Volver a la lista</a>
 </div>

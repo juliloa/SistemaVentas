@@ -1,15 +1,16 @@
 ﻿@model Sexshop_TutsiPop.Models.entregasInfo
 
 @{
-    ViewData["Title"] = "Delete";
-    Layout = null;
+    ViewData["Title"] = "Eliminar Entrega";
+    Layout = null;  // Aquí puedes poner tu layout si es necesario
 }
+
 <head>
     <link rel="stylesheet" href="~/css/Styledetails.css" />
-
 </head>
 
-<h3>Esta seguro de elimiar esto?</h3>
+<h3>¿Está seguro de eliminar esta entrega?</h3>
+
 <div>
     <hr />
     <dl class="row">
@@ -54,12 +55,14 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.nombre_empleado)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.fecha_entrega)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.fecha_entrega)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.estado_entrega)
         </dt>
@@ -67,10 +70,11 @@
             @Html.DisplayFor(model => model.estado_entrega)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
+
+    <!-- Formulario para eliminar -->
+    <form asp-action="Delete" method="post">
         <input type="hidden" asp-for="id_entrega" />
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-        <a asp-action="Index">Regresar</a>
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Regresar</a>
     </form>
 </div>

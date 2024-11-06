@@ -102,14 +102,31 @@ namespace Sexshop_TutsiPop.Controllers
                 return NotFound();
             }
 
-            var pedidos = await _context.pedidos
-                .FirstOrDefaultAsync(m => m.id_pedido == id);
-            if (pedidos == null)
+            var pedido = await _context.pedidoinfos.
+                FromSqlRaw(@"SELECT p.id_pedido AS ""IdPedido"",
+                         pr.nombre_empresa AS ""NombreProveedor"",
+                         ep.nombre_estado AS ""EstadoPedido"",
+                         mp.metodo_pago AS ""MetodoPago"",
+                         d.direccion_calle AS ""DireccionEntrega"",
+                         d.barrio AS ""Barrio"",
+                         d.ciudad AS ""Ciudad"",
+                         d.codigo_postal AS ""CodigoPostal"",
+                         d.pais AS ""Pais"",
+                         p.fecha_pedido AS ""FechaPedido""
+                  FROM pedidos p
+                  JOIN proveedores pr ON p.id_proveedor = pr.id_proveedor
+                  JOIN estado_pedido ep ON p.id_estado = ep.id_estado
+                  LEFT JOIN metodos_pago mp ON p.id_metodo_pago = mp.id_metodo
+                  JOIN direcciones d ON p.id_direccion = d.id_direccion
+                  WHERE p.id_pedido = {0}", id) // Filtramos por el ID del pedido
+                 .FirstOrDefaultAsync();  // Usamos FirstOrDefaultAsync para obtener un único resultado
+
+            if (pedido == null)
             {
                 return NotFound();
             }
 
-            return View(pedidos);
+            return View(pedido);  // Retornamos el modelo de tipo "pedidosinfo"
         }
 
         // GET: pedidos/Create
@@ -199,14 +216,31 @@ namespace Sexshop_TutsiPop.Controllers
                 return NotFound();
             }
 
-            var pedidos = await _context.pedidos
-                .FirstOrDefaultAsync(m => m.id_pedido == id);
-            if (pedidos == null)
+            // Obtener el pedido por el ID
+            var pedido = await _context.pedidoinfos
+                .FromSqlRaw(@"SELECT p.id_pedido AS ""IdPedido"",
+                         pr.nombre_empresa AS ""NombreProveedor"",
+                         ep.nombre_estado AS ""EstadoPedido"",
+                         mp.metodo_pago AS ""MetodoPago"",
+                         d.direccion_calle AS ""DireccionEntrega"",
+                         d.barrio AS ""Barrio"",
+                         d.ciudad AS ""Ciudad"",
+                         d.codigo_postal AS ""CodigoPostal"",
+                         d.pais AS ""Pais"",
+                         p.fecha_pedido AS ""FechaPedido""
+                  FROM pedidos p
+                  JOIN proveedores pr ON p.id_proveedor = pr.id_proveedor
+                  JOIN estado_pedido ep ON p.id_estado = ep.id_estado
+                  LEFT JOIN metodos_pago mp ON p.id_metodo_pago = mp.id_metodo
+                  JOIN direcciones d ON p.id_direccion = d.id_direccion
+                  WHERE p.id_pedido = {0}", id) // Filtramos por el ID del pedido
+                 .FirstOrDefaultAsync();
+            if (pedido == null)
             {
                 return NotFound();
             }
 
-            return View(pedidos);
+            return View(pedido);  // Pasar el pedido único a la vista
         }
 
         // POST: pedidos/Delete/5

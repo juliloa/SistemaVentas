@@ -1,52 +1,92 @@
-﻿@model Sexshop_TutsiPop.Models.pedidos
+﻿@model Sexshop_TutsiPop.Models.pedidosinfo
 
 @{
-    ViewData["Title"] = "Details";
-    Layout = null;
+    ViewData["Title"] = "Detalles del Pedido";
+    Layout = null;  // Aquí asegúrate de que el Layout es el correcto para tu aplicación
 }
+
 <head>
     <link rel="stylesheet" href="~/css/Styledetails.css" />
-
 </head>
-<h1>Pedido</h1>
+
+<h1>Detalles del Pedido</h1>
 
 <div>
-   
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.id_proveedor)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdPedido)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.id_proveedor)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdPedido)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.fecha_pedido)
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NombreProveedor)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.fecha_pedido)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NombreProveedor)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.id_direccion)
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EstadoPedido)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.id_direccion)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EstadoPedido)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.id_metodo_pago)
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MetodoPago)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.id_metodo_pago)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MetodoPago)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.id_estado)
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DireccionEntrega)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.id_estado)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DireccionEntrega)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Barrio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Barrio)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ciudad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ciudad)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CodigoPostal)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CodigoPostal)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pais)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pais)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaPedido)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaPedido)
         </dd>
     </dl>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.id_pedido">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.IdPedido" class="btn btn-primary">Editar</a> |
+    <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
 </div>

@@ -52,36 +52,40 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: entregas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            var entregas = await _context.entregasInfo
-                 .FromSqlRaw(@"SELECT 
-                    e.id_entrega,
-                    p.id_pedido,
-                    d_entrega.direccion_calle AS direccion_entrega,
-                    d_entrega.ciudad AS ciudad_entrega,
-                    d_entrega.barrio AS barrio_entrega,
-                    em.nombre AS nombre_empleado,
-                    e.fecha_entrega,
-                    e.estado_entrega
-                FROM 
-                    entregas e
-                JOIN 
-                    pedidos p ON e.id_pedido = p.id_pedido
-                JOIN 
-                    direcciones d_entrega ON e.id_direccion_entrega = d_entrega.id_direccion
-                LEFT JOIN 
-                    empleados em ON e.cedula_empleado = em.cedula_empleado;
-
-                ")
-              .ToListAsync();
-            if (entregas == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            //entregas.fecha_entrega = entregas.fecha_entrega.ToUniversalTime(); // Asegúrate de mostrarlo en UTC
+            var entrega = await _context.entregasInfo
+                .FromSqlRaw(@"SELECT 
+                e.id_entrega,
+                p.id_pedido,
+                d_entrega.direccion_calle AS direccion_entrega,
+                d_entrega.ciudad AS ciudad_entrega,
+                d_entrega.barrio AS barrio_entrega,
+                em.nombre AS nombre_empleado,
+                e.fecha_entrega,
+                e.estado_entrega
+            FROM 
+                entregas e
+            JOIN 
+                pedidos p ON e.id_pedido = p.id_pedido
+            JOIN 
+                direcciones d_entrega ON e.id_direccion_entrega = d_entrega.id_direccion
+            LEFT JOIN 
+                empleados em ON e.cedula_empleado = em.cedula_empleado
+            WHERE e.id_entrega = {0}", id)
+                .FirstOrDefaultAsync();  // Usar FirstOrDefaultAsync para obtener un solo registro
 
-            return View("Details", entregas);
+            if (entrega == null)
+            {
+                return NotFound();
+            }
+
+            return View("Details", entrega);  // Aquí pasas un solo objeto
         }
+
 
         // GET: entregas/Create
         public IActionResult Create()
@@ -158,35 +162,39 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: entregas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            var entregas = await _context.entregasInfo
-                   .FromSqlRaw(@"SELECT 
-                    e.id_entrega,
-                    p.id_pedido,
-                    d_entrega.direccion_calle AS direccion_entrega,
-                    d_entrega.ciudad AS ciudad_entrega,
-                    d_entrega.barrio AS barrio_entrega,
-                    em.nombre AS nombre_empleado,
-                    e.fecha_entrega,
-                    e.estado_entrega
-                FROM 
-                    entregas e
-                JOIN 
-                    pedidos p ON e.id_pedido = p.id_pedido
-                JOIN 
-                    direcciones d_entrega ON e.id_direccion_entrega = d_entrega.id_direccion
-                LEFT JOIN 
-                    empleados em ON e.cedula_empleado = em.cedula_empleado;
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-                ")
-                .ToListAsync();
+            var entregas = await _context.entregasInfo
+                .FromSqlRaw(@"
+            SELECT 
+                e.id_entrega,
+                p.id_pedido,
+                d_entrega.direccion_calle AS direccion_entrega,
+                d_entrega.ciudad AS ciudad_entrega,
+                d_entrega.barrio AS barrio_entrega,
+                em.nombre AS nombre_empleado,
+                e.fecha_entrega,
+                e.estado_entrega
+            FROM 
+                entregas e
+            JOIN 
+                pedidos p ON e.id_pedido = p.id_pedido
+            JOIN 
+                direcciones d_entrega ON e.id_direccion_entrega = d_entrega.id_direccion
+            LEFT JOIN 
+                empleados em ON e.cedula_empleado = em.cedula_empleado
+            WHERE e.id_entrega = {0}", id)
+                .FirstOrDefaultAsync();  // Usamos FirstOrDefaultAsync para obtener un solo resultado
+
             if (entregas == null)
             {
                 return NotFound();
             }
 
-            //entregas.fecha_entrega = entregas.fecha_entrega.ToUniversalTime(); // Asegúrate de mostrarlo en UTC
-
-            return View("Delete", entregas);
+            return View(entregas);
         }
 
         // POST: entregas/Delete/5

@@ -1,41 +1,57 @@
-﻿@model Sexshop_TutsiPop.Models.detalle_venta
+﻿@model Sexshop_TutsiPop.Models.detalleventaInfo
 
 @{
     ViewData["Title"] = "Details";
+    Layout = null;
 }
 
-<h1>Detalle De Venta</h1>
+<head>
+    <link rel="stylesheet" href="~/css/Styledetails.css" />
+</head>
+
+<h1>Detalle De Pedido</h1>
 
 <div>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.id_detalle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.id_detalle)
+        </dd>
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.id_venta)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.id_venta)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.id_producto)
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.nombre_producto)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.id_producto)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.nombre_producto)
         </dd>
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.cantidad)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.cantidad)
         </dd>
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.descuento)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.descuento)
         </dd>
     </dl>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.id_detalle">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.id_detalle">Modificar</a> |
+    <a asp-action="Index">Regresar</a>
 </div>

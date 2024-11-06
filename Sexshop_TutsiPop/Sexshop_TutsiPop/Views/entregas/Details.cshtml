@@ -1,7 +1,8 @@
-﻿@model Sexshop_TutsiPop.Models.entregas
+﻿@model Sexshop_TutsiPop.Models.entregasInfo
 
 @{
     ViewData["Title"] = "Details";
+    Layout = null;
 }
 <head>
     <link rel="stylesheet" href="~/css/Styledetails.css" />
@@ -9,39 +10,62 @@
 </head>
 <h1>Entrega</h1>
 
+
 <div>
-   
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.id_entrega)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.id_entrega)
+        </dd>
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.id_pedido)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.id_pedido)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.id_direccion_entrega)
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.direccion_entrega)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.id_direccion_entrega)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.direccion_entrega)
         </dd>
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ciudad_entrega)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ciudad_entrega)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.barrio_entrega)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.barrio_entrega)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.nombre_empleado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.nombre_empleado)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.fecha_entrega)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.fecha_entrega)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.estado_entrega)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.estado_entrega)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.cedula_empleado)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.cedula_empleado)
         </dd>
     </dl>
 </div>

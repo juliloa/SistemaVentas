@@ -1,46 +1,58 @@
-﻿@model Sexshop_TutsiPop.Models.detalle_venta
+﻿@model Sexshop_TutsiPop.Models.detalleventaInfo
 
 @{
     ViewData["Title"] = "Delete";
+    Layout = null;
 }
-<head>
-    <link rel="stylesheet" href="~/css/Styledetails.css" />
+    <head>
+        <link rel="stylesheet" href="~/css/Styledetails.css" />
 
-</head>
+    </head>
 
-<h3>Esta seguro de elimiar esto?</h3>
-<div>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.id_venta)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.id_venta)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.id_producto)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.id_producto)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.cantidad)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.cantidad)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.descuento)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.descuento)
-        </dd>
-    </dl>
-    
+    <h3>Esta seguro de elimiar esto?</h3>
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.id_detalle)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.id_detalle)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.id_venta)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.id_venta)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.nombre_producto)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.nombre_producto)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.cantidad)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.cantidad)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.descuento)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.descuento)
+            </dd>
+        </dl>
+    </div>
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="id_detalle" />
         <input type="submit" value="Eliminar" class="btn btn-danger" /> |
         <a asp-action="Index">Regresar</a>
     </form>
-</div>
+    

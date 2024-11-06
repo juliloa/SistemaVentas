@@ -46,40 +46,41 @@ namespace Sexshop_TutsiPop.Controllers
               .ToListAsync();
 
             return View("Index", entregasinfo);
-            //// Convertir fechas a UTC antes de pasarlas a la vista
-            //var entregas = await _context.entregas
-            //    .Select(e => new entregas
-            //    {
-            //        id_entrega = e.id_entrega,
-            //        id_pedido = e.id_pedido,
-            //        id_direccion_entrega = e.id_direccion_entrega,
-            //        fecha_entrega = e.fecha_entrega.ToUniversalTime(),
-            //        estado_entrega = e.estado_entrega,
-            //        cedula_empleado = e.cedula_empleado
-            //    })
-            //    .ToListAsync();
-
-            //return View(entregas);
+      
         }
 
         // GET: entregas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var entregas = await _context.entregasInfo
+                 .FromSqlRaw(@"SELECT 
+                    e.id_entrega,
+                    p.id_pedido,
+                    d_entrega.direccion_calle AS direccion_entrega,
+                    d_entrega.ciudad AS ciudad_entrega,
+                    d_entrega.barrio AS barrio_entrega,
+                    em.nombre AS nombre_empleado,
+                    e.fecha_entrega,
+                    e.estado_entrega
+                FROM 
+                    entregas e
+                JOIN 
+                    pedidos p ON e.id_pedido = p.id_pedido
+                JOIN 
+                    direcciones d_entrega ON e.id_direccion_entrega = d_entrega.id_direccion
+                LEFT JOIN 
+                    empleados em ON e.cedula_empleado = em.cedula_empleado;
 
-            var entregas = await _context.entregas
-                .FirstOrDefaultAsync(m => m.id_entrega == id);
+                ")
+              .ToListAsync();
             if (entregas == null)
             {
                 return NotFound();
             }
 
-            entregas.fecha_entrega = entregas.fecha_entrega.ToUniversalTime(); // Asegúrate de mostrarlo en UTC
+            //entregas.fecha_entrega = entregas.fecha_entrega.ToUniversalTime(); // Asegúrate de mostrarlo en UTC
 
-            return View(entregas);
+            return View("Details", entregas);
         }
 
         // GET: entregas/Create
@@ -157,21 +158,35 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: entregas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var entregas = await _context.entregasInfo
+                   .FromSqlRaw(@"SELECT 
+                    e.id_entrega,
+                    p.id_pedido,
+                    d_entrega.direccion_calle AS direccion_entrega,
+                    d_entrega.ciudad AS ciudad_entrega,
+                    d_entrega.barrio AS barrio_entrega,
+                    em.nombre AS nombre_empleado,
+                    e.fecha_entrega,
+                    e.estado_entrega
+                FROM 
+                    entregas e
+                JOIN 
+                    pedidos p ON e.id_pedido = p.id_pedido
+                JOIN 
+                    direcciones d_entrega ON e.id_direccion_entrega = d_entrega.id_direccion
+                LEFT JOIN 
+                    empleados em ON e.cedula_empleado = em.cedula_empleado;
 
-            var entregas = await _context.entregas
-                .FirstOrDefaultAsync(m => m.id_entrega == id);
+                ")
+                .ToListAsync();
             if (entregas == null)
             {
                 return NotFound();
             }
 
-            entregas.fecha_entrega = entregas.fecha_entrega.ToUniversalTime(); // Asegúrate de mostrarlo en UTC
+            //entregas.fecha_entrega = entregas.fecha_entrega.ToUniversalTime(); // Asegúrate de mostrarlo en UTC
 
-            return View(entregas);
+            return View("Delete", entregas);
         }
 
         // POST: entregas/Delete/5

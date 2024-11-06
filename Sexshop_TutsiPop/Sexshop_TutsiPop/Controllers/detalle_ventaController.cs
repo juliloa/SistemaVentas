@@ -48,19 +48,29 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: detalle_venta/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+            var detalle_venta = await _context.detalleventasInfo
+                .FromSqlRaw(@"SELECT 
+                    dv.id_detalle,
+                    v.id_venta,
+                    p.nombre_producto,
+                    dv.cantidad,
+                    dv.descuento
+                FROM 
+                    detalle_venta dv
+                JOIN 
+                    ventas v ON dv.id_venta = v.id_venta
+                JOIN 
+                    productos p ON dv.id_producto = p.id_producto;
+
+                ")
+              .ToListAsync();
+            if (detalle_venta == null || !detalle_venta.Any())
             {
                 return NotFound();
             }
 
-            var detalle_venta = await _context.detalle_venta
-                .FirstOrDefaultAsync(m => m.id_detalle == id);
-            if (detalle_venta == null)
-            {
-                return NotFound();
-            }
-
-            return View(detalle_venta);
+            var detalle = detalle_venta.FirstOrDefault();
+            return View("Details", detalle);
         }
 
         // GET: detalle_venta/Create
@@ -139,19 +149,29 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: detalle_venta/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+            var detalle_ventainfo = await _context.detalleventasInfo
+                .FromSqlRaw(@"SELECT 
+                    dv.id_detalle,
+                    v.id_venta,
+                    p.nombre_producto,
+                    dv.cantidad,
+                    dv.descuento
+                FROM 
+                    detalle_venta dv
+                JOIN 
+                    ventas v ON dv.id_venta = v.id_venta
+                JOIN 
+                    productos p ON dv.id_producto = p.id_producto;
+
+                ")
+                .ToListAsync();
+            if (detalle_ventainfo == null)
             {
                 return NotFound();
             }
 
-            var detalle_venta = await _context.detalle_venta
-                .FirstOrDefaultAsync(m => m.id_detalle == id);
-            if (detalle_venta == null)
-            {
-                return NotFound();
-            }
-
-            return View(detalle_venta);
+            var detalle = detalle_ventainfo.FirstOrDefault();
+            return View("Delete", detalle);
         }
 
         // POST: detalle_venta/Delete/5

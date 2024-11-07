@@ -11,6 +11,7 @@ using OfficeOpenXml;
 using Sexshop_TutsiPop.Data;
 using Sexshop_TutsiPop.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Sexshop_TutsiPop.Controllers
 {
@@ -83,24 +84,33 @@ namespace Sexshop_TutsiPop.Controllers
         {
             var productosinfo = await _context.productosInfo
                 .FromSqlRaw(@"SELECT 
-                        p.id_producto,
-                        p.nombre_producto,
-                        c.nombre_categoria AS categoria,
-                        pr.nombre_empresa AS proveedor,
-                        p.unidades_stock,
-                        p.precio,
-                        p.activo
-                    FROM 
-                        productos p
-                    JOIN 
-                        categorias c ON p.id_categoria = c.id_categoria
-                    JOIN 
-                        proveedores pr ON p.id_proveedor = pr.id_proveedor;")
+            p.id_producto,
+            p.nombre_producto,
+            c.nombre_categoria AS categoria,
+            pr.nombre_empresa AS proveedor,
+            p.unidades_stock,
+            p.precio,
+            p.activo,
+            p.imagen_url
+        FROM 
+            productos p
+        JOIN 
+            categorias c ON p.id_categoria = c.id_categoria
+        JOIN 
+            proveedores pr ON p.id_proveedor = pr.id_proveedor;")
                 .ToListAsync();
 
+            // Check if productosinfo is null
+            if (productosinfo == null)
+            {
+                productosinfo = new List<productosInfo>(); // Initialize an empty list to prevent null reference
+                Console.WriteLine("No se encontraron productos.");
+            }
+
             return View("Index", productosinfo);
-            //return View(await _context.productos.ToListAsync());
         }
+
+
 
         // GET: productos/Details/5
         // GET: productos/Details/5
@@ -119,7 +129,8 @@ namespace Sexshop_TutsiPop.Controllers
                         pr.nombre_empresa AS proveedor,
                         p.unidades_stock,
                         p.precio,
-                        p.activo
+                        p.activo,
+                        p.imagen_url
                     FROM 
                         productos p
                     JOIN 
@@ -229,7 +240,8 @@ namespace Sexshop_TutsiPop.Controllers
                         pr.nombre_empresa AS proveedor,
                         p.unidades_stock,
                         p.precio,
-                        p.activo
+                        p.activo,
+                        p.imagen_url
                     FROM 
                         productos p
                     JOIN 
@@ -237,10 +249,11 @@ namespace Sexshop_TutsiPop.Controllers
                     JOIN 
                         proveedores pr ON p.id_proveedor = pr.id_proveedor
                     WHERE 
-                        p.id_producto = {0}", id)
-                .FirstOrDefaultAsync();
+                        p.id_producto = {0}"
+            , id)
+            .FirstOrDefaultAsync();
 
-            if (productos == null)
+            if (productos == null )
             {
                 return NotFound();
             }

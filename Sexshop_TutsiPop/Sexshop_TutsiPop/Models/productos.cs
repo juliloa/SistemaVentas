@@ -25,5 +25,7 @@ namespace Sexshop_TutsiPop.Models
         [Required]
         public bool activo { get; set; } = true;
 
+        [StringLength(255)] // Limita la longitud de la URL a 255 caracteres
+        public string imagen_url { get; set; } // Nueva propiedad para la URL de la imagen
     }
 }

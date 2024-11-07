@@ -1,128 +1,64 @@
-﻿@model Sexshop_TutsiPop.Models.usuarios
+﻿@model IEnumerable<Sexshop_TutsiPop.Models.productosInfo>
+
 @{
     ViewData["Title"] = "Home Page";
     Layout = null; // Usamos una vista sin layout
 }
 
+
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TutsiPop</title>
-    <!-- ICONOS -->
-    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
-    <!-- SWIPER -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- CSS -->
-    <link rel="stylesheet" href="~/css/StyleIndex.css" />
+    <title>Productos</title>
     <style>
-        .navbar {
-            background-color: #d97878; /* Color de fondo de la barra de navegación */
-            padding: 10px;
-        }
-
-        .navbar-container {
+        .product-container {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
-
-        .navbar-logo {
-            margin-right: auto; /* Permite que el logo se mueva a la izquierda */
+        .product-card {
+            border: 2px solid #000; /* Prominent border */
+            padding: 15px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
         }
-
-        .navbar-links {
-            display: flex; /* Alinea los enlaces en línea */
-            align-items: center; /* Centra verticalmente los enlaces */
+        .product-image {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
         }
-
-        .navbar-login {
-            color: #ffffff; /* Color del texto e ícono */
-            text-decoration: none;
-            display: flex; /* Para alinear el ícono y el texto en línea */
-            align-items: center;
-            margin-left: 15px; /* Espacio entre los enlaces */
+        .product-name {
+            font-weight: bold;
+            margin-top: 10px;
         }
-
-            .navbar-login span {
-                margin-left: 5px; /* Espacio entre el ícono y el texto */
-            }
+        .product-price {
+            color: green;
+            font-size: 1.2em;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="#" class="navbar-logo">TutsiPop</a>
-              <div class="navbar-links">
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <a class="navbar-login" asp-area="" asp-controller="Inicio" asp-action="Logout">
-                        <i class='bx bx-log-out-circle'></i> <!-- Cambiado a ícono de "Cerrar Sesión" -->
-                        <span>Cerrar Sesión</span>
-                    </a>
-                }
-                else
-                {
-                    <a class="navbar-login" asp-area="" asp-controller="Inicio" asp-action="Login">
-                        <i class='bx bxs-user-circle'></i>
-                        <span>Iniciar Sesión</span>
-                    </a>
-                    <a class="navbar-login" asp-area="" asp-controller="Inicio" asp-action="Registrar">
-                        <i class='bx bxs-user-plus'></i> <!-- Cambiado a ícono de registrar -->
-                        <span>Registrarse</span>
-                    </a>
-                }
-            </div>
+
+<div class="product-container">
+    @foreach (var producto in Model)
+    {
+        <div class="product-card">
+            <img src="@producto.imagen_url" alt="@producto.nombre_producto" class="product-image" />
+            <div class="product-name">@producto.nombre_producto</div>
+            <div class="product-category">Categoría: @producto.categoria</div>
+            <div class="product-provider">Proveedor: @producto.proveedor</div>
+            <div class="product-price">Precio: $@producto.precio</div>
         </div>
-    </nav>
+    }
+</div>
 
-    <!-- Slider main container (fuera del navbar) -->
-    <div class="swiper swiper-hero">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide"><img src="~/images/close-up-sex-toys (2).jpg" /></div>
-            <div class="swiper-slide"><img src="~/images/close-up-sex-toys.jpg" /></div>
-            <div class="swiper-slide"><img src="~/images/freepik__upload__51895.jpeg" /></div>
-            <div class="swiper-slide"><img src="~/images/freepik__upload__3037.jpeg" /></div>
-        </div>
-
-        <!-- If we need pagination -->
-        <div class="swiper-pagination"></div>
-
-        <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        const swiper = new Swiper('.swiper-hero', {
-            // Optional parameters
-            direction: 'horizontal',
-            loop: true,
-            allowTouchMove: true,
-            effect: "fade",
-            autoplay: {
-                delay: 5000,
-                pauseOnMouseEnter: true,
-                disableOnInteraction: false,
-            },
-
-            // If we need pagination
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-                dynamicBullets: true,
-            },
-
-            // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-    </script>
 </body>
 </html>
+

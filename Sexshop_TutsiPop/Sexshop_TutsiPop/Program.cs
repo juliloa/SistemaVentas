@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Sexshop_TutsiPop.Data;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 

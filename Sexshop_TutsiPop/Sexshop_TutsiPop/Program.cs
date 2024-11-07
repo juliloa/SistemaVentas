@@ -3,8 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Sexshop_TutsiPop.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddDbContext<Sexshop_TutsiPopContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("Sexshop_TutsiPopContext") ?? throw new InvalidOperationException("Connection string 'Sexshop_TutsiPopContext' not found.")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Sexshop_TutsiPopContext")
+    ?? throw new InvalidOperationException("Connection string 'Sexshop_TutsiPopContext' not found.")));
 
 // Configurar servicios de autenticación
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -20,17 +22,27 @@ builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 // Configurar el middleware
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
+    app.UseDeveloperExceptionPage();  // Muestra la página de detalles de excepción en desarrollo
 }
-app.UseStaticFiles();
+else
+{
+    app.UseExceptionHandler("/Home/Error"); // Redirige a la acción Error en HomeController
+    app.UseHsts(); // Configuración de seguridad para HSTS en producción
+}
+
+// Middleware de manejo de rutas no encontradas (404)
+app.UseStatusCodePagesWithReExecute("/Home/Error"); // Redirige a la acción Error cuando se detecta un 404
+
+app.UseStaticFiles();  // Permite el uso de archivos estáticos
 
 app.UseRouting();
 
-app.UseAuthentication(); // Agregar este middleware
-app.UseAuthorization();
+app.UseAuthentication();  // Habilitar la autenticación
+app.UseAuthorization();   // Habilitar la autorización
 
+// Configuración de la ruta predeterminada
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Alerta}/{id?}");

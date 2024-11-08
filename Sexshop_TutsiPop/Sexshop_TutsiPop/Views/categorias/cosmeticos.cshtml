@@ -21,7 +21,12 @@
     <link rel="stylesheet" href="~/css/contenedorProductos.css" />
     <link rel="stylesheet" href="~/css/footer.css" />
     <link rel="stylesheet" href="~/css/categoria.css" />
-    <link href="~/css/containerAcategoria.css" rel="stylesheet" />
+
+
+
+
+
+
 </head>
 <body>
     <!-- Barra de Navegación -->
@@ -48,71 +53,54 @@
                     </a>
                 }
             </div>
+            <!-- Slider main container (fuera del navbar) -->
+
+
+
         </div>
     </nav>
-
     <div class="swiper swiper-hero">
+        <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
+            <!-- Slides -->
             <div class="swiper-slide"><img src="~/images/close-up-sex-toys (2).jpg" /></div>
             <div class="swiper-slide"><img src="~/images/close-up-sex-toys.jpg" /></div>
             <div class="swiper-slide"><img src="~/images/freepik__upload__51895.jpeg" /></div>
             <div class="swiper-slide"><img src="~/images/freepik__upload__3037.jpeg" /></div>
         </div>
 
+        <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
     </div>
-
     <!-- Productos -->
     <div class="productos-container">
         @if (Model != null && Model.Any())
         {
             @foreach (var producto in Model)
             {
-                <div class="producto-card">
-                    <img src="@producto.imagen_url" alt="@producto.nombre_producto" class="producto-imagen" />
-                    <div class="producto-detalles">
-                        <h3>@producto.nombre_producto</h3>
-                        <p> @producto.categoria</p>
-                        <p> $@producto.precio</p>
-                        <button class="add-to-cart-btn">Agregar al carrito</button>
+                @if (producto.categoria == "Cosméticos")
+                {
+                    <div class="producto-card">
+                        <img src="@producto.imagen_url" alt="@producto.nombre_producto" class="producto-imagen" />
+                        <div class="producto-detalles">
+                            <h3>@producto.nombre_producto</h3>
+                            <p> @producto.categoria</p>
+                            <p> $@producto.precio</p>
+                            @*<p>Unidades en stock: @producto.unidades_stock</p>*@
+                            <button class="add-to-cart-btn">Agregar al carrito</button>
+                        </div>
                     </div>
-                </div>
+                }
             }
         }
         else
         {
             <p>No hay productos disponibles.</p>
         }
-    </div>
-
-    <!-- Contenedor de las tarjetas de categoría -->
-    <div class="categorias-container">
-        <div class="card">
-            <a asp-area="" asp-controller="categorias" asp-action="lenceria">
-                <div>
-                    <img src="https://img.freepik.com/fotos-premium/piernas-mujeres-medias-negras-primer-plano_864559-2573.jpg?w=360">
-                    <div class="card-title">Lencería y Cosplay</div>
-                </div>
-            </a>
-        </div>
-        <div class="card">
-            <a asp-area="" asp-controller="categorias" asp-action="juguetes">
-                <div>
-                    <img src="https://img.freepik.com/foto-gratis/primer-plano-limpieza-juguetes-sexuales_23-2149151818.jpg?t=st=1731104996~exp=1731108596~hmac=3f04815087c2ae3e06b075a4c6beb30e2688ded21d18fa137d73d11d0160e192&w=360">
-                    <div class="card-title">Juguetes</div>
-                </div>
-            </a>
-        </div>
-        <div class="card">
-            <a asp-area="" asp-controller="categorias" asp-action="cosmeticos">
-                <div>
-                    <img src="https://img.freepik.com/foto-gratis/pareja-tomando-bano-dia-san-valentin_23-2148383204.jpg?t=st=1731106124~exp=1731109724~hmac=7cc7fe1276d4ac7648347b1958cf7f12a1367d72bb01aba3ab92a9042f21bfe7&w=360">
-                    <div class="card-title">Cosméticos</div>
-                </div>
-            </a>
-        </div>
     </div>
 
     <!-- Scripts de Swiper -->
@@ -138,8 +126,8 @@
             },
         });
     </script>
-
     <footer>
+        <!-- Sección de Redes Sociales -->
         <div class="location">
             <h2>Síganos</h2>
             <div class="social-icons">
@@ -156,4 +144,6 @@
         </div>
     </footer>
 </body>
+
 </html>
+

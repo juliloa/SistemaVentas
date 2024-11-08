@@ -5,11 +5,14 @@
     Layout = null; // Usamos una vista sin layout
 }
 
+
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>TutsiPop</title>
 
     <!-- Fuentes y Estilos -->
@@ -25,10 +28,16 @@
         }
 
         .navbar-container {
+=======
+    <title>Productos</title>
+    <style>
+        .product-container {
+>>>>>>> cdbd919783b8b8703aeabbebc736e9ede0f31fab
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
+<<<<<<< HEAD
 
         /* Estilos del contenedor de productos */
         .productos-container {
@@ -174,5 +183,48 @@
             <p>No hay productos disponibles.</p>
         }
     </div>
+=======
+        .product-card {
+            border: 2px solid #000; /* Prominent border */
+            padding: 15px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+        .product-image {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .product-name {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .product-price {
+            color: green;
+            font-size: 1.2em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="product-container">
+    @foreach (var producto in Model)
+    {
+        <div class="product-card">
+            <img src="@producto.imagen_url" alt="@producto.nombre_producto" class="product-image" />
+            <div class="product-name">@producto.nombre_producto</div>
+            <div class="product-category">Categoría: @producto.categoria</div>
+            <div class="product-provider">Proveedor: @producto.proveedor</div>
+            <div class="product-price">Precio: $@producto.precio</div>
+        </div>
+    }
+</div>
+
+>>>>>>> cdbd919783b8b8703aeabbebc736e9ede0f31fab
 </body>
 </html>
+

@@ -12,7 +12,8 @@ namespace Sexshop_TutsiPop.Models
             public int unidades_stock { get; set; }
             public decimal precio { get; set; }
             public bool activo { get; set; }
-        
+            public string imagen_url { get; set; }
+
 
     }
 }

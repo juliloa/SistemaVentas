@@ -1,25 +1,86 @@
 ﻿@model ErrorViewModel
 @{
     ViewData["Title"] = "Error";
+    Layout = null;
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<head>
+    <link rel="stylesheet" href="~/css/error-style.css" />
+</head>
 
-@if (Model.ShowRequestId)
-{
-    <p>
-        <strong>Request ID:</strong> <code>@Model.RequestId</code>
-    </p>
-}
+<div class="error-container">
+    <div class="error-content">
+        <img src="~/images/gift.png" alt="Página no encontrada" class="error-image" />
+        <h1 class="error-title">¡Oops! Página no encontrada</h1>
+        <p class="error-message">
+            Lo sentimos, la página que buscas no existe o ha sido movida. Asegúrate de que la URL es correcta.
+        </p>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Volver al inicio</a>
+    </div>
+</div>
 
-<h3>Development Mode</h3>
-<p>
-    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
-</p>
-<p>
-    <strong>The Development environment shouldn't be enabled for deployed applications.</strong>
-    It can result in displaying sensitive information from exceptions to end users.
-    For local debugging, enable the <strong>Development</strong> environment by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>
-    and restarting the app.
-</p>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f9f3f3; /* Fondo suave pastel */
+        margin: 0;
+        padding: 0;
+    }
+
+    .error-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f9f3f3; /* Fondo suave pastel */
+    }
+
+    .error-content {
+        text-align: center;
+        max-width: 600px;
+        padding: 40px;
+        background-color: #fff6f7; /* Fondo con tonos rosados suaves */
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border: 2px solid #f4c6d4; /* Borde suave rosa */
+    }
+
+    .error-image {
+        width: 160px;
+        height: auto;
+    }
+
+    .error-title {
+        font-size: 40px;
+        font-weight: bold;
+        color: #f0729a; /* Rosa suave */
+        margin-top: 20px;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .error-message {
+        font-size: 18px;
+        color: #e07f9d; /* Color rosado más suave */
+        margin: 20px 0;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        font-size: 18px;
+        background-color: #ff77b5; /* Botón rosado */
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        display: inline-block;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+        .btn:hover {
+            background-color: #ff5290; /* Cambio de color en hover */
+            transform: scale(1.1);
+        }
+
+        .btn:focus {
+            outline: none;
+        }
+</style>

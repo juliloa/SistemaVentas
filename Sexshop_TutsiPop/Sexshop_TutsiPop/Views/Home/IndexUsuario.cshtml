@@ -1,4 +1,5 @@
-﻿@model Sexshop_TutsiPop.Models.usuarios
+﻿@model IEnumerable<Sexshop_TutsiPop.Models.productosInfo>
+
 @{
     ViewData["Title"] = "Home Page";
     Layout = null; // Usamos una vista sin layout
@@ -10,15 +11,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TutsiPop</title>
-    <!-- ICONOS -->
+
+    <!-- Fuentes y Estilos -->
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
-    <!-- SWIPER -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- CSS -->
     <link rel="stylesheet" href="~/css/StyleIndex.css" />
+
     <style>
+        /* Estilos de la barra de navegación */
         .navbar {
-            background-color: #d97878; /* Color de fondo de la barra de navegación */
+            background-color: #d97878; /* Color de fondo */
             padding: 10px;
         }
 
@@ -28,37 +30,43 @@
             align-items: center;
         }
 
-        .navbar-logo {
-            margin-right: auto; /* Permite que el logo se mueva a la izquierda */
+        /* Estilos del contenedor de productos */
+        .productos-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
         }
 
-        .navbar-links {
-            display: flex; /* Alinea los enlaces en línea */
-            align-items: center; /* Centra verticalmente los enlaces */
+        /* Estilos de cada tarjeta de producto */
+        .producto-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
         }
 
-        .navbar-login {
-            color: #ffffff; /* Color del texto e ícono */
-            text-decoration: none;
-            display: flex; /* Para alinear el ícono y el texto en línea */
-            align-items: center;
-            margin-left: 15px; /* Espacio entre los enlaces */
+        .producto-imagen {
+            max-width: 100%;
+            height: auto;
         }
 
-            .navbar-login span {
-                margin-left: 5px; /* Espacio entre el ícono y el texto */
-            }
+        .producto-detalles {
+            margin-top: 10px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
+    <!-- Barra de Navegación -->
     <nav class="navbar">
         <div class="navbar-container">
             <a href="#" class="navbar-logo">TutsiPop</a>
-              <div class="navbar-links">
+            <div class="navbar-links">
                 @if (User.Identity.IsAuthenticated)
                 {
                     <a class="navbar-login" asp-area="" asp-controller="Inicio" asp-action="Logout">
-                        <i class='bx bx-log-out-circle'></i> <!-- Cambiado a ícono de "Cerrar Sesión" -->
+                        <i class='bx bx-log-out-circle'></i>
                         <span>Cerrar Sesión</span>
                     </a>
                 }
@@ -69,14 +77,13 @@
                         <span>Iniciar Sesión</span>
                     </a>
                     <a class="navbar-login" asp-area="" asp-controller="Inicio" asp-action="Registrar">
-                        <i class='bx bxs-user-plus'></i> <!-- Cambiado a ícono de registrar -->
+                        <i class='bx bxs-user-plus'></i>
                         <span>Registrarse</span>
                     </a>
                 }
             </div>
         </div>
     </nav>
-
     <!-- Slider main container (fuera del navbar) -->
     <div class="swiper swiper-hero">
         <!-- Additional required wrapper -->
@@ -95,11 +102,35 @@
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
     </div>
+@*     <!-- Contenedor de Productos -->
+    <div class="productos-container">
+        @if (Model != null && Model.Count > 0)
+        {
+            @foreach (var producto in Model)
+            {
+                <div class="producto-card">
+                    <!-- Imagen del producto -->
+                    <img src="@producto.imagen_url" alt="@producto.nombre_producto" class="producto-imagen" />
+                    <div class="producto-detalles">
+                        <h3>@producto.nombre_producto</h3>
+                        <p>Categoría: @producto.categoria</p>
+                        <p>Proveedor: @producto.proveedor</p>
+                        <p>Precio: $@producto.precio</p>
+                        <p>Unidades en stock: @producto.unidades_stock</p>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No hay productos disponibles.</p>
+        }
+    </div> *@
 
+    <!-- Scripts de Swiper -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         const swiper = new Swiper('.swiper-hero', {
-            // Optional parameters
             direction: 'horizontal',
             loop: true,
             allowTouchMove: true,
@@ -109,20 +140,39 @@
                 pauseOnMouseEnter: true,
                 disableOnInteraction: false,
             },
-
-            // If we need pagination
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
                 dynamicBullets: true,
             },
-
-            // Navigation arrows
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
         });
     </script>
+    <div class="productos-container">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var producto in Model)
+            {
+                <div class="producto-card">
+                    <!-- Imagen del producto -->
+                    <img src="@producto.imagen_url" alt="@producto.nombre_producto" class="producto-imagen" />
+                    <div class="producto-detalles">
+                        <h3>@producto.nombre_producto</h3>
+                        @* <p>Categoría: @producto.categoria</p>
+                        <p>Proveedor: @producto.proveedor</p> *@
+                        <p>Precio: $@producto.precio</p>
+                        <p>Unidades en stock: @producto.unidades_stock</p>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No hay productos disponibles.</p>
+        }
+    </div>
 </body>
 </html>

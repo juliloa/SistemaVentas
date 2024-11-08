@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Sexshop_TutsiPop.Data;
 using Sexshop_TutsiPop.Models;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -39,10 +41,11 @@ namespace Sexshop_TutsiPop.Controllers
         }
 
         // Página de inicio: accesible solo si está autenticado
-       
+
         public IActionResult Index()
         {
             return View();
+
         }
 
         // Página de privacidad: puede ser pública o protegida si se desea

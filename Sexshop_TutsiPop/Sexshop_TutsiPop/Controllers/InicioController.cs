@@ -8,6 +8,8 @@ using System.IO;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
+using Sexshop_TutsiPop.Data;
 
 namespace Sexshop_TutsiPop.Controllers
 {
@@ -21,6 +23,7 @@ namespace Sexshop_TutsiPop.Controllers
             _env = env;
             _dbusuarios = new Dbusuarios(configuration);
         }
+
 
         // -------------------- LOGIN --------------------
 

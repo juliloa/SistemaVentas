@@ -15,7 +15,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Sexshop_TutsiPop.Controllers
 {
-    [Authorize(Roles = "administrador")]
+    [Authorize]
     public class productosController : Controller
     {
         private readonly Sexshop_TutsiPopContext _context;
@@ -84,20 +84,20 @@ namespace Sexshop_TutsiPop.Controllers
         {
             var productosinfo = await _context.productosInfo
                 .FromSqlRaw(@"SELECT 
-            p.id_producto,
-            p.nombre_producto,
-            c.nombre_categoria AS categoria,
-            pr.nombre_empresa AS proveedor,
-            p.unidades_stock,
-            p.precio,
-            p.activo,
-            p.imagen_url
-        FROM 
-            productos p
-        JOIN 
-            categorias c ON p.id_categoria = c.id_categoria
-        JOIN 
-            proveedores pr ON p.id_proveedor = pr.id_proveedor;")
+                        p.id_producto,
+                        p.nombre_producto,
+                        c.nombre_categoria AS categoria,
+                        pr.nombre_empresa AS proveedor,
+                        p.unidades_stock,
+                        p.precio,
+                        p.activo,
+                        p.imagen_url
+                    FROM 
+                        productos p
+                    JOIN 
+                        categorias c ON p.id_categoria = c.id_categoria
+                    JOIN 
+                        proveedores pr ON p.id_proveedor = pr.id_proveedor;")
                 .ToListAsync();
 
             // Check if productosinfo is null

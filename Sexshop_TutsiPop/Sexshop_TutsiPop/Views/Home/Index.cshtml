@@ -1,54 +1,54 @@
 ﻿@model Sexshop_TutsiPop.Models.usuarios
 @{
     ViewData["Title"] = "Home Page";
-    
+
 }
 
 <!DOCTYPE html>
-    <!-- Slider main container (fuera del navbar) -->
-    <div class="swiper swiper-hero">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide"><img src="~/images/close-up-sex-toys (2).jpg" /></div>
-            <div class="swiper-slide"><img src="~/images/close-up-sex-toys.jpg" /></div>
-            <div class="swiper-slide"><img src="~/images/freepik__upload__51895.jpeg" /></div>
-            <div class="swiper-slide"><img src="~/images/freepik__upload__3037.jpeg" /></div>
-        </div>
-
-        <!-- If we need pagination -->
-        <div class="swiper-pagination"></div>
-
-        <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+<!-- Slider main container (fuera del navbar) -->
+<div class="swiper swiper-hero">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide"><img src="~/images/close-up-sex-toys (2).jpg" /></div>
+        <div class="swiper-slide"><img src="~/images/close-up-sex-toys.jpg" /></div>
+        <div class="swiper-slide"><img src="~/images/freepik_upload_51895.jpeg" /></div>
+        <div class="swiper-slide"><img src="~/images/freepik_upload_3037.jpeg" /></div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        const swiper = new Swiper('.swiper-hero', {
-            // Optional parameters
-            direction: 'horizontal',
-            loop: true,
-            allowTouchMove: true,
-            effect: "fade",
-            autoplay: {
-                delay: 5000,
-                pauseOnMouseEnter: true,
-                disableOnInteraction: false,
-            },
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
 
-            // If we need pagination
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-                dynamicBullets: true,
-            },
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
 
-            // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.swiper-hero', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: true,
+        allowTouchMove: true,
+        effect: "fade",
+        autoplay: {
+            delay: 5000,
+            pauseOnMouseEnter: true,
+            disableOnInteraction: false,
+        },
+
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true,
+        },
+
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>

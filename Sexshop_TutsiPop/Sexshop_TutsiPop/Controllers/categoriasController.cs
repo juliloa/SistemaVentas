@@ -11,7 +11,7 @@ using Sexshop_TutsiPop.Models;
 
 namespace Sexshop_TutsiPop.Controllers
 {
-    [Authorize(Roles = "administrador")]
+    [Authorize]
     public class categoriasController : Controller
     {
         private readonly Sexshop_TutsiPopContext _context;
@@ -154,6 +154,38 @@ namespace Sexshop_TutsiPop.Controllers
         private bool categoriasExists(int id)
         {
             return _context.categorias.Any(e => e.id_categoria == id);
+        }
+
+        public async Task<IActionResult> lenceria()
+        {
+            var productosinfo = await _context.productosInfo
+                          .FromSqlRaw(@" SELECT 
+            p.id_producto,
+            p.nombre_producto,
+            c.nombre_categoria AS categoria,
+            pr.nombre_empresa AS proveedor,
+            p.unidades_stock,
+            p.precio,
+            p.activo,
+            p.imagen_url
+        FROM 
+            productos p
+        JOIN 
+            categorias c ON p.id_categoria = c.id_categoria
+        JOIN 
+            proveedores pr ON p.id_proveedor = pr.id_proveedor
+        WHERE 
+            c.nombre_categoria = 'Lencería';")
+                          .ToListAsync();
+
+            // Check if productosinfo is null
+            if (productosinfo == null)
+            {
+                productosinfo = new List<productosInfo>(); // Initialize an empty list to prevent null reference
+                Console.WriteLine("No se encontraron productos.");
+            }
+
+            return View(productosinfo);
         }
     }
 }

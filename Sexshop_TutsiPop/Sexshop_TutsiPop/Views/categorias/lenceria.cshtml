@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="~/css/navIndexs.css" />
     <link rel="stylesheet" href="~/css/contenedorProductos.css" />
     <link rel="stylesheet" href="~/css/footer.css" />
+    <link rel="stylesheet" href="~/css/categoria.css" />
+
 
 
 
@@ -52,7 +54,7 @@
                 }
             </div>
             <!-- Slider main container (fuera del navbar) -->
-            
+
 
 
         </div>
@@ -76,36 +78,30 @@
     </div>
     <!-- Productos -->
     <div class="productos-container">
-        @if (Model != null && Model.Any())
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var producto in Model)
         {
-            @foreach (var producto in Model)
+            @if (producto.categoria == "Lencería")
             {
                 <div class="producto-card">
                     <img src="@producto.imagen_url" alt="@producto.nombre_producto" class="producto-imagen" />
                     <div class="producto-detalles">
                         <h3>@producto.nombre_producto</h3>
                         <p> @producto.categoria</p>
-@*                         <p>Proveedor: @producto.proveedor</p> *@
                         <p> $@producto.precio</p>
-@*                        <p>Unidades en stock: @producto.unidades_stock</p>
- *@                        <button class="add-to-cart-btn">Agregar al carrito</button>
+                        @*<p>Unidades en stock: @producto.unidades_stock</p>*@
+                        <button class="add-to-cart-btn">Agregar al carrito</button>
                     </div>
                 </div>
             }
         }
-        else
-        {
-            <p>No hay productos disponibles.</p>
-        }
-    </div>
-    <div class="card">
-        <a asp-area="" asp-controller="categorias" asp-action="lenceria">
-            <div>
-                <img src="https://img.freepik.com/psd-premium/mujer-delgada-bikini-cintura-alta-diseno-artistico-neon-y2k-ilustracion-pastel-caracter-neonc_1020495-75 " alt="Lencería">
-                <div class="card-title">Lencería Sexy</div>
-            </div>
-        </a>
-    </div>
+    }
+    else
+    {
+        <p>No hay productos disponibles.</p>
+    }
+</div>
 
     <!-- Scripts de Swiper -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

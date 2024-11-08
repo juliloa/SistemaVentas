@@ -1,0 +1,59 @@
+﻿footer {
+    background-color: #d97878;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenedor de cada sección en el footer */
+.location {
+    flex: 1;
+    padding: 10px;
+    color: #333;
+}
+
+    /* Título de sección */
+    .location h2 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+/* Links de información */
+.footer-links a {
+    display: block;
+    color: #333;
+    font-size: 15px;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+
+    .footer-links a:hover {
+        color: #e6007e;
+    }
+
+/* Estilos para los íconos de redes sociales */
+.social-icons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+    .social-icons a {
+        width: 35px;
+        height: 35px;
+        background-color: #ddd;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #333;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+        .social-icons a:hover {
+            background-color: #e6007e;
+            color: #fff;
+        }

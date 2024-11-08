@@ -1,0 +1,39 @@
+﻿/* Estilo general de la tarjeta */
+.card {
+    width: 200px; /* Ajusta el tamaño según tus necesidades */
+    margin: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+}
+
+/* Estilo para el contenedor de la imagen */
+.card-image {
+    position: relative;
+    overflow: hidden;
+}
+
+    /* Estilo para la imagen */
+    .card-image img {
+        width: 100%;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    /* Efecto de zoom al pasar el cursor */
+    .card-image:hover img {
+        transform: scale(1.1);
+    }
+
+/* Estilo para el título */
+.card-title {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+    padding: 5px 10px;
+    border-radius:  5px;
+}

@@ -52,10 +52,10 @@ namespace Sexshop_TutsiPop.Controllers
                 else
                 {
                     var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, usuario.nombre),
-                new Claim(ClaimTypes.Role, usuario.rol)
-            };
+                        {
+                            new Claim(ClaimTypes.Name, usuario.nombre),
+                            new Claim(ClaimTypes.Role, usuario.rol)
+                        };
 
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 

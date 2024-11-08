@@ -77,8 +77,24 @@
       "PackagePath": "staticwebassets\\css\\Styledetails.css"
     },
     {
+      "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\categoria.css",
+      "PackagePath": "staticwebassets\\css\\categoria.css"
+    },
+    {
+      "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\contenedorProductos.css",
+      "PackagePath": "staticwebassets\\css\\contenedorProductos.css"
+    },
+    {
+      "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\footer.css",
+      "PackagePath": "staticwebassets\\css\\footer.css"
+    },
+    {
       "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\nav.css",
       "PackagePath": "staticwebassets\\css\\nav.css"
+    },
+    {
+      "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\navIndexs.css",
+      "PackagePath": "staticwebassets\\css\\navIndexs.css"
     },
     {
       "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\site.css",

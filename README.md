@@ -1,7 +1,8 @@
-#TUTSIPOP
+
+# TUTSIPOP
 Repositorio de Ignacio Isturiz y Juliana Loaiza de proyecto TutsiPop-Sexshop
 
-##CREDENCIALES
+## CREDENCIALES
 CLIENTE
 Correo: ignacioisturizr@gmail.com
 Contraseña: 2304

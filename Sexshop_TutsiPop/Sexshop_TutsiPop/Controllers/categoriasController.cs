@@ -11,7 +11,7 @@ using Sexshop_TutsiPop.Models;
 
 namespace Sexshop_TutsiPop.Controllers
 {
-    [Authorize]
+   
     public class categoriasController : Controller
     {
         private readonly Sexshop_TutsiPopContext _context;
@@ -21,12 +21,13 @@ namespace Sexshop_TutsiPop.Controllers
             _context = context;
         }
 
+        [Authorize]
         // GET: categorias
         public async Task<IActionResult> Index()
         {
             return View(await _context.categorias.ToListAsync());
         }
-
+        [Authorize]
         // GET: categorias/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -44,13 +45,13 @@ namespace Sexshop_TutsiPop.Controllers
 
             return View(categorias);
         }
-
+        [Authorize]
         // GET: categorias/Create
         public IActionResult Create()
         {
             return View();
         }
-
+        [Authorize]
         // POST: categorias/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -66,7 +67,7 @@ namespace Sexshop_TutsiPop.Controllers
             }
             return View(categorias);
         }
-
+        [Authorize]
         // GET: categorias/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -82,7 +83,7 @@ namespace Sexshop_TutsiPop.Controllers
             }
             return View(categorias);
         }
-
+        [Authorize]
         // POST: categorias/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -117,7 +118,7 @@ namespace Sexshop_TutsiPop.Controllers
             }
             return View(categorias);
         }
-
+        [Authorize]
         // GET: categorias/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -135,7 +136,7 @@ namespace Sexshop_TutsiPop.Controllers
 
             return View(categorias);
         }
-
+        [Authorize]
         // POST: categorias/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

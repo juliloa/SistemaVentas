@@ -1,5 +1,5 @@
 ﻿.btn-add {
-    background-color: #ff9c9c;
+    background-color: #4a90e2;
     color: white;
     border-radius: 30px;
     padding: 10px 20px;
@@ -10,13 +10,13 @@
     text-decoration: none;
 }
 
-    .btn-add:hover {
-        background-color: #ff7474;
-    }
+.btn-add:hover {
+    background-color: #357ab7;
+}
 
-/* Encabezado de la tabla con color rosado pastel */
+/* Encabezado de la tabla con color azul pastel */
 .modern-table thead {
-    background-color: #ffc0c0;
+    background-color: #b3d1ff;
 }
 
 .modern-table th {
@@ -50,10 +50,10 @@
     font-size: 18px;
 }
 
-    .action-btn i { /* Cambiado para aplicar a los iconos dentro de .action-btn */
-        color: #333;
-    }
+.action-btn i {
+    color: #333;
+}
 
-        .action-btn i:hover { /* Cambiado para aplicar al hover de los iconos */
-            color: #ff7474;
-        }
+.action-btn i:hover {
+    color: #357ab7;
+}

@@ -70,11 +70,35 @@ namespace Sexshop_TutsiPop.Controllers
         }
 
         // Página de inicio: accesible solo si está autenticado
-        
-        public IActionResult Index()
-        {
-            return View();
 
+        public async Task<IActionResult> Index()
+        {
+            var productosinfo = await _context.productosInfo
+                .FromSqlRaw(@"SELECT 
+            p.id_producto,
+            p.nombre_producto,
+            c.nombre_categoria AS categoria,
+            pr.nombre_empresa AS proveedor,
+            p.unidades_stock,
+            p.precio,
+            p.activo,
+            p.imagen_url
+        FROM 
+            productos p
+        JOIN 
+            categorias c ON p.id_categoria = c.id_categoria
+        JOIN 
+            proveedores pr ON p.id_proveedor = pr.id_proveedor;")
+                .ToListAsync();
+
+            // Check if productosinfo is null
+            if (productosinfo == null)
+            {
+                productosinfo = new List<productosInfo>(); // Initialize an empty list to prevent null reference
+                Console.WriteLine("No se encontraron productos.");
+            }
+
+            return View(productosinfo);
         }
 
         // Página de privacidad: puede ser pública o protegida si se desea

@@ -13,6 +13,7 @@ namespace Sexshop_TutsiPop.Data
             : base(options)
         {
         }
+        public DbSet<Sexshop_TutsiPop.Models.ProductosCarritoInfo> productosCarritoInfo { get; set; }
         public DbSet<Sexshop_TutsiPop.Models.entregasInfo> entregasInfo { get; set; }
         public DbSet<Sexshop_TutsiPop.Models.detalleventaInfo> detalleventasInfo { get; set; }
         public DbSet<Sexshop_TutsiPop.Models.detallepedidoInfo> detallepedidoInfo { get; set; }
@@ -33,6 +34,7 @@ namespace Sexshop_TutsiPop.Data
         public DbSet<Sexshop_TutsiPop.Models.ventas> ventas { get; set; }
         public DbSet<Sexshop_TutsiPop.Models.detalle_venta> detalle_venta { get; set; }
         public DbSet<Sexshop_TutsiPop.Models.entregas> entregas { get; set; }
+        public DbSet<Sexshop_TutsiPop.Models.carrito> carrito { get; set; }
 
 
     }

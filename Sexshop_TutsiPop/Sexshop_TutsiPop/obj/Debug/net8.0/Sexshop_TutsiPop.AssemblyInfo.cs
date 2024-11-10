@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Sexshop_TutsiPop")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2231b7b0e5160a4325d7be08a9a7817657e24d95")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+45c57c6c8b9f81c4ba2157f6cff8c1f36ff735b0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Sexshop_TutsiPop")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Sexshop_TutsiPop")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

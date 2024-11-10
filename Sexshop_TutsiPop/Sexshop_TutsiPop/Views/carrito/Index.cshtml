@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Sexshop_TutsiPop.Models.ProductosCarritoInfo>
+
+<h1>Tu Carrito de Compras</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
+@*             <th>Precio</th> *@
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductoNombre</td>
+                <td>@item.Cantidad</td>
+                <td>@item.Fecha.ToString("g")</td>
+                <td>
+                    <a href="@Url.Action("Delete", "carrito", new { id = item.CarritoId })" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

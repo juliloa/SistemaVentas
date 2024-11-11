@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -43,38 +44,35 @@ namespace Sexshop_TutsiPop
 
             if (carritoExistente != null)
             {
-                // Si ya existe, incrementar la cantidad y actualizar el precio total para este producto en el carrito
+                // Si ya existe, incrementar la cantidad y actualizar el precio total dinámicamente
                 carritoExistente.cantidad += 1;
+                // Actualizar el total_price multiplicando la cantidad por el precio del producto
+                carritoExistente.precio = Convert.ToDecimal(carritoExistente.cantidad * producto.precio);
 
-                // Multiplicar la cantidad por el precio para obtener el nuevo precio total
-                carritoExistente.precio = carritoExistente.cantidad * producto.precio;
-
-                // Actualizar el carrito con los nuevos valores
                 _context.Update(carritoExistente);
             }
             else
             {
-                // Si no existe, crear un nuevo elemento en el carrito con el precio inicial
+                // Si no existe, crear un nuevo elemento en el carrito con el precio total calculado
                 var nuevoCarrito = new carrito
                 {
                     id_usuario = usuario.id_usuario,
                     id_producto = idProducto,
                     cantidad = 1,
-                    precio = producto.precio, // Establecer el precio inicial
-                    fecha = DateTime.UtcNow  // Convertir la fecha a UTC
+                    fecha = DateTime.UtcNow,// Convertir la fecha a UTC
+                    precio = Convert.ToDecimal(producto.precio)
+
                 };
 
-                // Agregar el nuevo carrito a la base de datos
                 _context.Add(nuevoCarrito);
             }
 
             // Guardar cambios en la base de datos
             await _context.SaveChangesAsync();
 
-            // Redirigir al carrito o a la página deseada
+            // Redirigir al carrito
             return RedirectToAction(nameof(Index)); // Asegúrate de tener un índice donde se vea el carrito
         }
-
         // GET: carrito
         public async Task<IActionResult> Index()
         {
@@ -84,7 +82,7 @@ namespace Sexshop_TutsiPop
                     u.nombre AS UsuarioNombre, 
                     p.nombre_producto AS ProductoNombre, 
                     c.cantidad, 
-                    p.precio,
+                    c.precio AS Precio,
                     c.fecha
                 FROM 
                     carrito c

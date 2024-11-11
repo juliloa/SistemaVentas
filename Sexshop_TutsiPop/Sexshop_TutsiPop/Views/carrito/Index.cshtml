@@ -8,7 +8,7 @@
             <th>Producto</th>
             <th>Cantidad</th>
             <th>Fecha</th>
-@*             <th>Precio</th> *@
+             <th>Precio</th> 
             <th>Acciones</th>
         </tr>
     </thead>
@@ -19,6 +19,8 @@
                 <td>@item.ProductoNombre</td>
                 <td>@item.Cantidad</td>
                 <td>@item.Fecha.ToString("g")</td>
+                <td>@item.Precio.ToString("g")</td>
+
                 <td>
                     <a href="@Url.Action("Delete", "carrito", new { id = item.CarritoId })" class="btn btn-danger">Eliminar</a>
                 </td>

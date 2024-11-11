@@ -43,32 +43,37 @@ namespace Sexshop_TutsiPop
 
             if (carritoExistente != null)
             {
-                // Si ya existe, incrementar la cantidad
+                // Si ya existe, incrementar la cantidad y actualizar el precio total para este producto en el carrito
                 carritoExistente.cantidad += 1;
+
+                // Multiplicar la cantidad por el precio para obtener el nuevo precio total
+                carritoExistente.precio = carritoExistente.cantidad * producto.precio;
+
+                // Actualizar el carrito con los nuevos valores
                 _context.Update(carritoExistente);
             }
             else
             {
-                // Si no existe, crear un nuevo elemento en el carrito
+                // Si no existe, crear un nuevo elemento en el carrito con el precio inicial
                 var nuevoCarrito = new carrito
                 {
                     id_usuario = usuario.id_usuario,
                     id_producto = idProducto,
                     cantidad = 1,
-                    
+                    precio = producto.precio, // Establecer el precio inicial
                     fecha = DateTime.UtcNow  // Convertir la fecha a UTC
                 };
+
+                // Agregar el nuevo carrito a la base de datos
                 _context.Add(nuevoCarrito);
             }
 
+            // Guardar cambios en la base de datos
             await _context.SaveChangesAsync();
 
-            // Redirigir al carrito
+            // Redirigir al carrito o a la página deseada
             return RedirectToAction(nameof(Index)); // Asegúrate de tener un índice donde se vea el carrito
         }
-
-
-
 
         // GET: carrito
         public async Task<IActionResult> Index()
@@ -79,6 +84,7 @@ namespace Sexshop_TutsiPop
                     u.nombre AS UsuarioNombre, 
                     p.nombre_producto AS ProductoNombre, 
                     c.cantidad, 
+                    p.precio,
                     c.fecha
                 FROM 
                     carrito c

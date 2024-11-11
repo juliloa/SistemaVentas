@@ -46,7 +46,7 @@ namespace Sexshop_TutsiPop.Controllers
               .ToListAsync();
 
             return View("Index", entregasinfo);
-      
+
         }
 
         // GET: entregas/Details/5

@@ -57,6 +57,10 @@
       "PackagePath": "staticwebassets\\assets\\img\\error-404-monochrome.svg"
     },
     {
+      "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\Carrito.css",
+      "PackagePath": "staticwebassets\\css\\Carrito.css"
+    },
+    {
       "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\ExcelStyle.css",
       "PackagePath": "staticwebassets\\css\\ExcelStyle.css"
     },

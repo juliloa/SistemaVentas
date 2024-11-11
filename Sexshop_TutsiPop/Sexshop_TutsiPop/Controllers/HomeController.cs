@@ -30,6 +30,7 @@ namespace Sexshop_TutsiPop.Controllers
             return View();
         }
 
+
         // Acción de administrador, accesible solo para usuarios autenticados
         [Authorize(Roles = "administrador")]
         public IActionResult Admin()

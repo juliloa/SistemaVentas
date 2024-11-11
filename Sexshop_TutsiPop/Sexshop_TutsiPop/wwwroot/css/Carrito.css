@@ -1,0 +1,221 @@
+﻿/* General */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h1 {
+    color: #004d70;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 40px;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Card Styles */
+.card {
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 25px;
+}
+
+.card.bg-light {
+    background-color: #f9f9f9;
+}
+
+.card .d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Detalles de Compra */
+#productos-seleccionados .row {
+    border-bottom: 1px solid #e1e4e8;
+    padding-bottom: 10px;
+}
+
+#productos-seleccionados .col-6 {
+    font-weight: 600;
+}
+
+#productos-seleccionados .col-3 {
+    text-align: right;
+}
+
+/* Botón de Regresar */
+a.btn.btn-danger {
+    background-color: transparent;
+    border: 2px solid #004d70;
+    color: #004d70;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+    a.btn.btn-danger:hover {
+        background-color: #004d70;
+        color: white;
+    }
+
+/* Detalle Envío */
+#cboDepartamento, #cboProvincia, #cboDistrito, #txtContacto, #txtTelefono, #txtDireccion {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #004d70;
+}
+
+/* Detalles de Pago */
+#btnProcesarPago {
+    background-color: #004d70;
+    color: white;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+    #btnProcesarPago:hover {
+        background-color: #002e3a;
+    }
+
+hr.line {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+}
+
+/* Modal */
+.modal-content {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+
+.modal-header {
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-footer {
+    border-top: 1px solid #ddd;
+}
+
+/* Resposive Design */
+@media (max-width: 767px) {
+    .container {
+        padding: 15px;
+    }
+
+    .col-md-8, .col-md-4 {
+        flex: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    #btnProcesarPago {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .modal-dialog {
+        max-width: 100%;
+        margin: 10px;
+    }
+}
+
+/* Formulario y Inputs */
+input.form-control, select.form-select {
+    font-size: 1rem;
+    color: #333;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: none;
+}
+
+    input.form-control:focus, select.form-select:focus {
+        border-color: #004d70;
+        outline: none;
+    }
+
+    input.form-control[disabled], select.form-select[disabled] {
+        background-color: #e1e4e8;
+        border-color: #ddd;
+    }
+
+/* Modal Confirmación */
+.modal-footer .btn-danger {
+    background-color: #ff3b30;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.modal-footer .btn-success {
+    background-color: #28a745;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+    .modal-footer .btn-success:hover {
+        background-color: #218838;
+    }
+
+.modal-footer .btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Disposición Detalles */
+.row.mt-5.pt-5.p-2 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.col-md-8 {
+    flex: 0 0 60%; /* Toma el 60% del espacio */
+}
+
+.col-md-4 {
+    flex: 0 0 35%; /* Toma el 35% del espacio */
+}
+
+/* Alineación y homogeneización */
+#productos-seleccionados {
+    padding-right: 0;
+}
+
+    #productos-seleccionados .col-3 {
+        font-weight: 600;
+        text-align: right;
+    }

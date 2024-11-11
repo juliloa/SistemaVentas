@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Sexshop_TutsiPop.Data;
 using Sexshop_TutsiPop.Models;
 
-namespace Sexshop_TutsiPop
+namespace Sexshop_TutsiPop.Controllers
 {
     public class carritoController : Controller
     {
@@ -19,7 +19,7 @@ namespace Sexshop_TutsiPop
         {
             _context = context;
         }
-        
+
         //[ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<IActionResult> AgregarAlCarrito(int idProducto)

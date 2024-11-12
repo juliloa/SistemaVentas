@@ -13,11 +13,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>@ViewData["Title"] - Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="~/css/styles.css" rel="stylesheet" />
+     <link href="~/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/Indexs.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="~/css/Indexs.css" />
-    <link rel="stylesheet" href="~/css/nav.css" />
+@*     <link rel="stylesheet" href="~/css/nav.css" />  *@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
@@ -39,7 +39,7 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Core</div>
+                      
 
                         <!-- Productos -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProductos" aria-expanded="false" aria-controls="collapseProductos">
@@ -110,7 +110,7 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Lista de Usuarios</h1>
 
-                <a href="@Url.Action("Create", "usuarios")" class="btn-add">+ Agregar Nuevo Usuario</a>
+                <a href="@Url.Action("Create", "usuarios")" class="btn-add">+ Agregar </a>
 
                 <table class="modern-table">
                     <thead>
@@ -138,10 +138,16 @@
                                 <td>@Html.DisplayFor(modelItem => item.restablecer)</td>
                                 <td>@Html.DisplayFor(modelItem => item.confirmar_contrasenna)</td>
                                 <td>@Html.DisplayFor(modelItem => item.rol)</td>
-                                <td>
-                                    <a class="action-btn" title="Editar" asp-action="Edit" asp-route-id="@item.id_usuario">Editar</a> |
-                                    <a class="action-btn" title="Detalles" asp-action="Details" asp-route-id="@item.id_usuario">Detalles</a> |
-                                    <a class="action-btn" title="Eliminar" asp-action="Delete" asp-route-id="@item.id_usuario">Eliminar</a>
+                                    <td class="action-cell">
+                                   <a class="action-btn" title="Editar" asp-action="Edit" asp-route-id="@item.id_usuario">
+                                        <i class='bx bx-edit'></i>
+                                   </a>
+                                   <a class="action-btn" title="Detalles" asp-action="Details" asp-route-id="@item.id_usuario">
+                                        <i class='bx bx-show-alt'></i>
+                                   </a>
+                                   <a class="action-btn" title="Eliminar" asp-action="Delete" asp-route-id="@item.id_usuario">
+                                        <i class='bx bxs-trash-alt'></i>
+                                   </a>
                                 </td>
                             </tr>
                         }

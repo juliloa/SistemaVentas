@@ -1,39 +1,67 @@
-﻿.btn-add {
-    background-color: #4a90e2;
-    color: white;
-    border-radius: 30px;
-    padding: 10px 20px;
-    font-size: 16px;
+﻿/* Estilo del botón agregar con texto centrado y en negrita */
+.btn-add {
+    width: 130px;
+    height: 40px;
+    font-size: 1.1em;
+    font-weight: bold; /* Texto en negrita */
+    cursor: pointer;
+    background-color: #2b2f33; /* Color de la imagen proporcionada */
+    color: #fff;
     border: none;
-    margin-bottom: 20px; /* Puedes ajustar este margen para acercar el botón a la tabla */
-    display: inline-block;
+    border-radius: 5px;
+    transition: all 0.4s;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrado de texto */
     text-decoration: none;
 }
 
-.btn-add:hover {
-    background-color: #357ab7;
+    .btn-add:hover {
+        border-radius: 5px;
+        transform: translateY(-10px);
+        box-shadow: 0 7px 0 -2px #f85959, 0 15px 0 -4px #39a2db, 0 16px 10px -3px #39a2db;
+    }
+
+    .btn-add:active {
+        transition: all 0.2s;
+        transform: translateY(-5px);
+        box-shadow: 0 2px 0 -2px #f85959, 0 8px 0 -4px #39a2db, 0 12px 10px -3px #39a2db;
+    }
+
+/* Estilo del encabezado de la tabla con color azul oscuro grisáceo */
+.modern-table {
+    border: 1px solid #2b2f33; /* Borde de la tabla */
+    border-collapse: collapse; /* Colapsa los bordes para un estilo más limpio */
+    width: 100%;
 }
 
-/* Encabezado de la tabla con color azul pastel */
-.modern-table thead {
-    background-color: #b3d1ff;
-}
+    .modern-table thead {
+        background-color: #2b2f33; /* Color de la imagen proporcionada */
+    }
 
-.modern-table th {
-    color: #333;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding: 10px 12px;
-    font-size: 14px;
-    text-align: left;
-}
+    .modern-table th {
+        color: #ecf0f1; /* Texto claro para buen contraste */
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 10px 12px;
+        font-size: 14px;
+        text-align: left;
+        border: 1px solid #2b2f33; /* Borde para el encabezado */
+    }
 
-/* Estilo de las celdas de la tabla */
-.modern-table td {
-    padding: 10px 12px;
-    border-bottom: 1px solid #e0e0e0;
-    vertical-align: middle;
-}
+    /* Estilo de las celdas de la tabla */
+    .modern-table td {
+        padding: 8px 10px; /* Ajuste de padding para reducir espacio */
+        border: 1px solid #bdc3c7; /* Borde para las celdas */
+        vertical-align: middle;
+        white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    }
+
+    /* Ajuste de altura de las filas para adaptarse al contenido */
+    .modern-table tr {
+        height: auto; /* Ajusta la altura automáticamente */
+    }
 
 /* Estilo minimalista para los iconos de acciones */
 .action-cell {
@@ -42,18 +70,28 @@
     padding-right: 0;
 }
 
-/* Iconos de acciones (sin fondo, sin borde, solo iconos) */
+/* Iconos de acciones sin fondo, borde ni subrayado */
 .action-btn {
     background: transparent;
     border: none;
     cursor: pointer;
     font-size: 18px;
+    padding: 0; /* Sin padding extra */
+    text-decoration: none; /* Sin subrayado */
+    color: inherit; /* Hereda el color para evitar azul predeterminado */
 }
 
-.action-btn i {
-    color: #333;
-}
+    .action-btn i {
+        color: #7f8c8d !important; /* Gris oscuro uniforme para todos los iconos */
+        transition: color 0.3s; /* Transición suave para el hover */
+    }
 
-.action-btn i:hover {
-    color: #357ab7;
-}
+        /* Efecto hover con un gris más oscuro */
+        .action-btn i:hover {
+            color: #2c3e50 !important; /* Gris más oscuro para el hover, evita azul */
+        }
+
+    /* Evitar el borde o fondo al hacer clic */
+    .action-btn:focus, .action-btn:active {
+        outline: none; /* Eliminar el contorno al hacer clic */
+    }

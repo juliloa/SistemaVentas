@@ -39,7 +39,7 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Core</div>
+                      
 
                         <!-- Productos -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProductos" aria-expanded="false" aria-controls="collapseProductos">
@@ -111,7 +111,7 @@
                     <h1 class="mt-4">Lista de Empleados</h1>
 
                 <a href="@Url.Action("Create", "empleados")" class="btn-add">
-                    + Agregar Nuevo Empleado
+                    + Agregar
                 </a>
 
                 <table class="modern-table">
@@ -146,17 +146,21 @@
                                         <i class='bx bx-show-alt'></i>
                                     </a>
                                     <a class="action-btn" title="Eliminar" asp-action="Delete" asp-route-id="@item.cedula_empleado">
-                                        <i class="fas fa-trash-alt"></i>
+                                       <i class='bx bxs-trash-alt'></i>
                                     </a>
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>
-                <!-- Botón para exportar a Excel -->
-                <a href="@Url.Action("ExportToExcel", "empleados")" class="btn-export">
-                    <i class='bx bx-table'></i> Descargar Excel
-                </a>
+                    <form action="@Url.Action("ExportToExcel", "Productos")" method="get" style="display: inline;">
+                        <button type="submit" class="Btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" class="svgIcon">
+                                <path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                            </svg>
+                            <span class="icon2"></span>
+                        </button>
+                    </form>
                 <link rel="stylesheet" href="~/css/ExcelStyle.css" />
             </div>
             </main>

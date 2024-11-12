@@ -4,70 +4,180 @@
     ViewData["Title"] = "Edit";
     Layout = null;
 }
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="~/css/stylecreate.css" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>@ViewData["Title"] - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="~/css/Edit.css" />
+    <link rel="stylesheet" href="~/css/nav.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
-<h1>Modificar Empleado</h1>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" asp-controller="Home" asp-action="Admin">Administrador</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Index">Cerrar Sesión</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Sidebar de navegación -->
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                 
+
+                        <!-- Productos -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProductos" aria-expanded="false" aria-controls="collapseProductos">
+                            <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
+                            Productos
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseProductos" aria-labelledby="headingProductos" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" asp-controller="Productos" asp-action="Index">Lista De Productos</a>
+                                <a class="nav-link" asp-controller="Proveedores" asp-action="Index">Lista De Proveedores</a>
+                                <a class="nav-link" asp-controller="Categorias" asp-action="Index">Lista De Categorias</a>
+                            </nav>
+                        </div>
+                        <!-- Ventas -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseVentas" aria-expanded="false" aria-controls="collapseVentas">
+                            <div class="sb-nav-link-icon"><i class="fas fa-cash-register"></i></div>
+                            Ventas
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseVentas" aria-labelledby="headingVentas" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" asp-controller="ventas" asp-action="Index">Lista De Ventas</a>
+                                <a class="nav-link" asp-controller="clientes" asp-action="Index">Lista De Clientes</a>
+                                <a class="nav-link" asp-controller="detalle_venta" asp-action="Index">Lista De detalles de venta</a>
+                            </nav>
+                        </div>
+
+                        <!-- Pedidos -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePedidos" aria-expanded="false" aria-controls="collapsePedidos">
+                            <div class="sb-nav-link-icon"><i class="fas fa-truck"></i></div>
+                            Pedidos
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePedidos" aria-labelledby="headingPedidos" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" asp-controller="pedidos" asp-action="Index">Lista De Pedidos</a>
+                                <a class="nav-link" asp-controller="metodos_pago" asp-action="Index">Lista De metodos de pago</a>
+                                <a class="nav-link" asp-controller="detalle_pedido" asp-action="Index">Lista De detalles de pedidos</a>
+                            </nav>
+                        </div>
+
+                        <!-- Otros enlaces -->
+                        <a class="nav-link" asp-controller="direcciones" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            Direcciones
+                        </a>
+                        <a class="nav-link" asp-controller="empleados" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user-tie"></i></div>
+                            Empleados
+                        </a>
+                        <a class="nav-link" asp-controller="entregas" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-truck-loading"></i></div>
+                            Entregas
+                        </a>
+                        <a class="nav-link" asp-controller="usuarios" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Usuarios
+                        </a>
+                    </div>
+                </div>
 
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="cedula_empleado" />
-            <div class="form-group">
-                <label asp-for="nombre" class="control-label"></label>
-                <input asp-for="nombre" class="form-control" />
-                <span asp-validation-for="nombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="apellido" class="control-label"></label>
-                <input asp-for="apellido" class="form-control" />
-                <span asp-validation-for="apellido" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="correo" class="control-label"></label>
-                <input asp-for="correo" class="form-control" />
-                <span asp-validation-for="correo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="numero_telefono" class="control-label"></label>
-                <input asp-for="numero_telefono" class="form-control" />
-                <span asp-validation-for="numero_telefono" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="fecha_contratacion" class="control-label"></label>
-                <input asp-for="fecha_contratacion" class="form-control" />
-                <span asp-validation-for="fecha_contratacion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="rol" class="control-label"></label>
-                <input asp-for="rol" class="form-control" />
-                <span asp-validation-for="rol" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="salario" class="control-label"></label>
-                <input asp-for="salario" class="form-control" />
-                <span asp-validation-for="salario" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="activo" /> @Html.DisplayNameFor(model => model.activo)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+            </nav>
+        </div>
+
+        <!-- Contenido principal -->
+        <div id="layoutSidenav_content">
+            <main class="mt-4">
+                <div class="container-fluid px-4">
+                    <!-- Aquí va el contenido específico de la vista Edit -->
+                    <h1>Modificar</h1>
+
+
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form asp-action="Edit">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input type="hidden" asp-for="cedula_empleado" />
+                                    <div class="form-group">
+                                        <label asp-for="nombre" class="control-label"></label>
+                                        <input asp-for="nombre" class="form-control" />
+                                        <span asp-validation-for="nombre" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="apellido" class="control-label"></label>
+                                        <input asp-for="apellido" class="form-control" />
+                                        <span asp-validation-for="apellido" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="correo" class="control-label"></label>
+                                        <input asp-for="correo" class="form-control" />
+                                        <span asp-validation-for="correo" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="numero_telefono" class="control-label"></label>
+                                        <input asp-for="numero_telefono" class="form-control" />
+                                        <span asp-validation-for="numero_telefono" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="fecha_contratacion" class="control-label"></label>
+                                        <input asp-for="fecha_contratacion" class="form-control" />
+                                        <span asp-validation-for="fecha_contratacion" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="rol" class="control-label"></label>
+                                        <input asp-for="rol" class="form-control" />
+                                        <span asp-validation-for="rol" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="salario" class="control-label"></label>
+                                        <input asp-for="salario" class="form-control" />
+                                        <span asp-validation-for="salario" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" asp-for="activo" /> @Html.DisplayNameFor(model => model.activo)
+                                        </label>
+                                    </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                                    <a asp-action="Index">Regresar</a> <!-- Enlace al lado del botón Save -->
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+
+                </div>
+            </main>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f3f3; /* Fondo suave pastel */
+    margin: 0;
+    padding: 0;
+}
+
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f3f3; /* Fondo suave pastel */
+}
+
+.error-content {
+    text-align: center;
+    max-width: 600px;
+    padding: 40px;
+    background-color: #fff6f7; /* Fondo con tonos rosados suaves */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #f4c6d4; /* Borde suave rosa */
+}
+
+.error-image {
+    width: 160px;
+    height: auto;
+}
+
+.error-title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #f0729a; /* Rosa suave */
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.error-message {
+    font-size: 18px;
+    color: #e07f9d; /* Color rosado más suave */
+    margin: 20px 0;
+}
+
+.btn {
+    padding: 12px 24px;
+    font-size: 18px;
+    background-color: #ff77b5; /* Botón rosado */
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+    .btn:hover {
+        background-color: #ff5290; /* Cambio de color en hover */
+        transform: scale(1.1);
+    }
+
+    .btn:focus {
+        outline: none;
+    }
+
+

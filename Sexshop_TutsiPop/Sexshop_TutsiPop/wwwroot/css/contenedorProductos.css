@@ -63,18 +63,19 @@
 .add-to-cart-btn {
     display: none; /* Ocultar el botón inicialmente */
     position: absolute;
-    bottom: 15px;
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
     background-color: #e6007e;
     color: white;
     border: none;
-    padding: 8px 16px;
-    font-size: 14px;
+    padding: 4px 8px;
+    font-size: 10px;
     border-radius: 5px;
     cursor: pointer;
     opacity: 0; /* Ocultar con opacidad */
     transition: opacity 0.3s ease;
+    margin-top: 0.5em;
 }
 
 /* Mostrar el botón con opacidad al hacer hover en la tarjeta */

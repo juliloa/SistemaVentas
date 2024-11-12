@@ -35,7 +35,7 @@ namespace Sexshop_TutsiPop.Controllers
             var usuario = await _context.usuarios.FirstOrDefaultAsync(u => u.nombre == User.Identity.Name);
             if (usuario == null)
             {
-                return RedirectToAction("Login", "Inicio"); // Redirigir si el usuario no está logueado
+                return Unauthorized(); // Responder con estado de no autorizado si el usuario no está logueado
             }
 
             // Buscar si el producto ya está en el carrito
@@ -46,8 +46,7 @@ namespace Sexshop_TutsiPop.Controllers
             {
                 // Si ya existe, incrementar la cantidad y actualizar el precio total dinámicamente
                 carritoExistente.cantidad += 1;
-                // Actualizar el total_price multiplicando la cantidad por el precio del producto
-                carritoExistente.precio = Convert.ToDecimal(carritoExistente.cantidad * producto.precio);
+                carritoExistente.precio = carritoExistente.cantidad * producto.precio;
 
                 _context.Update(carritoExistente);
             }
@@ -59,9 +58,8 @@ namespace Sexshop_TutsiPop.Controllers
                     id_usuario = usuario.id_usuario,
                     id_producto = idProducto,
                     cantidad = 1,
-                    fecha = DateTime.UtcNow,// Convertir la fecha a UTC
-                    precio = Convert.ToDecimal(producto.precio)
-
+                    fecha = DateTime.UtcNow,
+                    precio = producto.precio
                 };
 
                 _context.Add(nuevoCarrito);
@@ -70,8 +68,7 @@ namespace Sexshop_TutsiPop.Controllers
             // Guardar cambios en la base de datos
             await _context.SaveChangesAsync();
 
-            // Redirigir al carrito
-            return RedirectToAction(nameof(Index)); // Asegúrate de tener un índice donde se vea el carrito
+            return Ok(); // Responder con éxito
         }
         // GET: carrito
         public async Task<IActionResult> Index()

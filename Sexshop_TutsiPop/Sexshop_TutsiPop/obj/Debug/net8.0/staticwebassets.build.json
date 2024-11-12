@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "R0pYfxtP2S0O3LtWAG3C5H4Fx1u4ugvpcF9gM9uGiKA=",
+  "Hash": "f2Qe6rNHA4FwQa2maeNccdEp4PwQ7XBagsJeTxZ/f54=",
   "Source": "Sexshop_TutsiPop",
   "BasePath": "_content/Sexshop_TutsiPop",
   "Mode": "Default",
@@ -661,6 +661,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\pixelcut-export.png"
+    },
+    {
+      "Identity": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\js\\btn.js",
+      "SourceId": "Sexshop_TutsiPop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\",
+      "BasePath": "_content/Sexshop_TutsiPop",
+      "RelativePath": "js/btn.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\btn.js"
     },
     {
       "Identity": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\js\\datatables-simple-demo.js",

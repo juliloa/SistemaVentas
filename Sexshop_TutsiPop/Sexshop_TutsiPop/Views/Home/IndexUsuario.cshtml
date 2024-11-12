@@ -13,15 +13,20 @@
     <title>TutsiPop</title>
 
     <!-- Fuentes y Estilos -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="~/css/StyleIndex.css" />
     <link rel="stylesheet" href="~/css/navIndexs.css" />
-    <link rel="stylesheet" href="~/css/contenedorProductos.css" />
     <link rel="stylesheet" href="~/css/footer.css" />
     <link rel="stylesheet" href="~/css/categoria.css" />
     <link href="~/css/containerAcategoria.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/contenedorProductos.css" />
+    <link href="~/js/btn.js" rel="stylesheet" />
 </head>
 <body>
     <!-- Barra de Navegación -->
@@ -55,6 +60,7 @@
         </div>
     </nav>
 
+    <!-- Swiper Hero -->
     <div class="swiper swiper-hero">
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="~/images/close-up-sex-toys (2).jpg" /></div>
@@ -62,7 +68,6 @@
             <div class="swiper-slide"><img src="~/images/freepik__upload__51895.jpeg" /></div>
             <div class="swiper-slide"><img src="~/images/freepik__upload__3037.jpeg" /></div>
         </div>
-
         <div class="swiper-pagination"></div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
@@ -78,13 +83,11 @@
                     <img src="@producto.imagen_url" alt="@producto.nombre_producto" class="producto-imagen" />
                     <div class="producto-detalles">
                         <h3>@producto.nombre_producto</h3>
-                        <p> @producto.categoria</p>
-                        <p> $@producto.precio</p>
+                        <p>@producto.categoria</p>
+                        <p>$@producto.precio</p>
                         <form method="post" asp-controller="carrito" asp-action="AgregarAlCarrito" asp-route-idProducto="@producto.id_producto">
-                            <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+                            <button type="submit" class="add-to-cart-btn">Agregar al carrito</button>
                         </form>
-
-
                     </div>
                 </div>
             }
@@ -95,7 +98,7 @@
         }
     </div>
 
-    <!-- Contenedor de las tarjetas de categoría -->
+    <!-- Categorías -->
     <div class="categorias-container">
         <div class="card">
             <a asp-area="" asp-controller="categorias" asp-action="lenceria">
@@ -163,5 +166,7 @@
                target="_blank" class="btn">Ver en Maps</a>
         </div>
     </footer>
+
+    <script src="~/js/btn.js"></script>
 </body>
 </html>

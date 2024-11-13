@@ -61,8 +61,16 @@
       "PackagePath": "staticwebassets\\css\\Carrito.css"
     },
     {
+      "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\Create.css",
+      "PackagePath": "staticwebassets\\css\\Create.css"
+    },
+    {
       "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\Delete.css",
       "PackagePath": "staticwebassets\\css\\Delete.css"
+    },
+    {
+      "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\Details.css",
+      "PackagePath": "staticwebassets\\css\\Details.css"
     },
     {
       "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\Edit.css",
@@ -83,10 +91,6 @@
     {
       "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\StyleIndex.css",
       "PackagePath": "staticwebassets\\css\\StyleIndex.css"
-    },
-    {
-      "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\Styledetails.css",
-      "PackagePath": "staticwebassets\\css\\Styledetails.css"
     },
     {
       "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\categoria.css",
@@ -119,10 +123,6 @@
     {
       "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\site2.css",
       "PackagePath": "staticwebassets\\css\\site2.css"
-    },
-    {
-      "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\stylecreate.css",
-      "PackagePath": "staticwebassets\\css\\stylecreate.css"
     },
     {
       "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\styles.css",

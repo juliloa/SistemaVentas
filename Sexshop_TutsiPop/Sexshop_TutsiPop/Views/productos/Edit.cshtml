@@ -129,14 +129,16 @@
                                         <span asp-validation-for="nombre_producto" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="id_categoria" class="control-label"></label>
-                                        <input asp-for="id_categoria" class="form-control" />
-                                        <span asp-validation-for="id_categoria" class="text-danger"></span>
+                                        <label for="id_categoria">Categoría</label>
+                                        <select asp-for="id_categoria" class="form-control" asp-items="ViewBag.Categorias">
+                                            <option value="">Seleccione una categoría</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="id_proveedor" class="control-label"></label>
-                                        <input asp-for="id_proveedor" class="form-control" />
-                                        <span asp-validation-for="id_proveedor" class="text-danger"></span>
+                                        <label for="id_proveedor">Proveedor</label>
+                                        <select asp-for="id_proveedor" class="form-control" asp-items="ViewBag.Proveedores">
+                                            <option value="">Seleccione un proveedor</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="unidades_stock" class="control-label"></label>

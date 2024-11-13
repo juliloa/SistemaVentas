@@ -151,26 +151,58 @@ namespace Sexshop_TutsiPop.Controllers
 
 
         // GET: productos/Create
+        // GET: productos/Create
         public IActionResult Create()
         {
+         
+            var categorias = _context.categorias
+                .Select(c => new { c.id_categoria, c.nombre_categoria })
+                .ToList();
+
+            var proveedores = _context.proveedores
+                .Select(p => new { p.id_proveedor, p.nombre_empresa })
+                .ToList();
+
+            // Si estas listas son nulas o están vacías, arroja una excepción
+            if (categorias == null || !categorias.Any())
+            {
+                throw new Exception("No se encontraron categorías en la base de datos.");
+            }
+            if (proveedores == null || !proveedores.Any())
+            {
+                throw new Exception("No se encontraron proveedores en la base de datos.");
+            }
+
+            // Pasar las listas a la vista a través de ViewBag
+            ViewBag.Categorias = new SelectList(categorias, "id_categoria", "nombre_categoria");
+            ViewBag.Proveedores = new SelectList(proveedores, "id_proveedor", "nombre_empresa");
+
             return View();
         }
+
+
 
         // POST: productos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id_producto,nombre_producto,id_categoria,id_proveedor,unidades_stock,precio,activo")] productos productos)
+        public IActionResult Create(productos producto)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(productos);
-                await _context.SaveChangesAsync();
+                _context.productos.Add(producto);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            return View(productos);
+
+            // Volver a cargar las listas en caso de que haya un error de validación
+            ViewBag.Categorias = new SelectList(_context.categorias, "id_categoria", "nombre_categoria", producto.id_categoria);
+            ViewBag.Proveedores = new SelectList(_context.proveedores, "id_proveedor", "nombre_empresa", producto.id_proveedor);
+
+            return View(producto);
         }
+
 
         // GET: productos/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -185,8 +217,23 @@ namespace Sexshop_TutsiPop.Controllers
             {
                 return NotFound();
             }
+
+            // Cargar las categorías y proveedores
+            var categorias = _context.categorias
+                .Select(c => new { c.id_categoria, c.nombre_categoria })
+                .ToList();
+
+            var proveedores = _context.proveedores
+                .Select(p => new { p.id_proveedor, p.nombre_empresa })
+                .ToList();
+
+            // Pasar las listas a la vista a través de ViewBag
+            ViewBag.Categorias = new SelectList(categorias, "id_categoria", "nombre_categoria", productos.id_categoria);
+            ViewBag.Proveedores = new SelectList(proveedores, "id_proveedor", "nombre_empresa", productos.id_proveedor);
+
             return View(productos);
         }
+
 
         // POST: productos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -195,6 +242,8 @@ namespace Sexshop_TutsiPop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id_producto,nombre_producto,id_categoria,id_proveedor,unidades_stock,precio,activo")] productos productos)
         {
+            
+
             if (id != productos.id_producto)
             {
                 return NotFound();

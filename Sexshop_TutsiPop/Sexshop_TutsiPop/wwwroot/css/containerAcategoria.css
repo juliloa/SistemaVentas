@@ -1,14 +1,17 @@
-﻿/* Contenedor para las tarjetas de categoría */
+﻿
+/* Contenedor para las tarjetas de categoría */
 .categorias-container {
     display: flex;
     justify-content: space-between; /* Espacio entre las tarjetas */
     gap: 20px; /* Espacio entre las tarjetas */
+    margin: 20px 80px;
 }
 
 .card {
     width: 48%; /* Ajusta el tamaño de las tarjetas */
     overflow: hidden;
 }
+
 
 .card img {
     width: 100%;
@@ -20,3 +23,4 @@
     font-weight: bold;
     padding: 10px 0;
 }
+

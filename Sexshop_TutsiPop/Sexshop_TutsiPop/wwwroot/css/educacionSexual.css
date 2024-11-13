@@ -1,0 +1,38 @@
+﻿.educate-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 80px;
+}
+
+.educate-text {
+    flex: 1;
+}
+
+.educate-image {
+    flex: 0 0 300px; /* Ajusta el tamaño de la imagen */
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .educate-image img {
+        width: 100%;
+        border-radius: 10px; /* Opcional: para esquinas redondeadas */
+    }
+
+.educate-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff007f;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+    .educate-button:hover {
+        background-color: #e60073;
+    }

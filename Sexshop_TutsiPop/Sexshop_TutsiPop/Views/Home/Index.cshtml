@@ -55,7 +55,7 @@
                         <p> @producto.categoria</p>
                         <p> $@producto.precio</p>
                                 <form method="post" asp-controller="carrito" asp-action="AgregarAlCarrito" asp-route-idProducto="@producto.id_producto">
-                                    <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+                            <button type="submit" class="add-to-cart-btn">Agregar al carrito</button>
                                 </form>
                     </div>
                 </div>

@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Sexshop_TutsiPop.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\Images\\BANNER_guantes_pc_1979daeb-dfa4-499d-857e-4908a7cc3f07_1899x625_crop_center.webp",
+      "PackagePath": "staticwebassets\\Images\\BANNER_guantes_pc_1979daeb-dfa4-499d-857e-4908a7cc3f07_1899x625_crop_center.webp"
+    },
+    {
       "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\Images\\close-up-sex-toys (1).jpg",
       "PackagePath": "staticwebassets\\Images\\close-up-sex-toys (1).jpg"
     },
@@ -93,6 +97,14 @@
       "PackagePath": "staticwebassets\\css\\StyleIndex.css"
     },
     {
+      "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\bannerGuantes.css",
+      "PackagePath": "staticwebassets\\css\\bannerGuantes.css"
+    },
+    {
+      "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\btnWhatsapp.css",
+      "PackagePath": "staticwebassets\\css\\btnWhatsapp.css"
+    },
+    {
       "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\categoria.css",
       "PackagePath": "staticwebassets\\css\\categoria.css"
     },
@@ -105,8 +117,16 @@
       "PackagePath": "staticwebassets\\css\\contenedorProductos.css"
     },
     {
+      "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\educacionSexual.css",
+      "PackagePath": "staticwebassets\\css\\educacionSexual.css"
+    },
+    {
       "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\footer.css",
       "PackagePath": "staticwebassets\\css\\footer.css"
+    },
+    {
+      "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\h1Categoriacss.css",
+      "PackagePath": "staticwebassets\\css\\h1Categoriacss.css"
     },
     {
       "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\nav.css",

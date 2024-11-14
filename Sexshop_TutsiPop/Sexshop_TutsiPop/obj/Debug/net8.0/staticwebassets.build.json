@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TApOUB+q3ZgANOMUj2EKhpkISzlDDzq7ADsCdN3RiUU=",
+  "Hash": "6JhjM4n72gzXO1K/VulumHveJUhF6fBjpnA2TqLz3Ak=",
   "Source": "Sexshop_TutsiPop",
   "BasePath": "_content/Sexshop_TutsiPop",
   "Mode": "Default",
@@ -775,6 +775,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\btn.js"
+    },
+    {
+      "Identity": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\js\\carrito.js",
+      "SourceId": "Sexshop_TutsiPop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\",
+      "BasePath": "_content/Sexshop_TutsiPop",
+      "RelativePath": "js/carrito.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\carrito.js"
     },
     {
       "Identity": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\js\\datatables-simple-demo.js",

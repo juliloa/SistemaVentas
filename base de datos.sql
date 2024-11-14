@@ -265,5 +265,48 @@ BEGIN
 END;
 $$;
 
+CREATE OR REPLACE FUNCTION actualizar_cantidad_producto(p_carrito_id INT, p_nueva_cantidad INT)
+RETURNS NUMERIC AS $$
+DECLARE
+    nuevo_precio NUMERIC;
+    cantidad_actual INT;
+    producto_id INT;
+    diferencia INT;
+BEGIN
+    -- Obtener la cantidad actual y el id del producto desde el carrito
+    SELECT cantidad, id_producto INTO cantidad_actual, producto_id
+    FROM carrito
+    WHERE carrito_id = p_carrito_id;
+
+    -- Calcular la diferencia en cantidad
+    diferencia := p_nueva_cantidad - cantidad_actual;
+
+    -- Actualizar el stock de unidades según la diferencia
+    IF diferencia > 0 THEN
+        UPDATE productos
+        SET unidades_stock = unidades_stock - diferencia
+        WHERE producto_id = producto_id;
+    ELSE
+        UPDATE productos
+        SET unidades_stock = unidades_stock + ABS(diferencia)
+        WHERE producto_id = producto_id;
+    END IF;
+
+    -- Actualizar la cantidad del producto en el carrito
+    UPDATE carrito
+    SET cantidad = p_nueva_cantidad
+    WHERE carrito_id = p_carrito_id;
+
+    -- Obtener el nuevo precio total con la nueva cantidad
+    SELECT precio * p_nueva_cantidad INTO nuevo_precio
+    FROM carrito
+    WHERE carrito_id = p_carrito_id;
+
+    -- Retornar el nuevo precio
+    RETURN nuevo_precio;
+END;
+$$ LANGUAGE plpgsql;
+
+
 
 -- DISPARADORES 

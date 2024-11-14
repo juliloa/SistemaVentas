@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using Sexshop_TutsiPop.Data;
 using Sexshop_TutsiPop.Models;
 
@@ -21,6 +23,31 @@ namespace Sexshop_TutsiPop.Controllers
         {
             _context = context;
         }
+
+        [HttpPost]
+        public IActionResult UpdateQuantity(int carritoId, int nuevaCantidad)
+        {
+            using (var connection = (NpgsqlConnection)_context.Database.GetDbConnection())
+            {
+                connection.Open();
+
+                // Usar CommandType.Text para llamar a la función y obtener su retorno
+                using (var command = new NpgsqlCommand("SELECT actualizar_cantidad_producto(@carrito_id, @nueva_cantidad)", connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("carrito_id", carritoId);
+                    command.Parameters.AddWithValue("nueva_cantidad", nuevaCantidad);
+
+                    // Ejecuta la función y obtiene el nuevo precio
+                    var nuevoPrecio = (decimal)command.ExecuteScalar();
+
+                    return Json(new { success = true, precio = nuevoPrecio });
+                }
+            }
+        }
+
+
+
 
         [Authorize]
         //[ValidateAntiForgeryToken]
@@ -55,37 +82,6 @@ namespace Sexshop_TutsiPop.Controllers
             return RedirectToAction("Index", "carrito");
 
 
-            //// Buscar si el producto ya está en el carrito
-            //var carritoExistente = await _context.carrito
-            //    .FirstOrDefaultAsync(c => c.id_usuario == usuario.id_usuario && c.id_producto == idProducto);
-
-            //if (carritoExistente != null)
-            //{
-            //    // Si ya existe, incrementar la cantidad y actualizar el precio total dinámicamente
-            //    carritoExistente.cantidad += 1;
-            //    carritoExistente.precio = carritoExistente.cantidad * producto.precio;
-
-            //    _context.Update(carritoExistente);
-            //}
-            //else
-            //{
-            //    // Si no existe, crear un nuevo elemento en el carrito con el precio total calculado
-            //    var nuevoCarrito = new carrito
-            //    {
-            //        id_usuario = usuario.id_usuario,
-            //        id_producto = idProducto,
-            //        cantidad = 1,
-            //        fecha = DateTime.UtcNow,
-            //        precio = producto.precio
-            //    };
-
-            //    _context.Add(nuevoCarrito);
-            //}
-
-            //// Guardar cambios en la base de datos
-            //await _context.SaveChangesAsync();
-
-            //return Ok(); // Responder con éxito
         }
         // GET: carrito
         public async Task<IActionResult> Index()

@@ -157,6 +157,10 @@
       "PackagePath": "staticwebassets\\js\\btn.js"
     },
     {
+      "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\js\\carrito.js",
+      "PackagePath": "staticwebassets\\js\\carrito.js"
+    },
+    {
       "Id": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\js\\datatables-simple-demo.js",
       "PackagePath": "staticwebassets\\js\\datatables-simple-demo.js"
     },

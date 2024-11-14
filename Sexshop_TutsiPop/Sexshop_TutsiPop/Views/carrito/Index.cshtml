@@ -24,8 +24,23 @@
                         {
                             <div class="row mb-3">
                                 <div class="col-6">@item.ProductoNombre</div>
-                                <div class="col-3">@item.Cantidad</div>
-                                <div class="col-3">@item.Precio.ToString("C")</div>
+                                <div class="col-3 d-flex align-items-center">
+                                    <button class="btn btn-outline-secondary btn-sm" onclick="updateQuantity(@item.CarritoId, -1)">-</button>
+                                    <span class="mx-2" id="cantidad-@item.CarritoId">@item.Cantidad</span>
+                                    <button class="btn btn-outline-secondary btn-sm" onclick="updateQuantity(@item.CarritoId, 1)">+</button>
+                                </div>
+                                <div class="col-3">
+                                    <!-- Contenedor para el precio unitario -->
+                                    <div class="precio-unitario">
+                                        <small>Precio unitario:</small>
+                                        <span id="precio-unitario-@item.CarritoId">@item.Precio.ToString("C")</span>
+                                    </div>
+                                    <!-- Contenedor para el precio total -->
+                                    <div class="precio-total mt-2">
+                                        <small>Total:</small>
+                                        <span id="precio-total-@item.CarritoId">@(item.Precio * item.Cantidad).ToString("C")</span>
+                                    </div>
+                                </div>
                             </div>
                             <form asp-area="" asp-controller="carrito" asp-action="Delete" asp-route-id="@item.CarritoId" method="post">
                                 <button type="submit" class="btn btn-danger btn-sm">
@@ -33,6 +48,11 @@
                                 </button>
                             </form>
                         }
+                    </div>
+                    <!-- Total del carrito -->
+                    <div class="d-flex justify-content-between mt-4">
+                        <strong>Total Carrito: </strong>
+                        <span id="total-carrito">$0.00</span>
                     </div>
                 </div>
             </div>
@@ -45,73 +65,76 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <span>Detalle de Envío</span>
                     </div>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label pt-0">Departamento:</label>
-                        <select id="cboDepartamento" class="form-select control-validar"></select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Provincia:</label>
-                        <select id="cboProvincia" class="form-select control-validar"></select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Distrito:</label>
-                        <select id="cboDistrito" class="form-select control-validar"></select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Contacto:</label>
-                        <input type="text" class="form-control control-validar" autocomplete="off" id="txtContacto">
-                    </div>
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Telefono:</label>
-                        <input type="text" class="form-control control-validar" autocomplete="off" id="txtTelefono">
-                    </div>
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Direccion:</label>
-                        <input type="text" class="form-control control-validar" autocomplete="off" id="txtDireccion">
-                    </div>
+                    <!-- Aquí van los campos del formulario de envío -->
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-   </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var totalCarrito = 0;
+        $('#productos-seleccionados span[id^="precio-total-"]').each(function () {
+            var carritoId = $(this).attr('id').split('-')[2];
+            var cantidad = parseInt($('#cantidad-' + carritoId).text());
+            var precioUnitario = parseFloat($('#precio-unitario-' + carritoId).text().replace('$', '').replace(',', ''));
+            var precioTotal = cantidad * precioUnitario;
 
+            // Mostrar el precio total de cada producto
+            $('#precio-total-' + carritoId).text('$' + precioTotal.toFixed(2));
 
+            // Sumar al total del carrito
+            totalCarrito += precioTotal;
+        });
 
+        // Mostrar el total del carrito
+        $('#total-carrito').text('$' + totalCarrito.toFixed(2));
+    });
 
+    function updateQuantity(carritoId, cambio) {
+        var cantidadElement = document.getElementById("cantidad-" + carritoId);
+        var precioUnitario = parseFloat(document.getElementById("precio-unitario-" + carritoId).innerText.replace('$', '').replace(',', ''));
+        var nuevaCantidad = parseInt(cantidadElement.innerText) + cambio;
 
+        if (nuevaCantidad < 1) return; // Evita que la cantidad sea menor a 1
 
-@* @model IEnumerable<Sexshop_TutsiPop.Models.ProductosCarritoInfo>
-@{
-    ViewData["Title"] = "carrito de compras";
-    Layout = null;
-}
-<h1>Tu Carrito de Compras</h1>
+        var nuevoPrecioTotal = nuevaCantidad * precioUnitario; // Calcula el nuevo precio total
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Fecha</th>
-             <th>Precio</th> 
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.ProductoNombre</td>
-                <td>@item.Cantidad</td>
-                <td>@item.Fecha.ToString("g")</td>
-                <td>@item.Precio.ToString("g")</td>
+        // Muestra el precio actualizado en la interfaz
+        document.getElementById("precio-total-" + carritoId).innerText = "$" + nuevoPrecioTotal.toFixed(2);
 
-                <td>
-                    <a href="@Url.Action("Delete", "carrito", new { id = item.CarritoId })" class="btn btn-danger">Eliminar</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
- *@
+        // Actualizar el total del carrito
+        var totalCarrito = 0;
+        $('#productos-seleccionados span[id^="precio-total-"]').each(function () {
+            totalCarrito += parseFloat($(this).text().replace('$', '').replace(',', ''));
+        });
+
+        // Actualizar el total general del carrito
+        $('#total-carrito').text('$' + totalCarrito.toFixed(2));
+
+        // Envía la actualización de la cantidad al servidor para ajustar el stock
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        $.ajax({
+            url: '@Url.Action("UpdateQuantity", "carrito")',
+            type: 'POST',
+            data: {
+                carritoId: carritoId,
+                nuevaCantidad: nuevaCantidad,
+                __RequestVerificationToken: token
+            },
+            success: function (response) {
+                if (response.success) {
+                    cantidadElement.innerText = nuevaCantidad;
+                } else {
+                    alert("Error al actualizar la cantidad");
+                }
+            },
+            error: function () {
+                alert("Ocurrió un error al intentar actualizar la cantidad.");
+            }
+        });
+    }
+</script>

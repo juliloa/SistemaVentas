@@ -15,7 +15,25 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     {
         options.LoginPath = "/Inicio/Login"; // ruta de inicio de sesión
         options.LogoutPath = "/Inicio/Logout"; // ruta de cierre de sesión
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(1); // Cambia el valor según lo necesario
+
+        // Cierre de sesión automático en caso de inactividad
+        options.SlidingExpiration = true;
+
+        options.Events = new CookieAuthenticationEvents
+        {
+            OnRedirectToLogin = context =>
+            {
+                context.Response.Redirect("/Home/Index");
+                return Task.CompletedTask;
+            }
+        };
     });
+
+
+   
+
+
 
 // Agregar servicios para MVC
 builder.Services.AddControllersWithViews();

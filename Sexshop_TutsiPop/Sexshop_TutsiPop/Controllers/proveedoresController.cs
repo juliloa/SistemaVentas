@@ -87,7 +87,7 @@ namespace Sexshop_TutsiPop.Controllers
             // Realizar la consulta SQL para obtener los proveedores con sus direcciones
             var proveedoresdireccion = await _context.ProveedoresDireccion
                 .FromSqlRaw(@"
-                    SELECT p.id_proveedor,p.nombre_empresa,p.nombre_contacto,p.numero_contacto,p.correo,p.pais,p.ciudad,p.id_direccion,p.activo, d.direccion_calle, d.barrio, d.ciudad AS CiudadDireccion, d.codigo_postal
+                    SELECT p.id_proveedor,p.nombre_empresa,p.nombre_contacto,p.numero_contacto,p.correo,p.pais,p.ciudad,p.activo, d.direccion_calle, d.barrio, d.ciudad AS CiudadDireccion, d.codigo_postal
                     FROM proveedores p
                     LEFT JOIN direcciones d ON p.id_direccion = d.id_direccion")
                 .ToListAsync();

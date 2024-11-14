@@ -5,6 +5,7 @@ namespace Sexshop_TutsiPop.Models
 {
     public class entregas
     {
+
         [Key]
         public int id_entrega { get; set; }
 

@@ -80,6 +80,7 @@ namespace Sexshop_TutsiPop.Controllers
 
 
         // GET: productos
+         [Authorize(Roles = "administrador")]
         public async Task<IActionResult> Index()
         {
             var productosinfo = await _context.productosInfo

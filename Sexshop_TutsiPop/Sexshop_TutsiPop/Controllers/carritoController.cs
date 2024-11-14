@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using Sexshop_TutsiPop.Models;
 
 namespace Sexshop_TutsiPop.Controllers
 {
+   
     public class carritoController : Controller
     {
         private readonly Sexshop_TutsiPopContext _context;
@@ -20,6 +22,7 @@ namespace Sexshop_TutsiPop.Controllers
             _context = context;
         }
 
+        [Authorize]
         //[ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<IActionResult> AgregarAlCarrito(int idProducto)

@@ -35,13 +35,21 @@
             <a href="#" class="navbar-logo">TutsiPop</a>
             <div class="navbar-links">
                 @if (User.Identity.IsAuthenticated)
+
                 {
                     <a class="navbar-login" asp-area="" asp-controller="Inicio" asp-action="Logout">
                         <i class='bx bx-log-out-circle'></i>
                         <span>Cerrar Sesión</span>
                     </a>
+                    <a class="navbar-login" asp-area="" asp-controller="carrito" asp-action="Index">
+                        <i class="bx bx-cart"></i>
+                        <span>Ver Carrito</span>
+                    </a>
+
                 }
+
                 else
+
                 {
                     <a class="navbar-login" asp-area="" asp-controller="Inicio" asp-action="Login">
                         <i class='bx bxs-user-circle'></i>

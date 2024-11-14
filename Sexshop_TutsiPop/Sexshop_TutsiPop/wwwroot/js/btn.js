@@ -4,7 +4,7 @@
     const form = $(this).closest("form"); // Obtener el formulario al que pertenece el botón
 
     Swal.fire({
-        position: "top-end",
+        position: "center",
         icon: "success",
         title: "Producto agregado al carrito",
         showConfirmButton: false,

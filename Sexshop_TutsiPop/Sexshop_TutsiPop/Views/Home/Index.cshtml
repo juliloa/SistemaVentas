@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<Sexshop_TutsiPop.Models.productosInfo>
 
 @{
-    ViewData["Title"] = "Home Page";
 
+    ViewData["Title"] = "Home Page";
 
 }
 
@@ -14,18 +14,28 @@
     <title>TutsiPop</title>
 
     <!-- Fuentes y Estilos -->
+    <link rel="stylesheet" href="~/css/navIndexs.css" />
+    <link rel="stylesheet" href="~/css/StyleIndex.css" />
+    <link rel="stylesheet" href="~/css/contenedorProductos.css" />
+    <link rel="stylesheet" href="~/css/footer.css" />
+    <link href="~/css/containerAcategoria.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/educacionSexual.css" />
+    <link rel="stylesheet" href="~/css/categoria.css" />
+    <link href="~/css/h1Categoriacss.css" rel="stylesheet" />
+    <link href="~/css/btnWhatsapp.css" rel="stylesheet" />
+
+
+    <link href="~/js/btn.js" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="~/css/StyleIndex.css" />
-    <link rel="stylesheet" href="~/css/navIndexs.css" />
-    <link rel="stylesheet" href="~/css/contenedorProductos.css" />
-    <link rel="stylesheet" href="~/css/footer.css" />
-    <link rel="stylesheet" href="~/css/categoria.css" />
-    <link href="~/css/containerAcategoria.css" rel="stylesheet" />
 </head>
 <body>
-
+    <!-- Barra de Navegación -->
 
     <div class="swiper swiper-hero">
         <div class="swiper-wrapper">
@@ -40,6 +50,7 @@
         <div class="swiper-button-next"></div>
     </div>
 
+   
     <!-- Productos -->
     <div class="productos-container">
         @if (Model != null && Model.Any())
@@ -54,9 +65,13 @@
                         <h3>@producto.nombre_producto</h3>
                         <p> @producto.categoria</p>
                         <p> $@producto.precio</p>
-                                <form method="post" asp-controller="carrito" asp-action="AgregarAlCarrito" asp-route-idProducto="@producto.id_producto">
-                            <button type="submit" class="add-to-cart-btn">Agregar al carrito</button>
-                                </form>
+                        <a asp-area="" asp-controller="Inicio" asp-action="Login"
+                           style="background-color: #ff0080; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; text-decoration: none; display: inline-block; text-align: center;"
+                           onmouseover="this.style.backgroundColor='#e60073';"
+                           onmouseout="this.style.backgroundColor='#ff0080';">
+                            <span>Agregar al carrito</span>
+                        </a>
+
                     </div>
                 </div>
             }
@@ -69,9 +84,34 @@
         }
     </div>
 
-    <!-- Contenedor de las tarjetas de categoría -->
+
+    <div class="educate-container">
+        <!-- Sección de Texto -->
+        <div class="educate-text">
+            <h2>¡Edúcate y aprende!</h2>
+            <p>Un espacio pensado en darte unos pequeños consejos y enseñarte a disfrutar la sexualidad con responsabilidad.</p>
+            <p>¡Aquí amamos aprender!</p>
+            <a href="https://www.mineducacion.gov.co/portal/micrositios-preescolar-basica-y-media/Direccion-de-Calidad/Formacion-para-la-Ciudadania/356225:Educacion-para-la-Sexualidad"
+               target="_blank" class="educate-button">Vamos a leer</a>
+        </div>
+        <!-- Sección de Imagen -->
+        <div class="educate-image">
+            <img src="https://files.oaiusercontent.com/file-E2TDoG2tbqdERCUwkWbEU8Bg?se=2024-11-13T21%3A08%3A58Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dae5abc37-4a9f-415d-9d58-dcdb90eee39e.webp&sig=pW%2BleJLQIrcskU9sm3/iELXdsxrO9CzRHDOlHev7dK8%3D"
+                 alt="Blog Tutsipop">
+        </div>
+    </div>
+    <div class="swiper swiper-hero">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="~/images/BANNER_guantes_pc_1979daeb-dfa4-499d-857e-4908a7cc3f07_1899x625_crop_center.webp" /></div>
+        </div>
+    </div>
+    <!-- Categorías -->
+    <h1 class="titulo-categorias">Categorías</h1>
+
     <div class="categorias-container">
+
         <div class="card">
+
             <a asp-area="" asp-controller="categorias" asp-action="lenceria">
                 <div>
                     <img src="https://img.freepik.com/fotos-premium/piernas-mujeres-medias-negras-primer-plano_864559-2573.jpg?w=360">
@@ -95,6 +135,14 @@
                 </div>
             </a>
         </div>
+    </div>
+
+    <!-- Agregar el botón de WhatsApp en el footer o en cualquier parte del HTML -->
+    <div class="whatsapp-button">
+        <a href="https://wa.me/573124783081?text=¡Hola!%20Quisiera%20más%20información%20sobre%20sus%20productos."
+           target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp">
+        </a>
     </div>
 
     <!-- Scripts de Swiper -->
@@ -137,5 +185,6 @@
                target="_blank" class="btn">Ver en Maps</a>
         </div>
     </footer>
+    <script src="~/js/btn.js"></script>
 </body>
 </html>

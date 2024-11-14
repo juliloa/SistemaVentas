@@ -61,26 +61,17 @@
 
 /* Botón de agregar al carrito (oculto por defecto) */
 .add-to-cart-btn {
-    display: none; /* Ocultar el botón inicialmente */
-    position: absolute;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #e6007e;
+    background-color: #ff0080; /* Rosa fuerte */
     color: white;
     border: none;
-    padding: 4px 8px;
-    font-size: 10px;
-    border-radius: 5px;
+    padding: 8px 16px;
+    border-radius: 8px;
     cursor: pointer;
-    opacity: 0; /* Ocultar con opacidad */
-    transition: opacity 0.3s ease;
-    margin-top: 0.5em;
+    font-weight: bold;
+    font-size: 14px;
 }
 
-/* Mostrar el botón con opacidad al hacer hover en la tarjeta */
-.producto-card:hover .add-to-cart-btn {
-    display: block;
-    opacity: 1;
-}
+    .add-to-cart-btn:hover {
+        background-color: #e60073; /* Un tono ligeramente más oscuro para el efecto hover */
+    }
 

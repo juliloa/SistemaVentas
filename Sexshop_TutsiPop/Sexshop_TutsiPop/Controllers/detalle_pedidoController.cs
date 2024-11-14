@@ -127,6 +127,12 @@ namespace Sexshop_TutsiPop.Controllers
             {
                 return NotFound();
             }
+                var producto = _context.productos
+                .Select(p => new { p.id_producto, p.nombre_producto })
+                .ToList();
+
+                ViewBag.Productos = new SelectList(producto, "id_producto", "nombre_producto", detalle_pedido.id_producto);
+
             return View(detalle_pedido);
         }
 

@@ -41,37 +41,51 @@ namespace Sexshop_TutsiPop.Controllers
                 return Unauthorized(); // Responder con estado de no autorizado si el usuario no está logueado
             }
 
-            // Buscar si el producto ya está en el carrito
-            var carritoExistente = await _context.carrito
-                .FirstOrDefaultAsync(c => c.id_usuario == usuario.id_usuario && c.id_producto == idProducto);
-
-            if (carritoExistente != null)
+            try
             {
-                // Si ya existe, incrementar la cantidad y actualizar el precio total dinámicamente
-                carritoExistente.cantidad += 1;
-                carritoExistente.precio = carritoExistente.cantidad * producto.precio;
-
-                _context.Update(carritoExistente);
+                await _context.Database.ExecuteSqlRawAsync("CALL agregar_al_carrito({0}, {1})", idProducto, usuario.id_usuario);
             }
-            else
+            catch (Exception ex)
             {
-                // Si no existe, crear un nuevo elemento en el carrito con el precio total calculado
-                var nuevoCarrito = new carrito
-                {
-                    id_usuario = usuario.id_usuario,
-                    id_producto = idProducto,
-                    cantidad = 1,
-                    fecha = DateTime.UtcNow,
-                    precio = producto.precio
-                };
-
-                _context.Add(nuevoCarrito);
+                TempData["Error"] = "Ya no hay más productos"; //ex.Message;
+                return RedirectToAction("IndexUsuario", "Home");
             }
 
-            // Guardar cambios en la base de datos
-            await _context.SaveChangesAsync();
+            // Redirigir al carrito
+            return RedirectToAction("Index", "carrito");
 
-            return Ok(); // Responder con éxito
+
+            //// Buscar si el producto ya está en el carrito
+            //var carritoExistente = await _context.carrito
+            //    .FirstOrDefaultAsync(c => c.id_usuario == usuario.id_usuario && c.id_producto == idProducto);
+
+            //if (carritoExistente != null)
+            //{
+            //    // Si ya existe, incrementar la cantidad y actualizar el precio total dinámicamente
+            //    carritoExistente.cantidad += 1;
+            //    carritoExistente.precio = carritoExistente.cantidad * producto.precio;
+
+            //    _context.Update(carritoExistente);
+            //}
+            //else
+            //{
+            //    // Si no existe, crear un nuevo elemento en el carrito con el precio total calculado
+            //    var nuevoCarrito = new carrito
+            //    {
+            //        id_usuario = usuario.id_usuario,
+            //        id_producto = idProducto,
+            //        cantidad = 1,
+            //        fecha = DateTime.UtcNow,
+            //        precio = producto.precio
+            //    };
+
+            //    _context.Add(nuevoCarrito);
+            //}
+
+            //// Guardar cambios en la base de datos
+            //await _context.SaveChangesAsync();
+
+            //return Ok(); // Responder con éxito
         }
         // GET: carrito
         public async Task<IActionResult> Index()
@@ -212,14 +226,19 @@ namespace Sexshop_TutsiPop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var carrito = await _context.carrito.FindAsync(id);
-            if (carrito != null)
+            try
             {
-                _context.carrito.Remove(carrito);
+                // Llamar al procedimiento almacenado para eliminar del carrito
+                await _context.Database.ExecuteSqlRawAsync("CALL eliminar_del_carrito({0})", id);
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+                return RedirectToAction(nameof(Index));
             }
 
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index)); // Redirigir al carrito
+
         }
 
         private bool carritoExists(int id)

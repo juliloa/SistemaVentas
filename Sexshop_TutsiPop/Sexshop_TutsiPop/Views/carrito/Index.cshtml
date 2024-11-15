@@ -3,6 +3,7 @@
     Layout = null;
 }
 
+
 <h1>Tu Carrito de Compras</h1>
 <link rel="stylesheet" href="/css/Carrito.css" />
 <div class="container">
@@ -25,17 +26,19 @@
                             <div class="row mb-3">
                                 <div class="col-6">@item.ProductoNombre</div>
                                 <div class="col-3 d-flex align-items-center">
-                                    <button class="btn btn-outline-secondary btn-sm" onclick="updateQuantity(@item.CarritoId, -1)">-</button>
-                                    <span class="mx-2" id="cantidad-@item.CarritoId">@item.Cantidad</span>
-                                    <button class="btn btn-outline-secondary btn-sm" onclick="updateQuantity(@item.CarritoId, 1)">+</button>
+                                  
+                                        <button class="btn btn-outline-secondary btn-sm" onclick="updateQuantity(@item.CarritoId, -1)">-</button>
+                                        <span class="mx-2" id="cantidad-@item.CarritoId" data-stock="@item.Stock">@item.Cantidad</span>
+                                        <button class="btn btn-outline-secondary btn-sm" onclick="updateQuantity(@item.CarritoId, 1)"
+                                        @(item.Cantidad >= item.Stock ? "disabled" : "")>
+                                            +
+                                        </button>
                                 </div>
                                 <div class="col-3">
-                                    <!-- Contenedor para el precio unitario -->
                                     <div class="precio-unitario">
                                         <small>Precio unitario:</small>
                                         <span id="precio-unitario-@item.CarritoId">@item.Precio.ToString("C")</span>
                                     </div>
-                                    <!-- Contenedor para el precio total -->
                                     <div class="precio-total mt-2">
                                         <small>Total:</small>
                                         <span id="precio-total-@item.CarritoId">@(item.Precio * item.Cantidad).ToString("C")</span>
@@ -48,6 +51,7 @@
                                 </button>
                             </form>
                         }
+
                     </div>
                     <!-- Total del carrito -->
                     <div class="d-flex justify-content-between mt-4">
@@ -96,9 +100,11 @@
     function updateQuantity(carritoId, cambio) {
         var cantidadElement = document.getElementById("cantidad-" + carritoId);
         var precioUnitario = parseFloat(document.getElementById("precio-unitario-" + carritoId).innerText.replace('$', '').replace(',', ''));
+        var stock = parseInt($('#cantidad-' + carritoId).attr('data-stock'));  // Aquí se obtiene el stock disponible
         var nuevaCantidad = parseInt(cantidadElement.innerText) + cambio;
 
         if (nuevaCantidad < 1) return; // Evita que la cantidad sea menor a 1
+        if (nuevaCantidad > stock) return; // Evita que la cantidad sea mayor que el stock
 
         var nuevoPrecioTotal = nuevaCantidad * precioUnitario; // Calcula el nuevo precio total
 
@@ -137,4 +143,6 @@
             }
         });
     }
+
+
 </script>

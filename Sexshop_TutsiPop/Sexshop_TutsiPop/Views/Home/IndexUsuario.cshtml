@@ -4,7 +4,9 @@
     ViewData["Title"] = "Home Page";
     Layout = null; // Usamos una vista sin layout
 }
-
+@section Scripts {
+    <script src="~/js/btn.js"></script>
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,9 +92,9 @@
                         <p>@producto.categoria</p>
                         <p class="precio">$@producto.precio</p>
                         <iframe name="hidden_iframe" style="display:none;"></iframe>
-                       @*  <form method="post" asp-controller="carrito" asp-action="AgregarAlCarrito" asp-route-idProducto="@producto.id_producto" target="hidden_iframe">
-                            <button type="submit" class="add-to-cart-btn">Agregar al carrito</button>
-                        </form> *@
+
+                        <!-- Campo oculto para almacenar la cantidad en el carrito -->
+                        <input type="hidden" id="cantidad-@producto.id_producto" value="@producto.unidades_stock" />
                         <form method="post" asp-controller="carrito" asp-action="AgregarAlCarrito" asp-route-idProducto="@producto.id_producto" target="hidden_iframe">
                             <input type="hidden" name="id_producto" value="@producto.id_producto" />
                             <button type="submit" class="add-to-cart-btn" data-stock="@producto.unidades_stock">
@@ -108,6 +110,7 @@
             <p>No hay productos disponibles.</p>
         }
     </div>
+
 
     <div class="educate-container">
         <!-- Sección de Texto -->
@@ -212,6 +215,6 @@
         </div>
     </footer>
 
-    <script src="~/js/btn.js"></script>
+
 </body>
 </html>

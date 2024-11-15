@@ -156,15 +156,15 @@ CREATE TABLE carrito (
 
 
 CREATE TABLE auditorias (
-    id_auditoria SERIAL PRIMARY KEY,
-    id_usuario INT NOT NULL,
-    accion VARCHAR(50) NOT NULL,
-    tabla_afectada VARCHAR(50) NOT NULL,
-    id_registro_afectado INT NOT NULL,
-    fecha TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    ip_usuario VARCHAR(45),
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
-);
+    id_auditoria SERIAL NOT NULL,
+      nombre_tabla VARCHAR(20) NOT NULL, 
+    tipo_operacion VARCHAR(20) NOT NULL, 
+    dato_anterior TEXT, 
+    dato_nuevo TEXT, 
+    fecha TIMESTAMP WITHOUT TIME ZONE NOT NULL, 
+    usuario VARCHAR(20) NOT NULL, 
+   CONSTRAINT pk_registro_cambios PRIMARY KEY(id_auditoria) 
+) WITH (OIDS=FALSE); 
 
 -- PROCEDIMIENTOS ALMACENADOS 
 

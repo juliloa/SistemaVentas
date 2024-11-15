@@ -31,6 +31,22 @@ namespace Sexshop_TutsiPop.Controllers
             {
                 connection.Open();
 
+                // Verificar stock antes de actualizar
+                using (var checkStockCommand = new NpgsqlCommand(@"
+                    SELECT p.unidades_stock AS  Stock 
+                    FROM carrito c 
+                    JOIN productos p ON c.id_producto = p.id_producto 
+                    WHERE c.carrito_id = @carrito_id", connection))
+                {
+                    checkStockCommand.Parameters.AddWithValue("carrito_id", carritoId);
+                    int unidadesStock = (int)checkStockCommand.ExecuteScalar();
+
+                    if (nuevaCantidad > unidadesStock)
+                    {
+                        return Json(new { success = false, message = "No hay suficiente stock disponible" });
+                    }
+                }
+
                 // Usar CommandType.Text para llamar a la función y obtener su retorno
                 using (var command = new NpgsqlCommand("SELECT actualizar_cantidad_producto(@carrito_id, @nueva_cantidad)", connection))
                 {
@@ -58,8 +74,17 @@ namespace Sexshop_TutsiPop.Controllers
             var producto = await _context.productos.FindAsync(idProducto);
             if (producto == null)
             {
-                return NotFound(); // Si no existe el producto
+                TempData["Error"] = "Producto no encontrado.";
+                return RedirectToAction("IndexUsuario", "Home");
             }
+
+            if (producto.unidades_stock <= 0)
+            {
+                TempData["Error"] = "El producto está agotado.";
+                return RedirectToAction("IndexUsuario", "Home");
+            }
+
+
 
             // Obtener el usuario logueado
             var usuario = await _context.usuarios.FirstOrDefaultAsync(u => u.nombre == User.Identity.Name);
@@ -93,7 +118,8 @@ namespace Sexshop_TutsiPop.Controllers
                     p.nombre_producto AS ProductoNombre, 
                     c.cantidad, 
                     c.precio AS Precio,
-                    c.fecha
+                    c.fecha,
+                    p.unidades_stock AS Stock 
                 FROM 
                     carrito c
                 JOIN 

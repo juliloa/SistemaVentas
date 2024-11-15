@@ -11,6 +11,7 @@ namespace Sexshop_TutsiPop.Models
         public int Cantidad { get; set; }  
         public decimal Precio { get; set; } // Cantidad de productos en el carrito
         public DateTime Fecha { get; set; }            // Fecha de la adición al carrito
+        public int Stock { get; set; }
     }
 }
 

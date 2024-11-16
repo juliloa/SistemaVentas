@@ -136,9 +136,10 @@
                                     <span asp-validation-for="fecha_venta" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="id_metodo_pago" class="control-label"></label>
-                                    <input asp-for="id_metodo_pago" class="form-control" />
-                                    <span asp-validation-for="id_metodo_pago" class="text-danger"></span>
+                                    <label for="id_metodo_pago">Metodo de pago</label>
+                                    <select asp-for="id_metodo_pago" class="form-control" asp-items="ViewBag.Ventas">
+                                        <option value="">Metodo de pago</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Create" class="btn btn-primary" />

@@ -39,7 +39,13 @@ namespace Sexshop_TutsiPop.Controllers
                     WHERE c.carrito_id = @carrito_id", connection))
                 {
                     checkStockCommand.Parameters.AddWithValue("carrito_id", carritoId);
-                    int unidadesStock = (int)checkStockCommand.ExecuteScalar();
+                    var result = checkStockCommand.ExecuteScalar();
+
+                    if (result == null)
+                    {
+                        return Json(new { success = false, message = "Producto no encontrado" });
+                    }
+                    int unidadesStock = (int)result;
 
                     if (nuevaCantidad > unidadesStock)
                     {

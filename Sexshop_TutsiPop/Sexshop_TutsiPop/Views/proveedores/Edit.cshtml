@@ -154,9 +154,10 @@
                                     <span asp-validation-for="ciudad" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="id_direccion" class="control-label"></label>
-                                    <input asp-for="id_direccion" class="form-control" />
-                                    <span asp-validation-for="id_direccion" class="text-danger"></span>
+                                    <label for="id_direccion">codigo postal</label>
+                                    <select asp-for="id_direccion" class="form-control" asp-items="ViewBag.Proveedor">
+                                        <option value="">Seleccione un codigo postal</option>
+                                    </select>
                                 </div>
                                 <div class="form-group form-check">
                                     <label class="form-check-label">

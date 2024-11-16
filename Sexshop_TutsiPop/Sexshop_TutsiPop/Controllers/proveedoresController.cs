@@ -122,6 +122,12 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: proveedores/Create
         public IActionResult Create()
         {
+            var direccion = _context.direcciones
+               .Select(d => new { d.id_direccion, d.codigo_postal })
+               .ToList();
+
+            ViewBag.Proveedor = new SelectList(direccion, "id_direccion", "codigo_postal");
+
             return View();
         }
 
@@ -138,6 +144,7 @@ namespace Sexshop_TutsiPop.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.Proveedor = new SelectList(_context.proveedores, "id_direccion", "codigo_postal", proveedores.id_direccion);
             return View(proveedores);
         }
 
@@ -154,6 +161,12 @@ namespace Sexshop_TutsiPop.Controllers
             {
                 return NotFound();
             }
+            var direccion = _context.direcciones
+               .Select(d => new { d.id_direccion, d.codigo_postal })
+               .ToList();
+
+            ViewBag.Proveedor = new SelectList(direccion, "id_direccion", "codigo_postal");
+
             return View(proveedores);
         }
 

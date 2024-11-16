@@ -69,7 +69,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <span>Detalle de Envío</span>
                     </div>
-                    <!-- Aquí van los campos del formulario de envío -->
+             
                 </div>
             </div>
         </div>
@@ -101,14 +101,15 @@
         var cantidadElement = document.getElementById("cantidad-" + carritoId);
         var precioUnitario = parseFloat(document.getElementById("precio-unitario-" + carritoId).innerText.replace('$', '').replace(',', ''));
         var stock = parseInt($('#cantidad-' + carritoId).attr('data-stock'));  // Aquí se obtiene el stock disponible
-        var nuevaCantidad = parseInt(cantidadElement.innerText) + cambio;
+        var cantidadActual = parseInt(cantidadElement.innerText); //
+        const nuevaCantidad = cantidadActual + cambio;
 
         if (nuevaCantidad < 1) return; // Evita que la cantidad sea menor a 1
         if (nuevaCantidad > stock) return; // Evita que la cantidad sea mayor que el stock
 
-        var nuevoPrecioTotal = nuevaCantidad * precioUnitario; // Calcula el nuevo precio total
+        cantidadElement.innerText = nuevaCantidad;//
 
-        // Muestra el precio actualizado en la interfaz
+        var nuevoPrecioTotal = nuevaCantidad * precioUnitario; // Calcula el nuevo precio total
         document.getElementById("precio-total-" + carritoId).innerText = "$" + nuevoPrecioTotal.toFixed(2);
 
         // Actualizar el total del carrito
@@ -122,7 +123,6 @@
 
         // Envía la actualización de la cantidad al servidor para ajustar el stock
         var token = $('input[name="__RequestVerificationToken"]').val();
-
         $.ajax({
             url: '@Url.Action("UpdateQuantity", "carrito")',
             type: 'POST',

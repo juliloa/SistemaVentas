@@ -86,6 +86,7 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: ventas
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.ventas.ToListAsync());
         }
 
@@ -110,6 +111,11 @@ namespace Sexshop_TutsiPop.Controllers
         // GET: ventas/Create
         public IActionResult Create()
         {
+            var ventas = _context.metodos_pago
+               .Select(m => new { m.id_metodo, m.metodo_pago })
+               .ToList();
+
+            ViewBag.Ventas = new SelectList(ventas, "id_metodo", "metodo_pago");
             return View();
         }
 
@@ -126,6 +132,7 @@ namespace Sexshop_TutsiPop.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.Ventas = new SelectList(_context.categorias, "id_metodo", "metodo_pago", ventas.id_metodo_pago);
             return View(ventas);
         }
 
@@ -142,6 +149,12 @@ namespace Sexshop_TutsiPop.Controllers
             {
                 return NotFound();
             }
+            var ventasm = _context.metodos_pago
+               .Select(m => new { m.id_metodo, m.metodo_pago })
+               .ToList();
+
+            ViewBag.Ventas = new SelectList(ventasm, "id_metodo", "metodo_pago");
+           
             return View(ventas);
         }
 
@@ -177,6 +190,7 @@ namespace Sexshop_TutsiPop.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             return View(ventas);
         }
 

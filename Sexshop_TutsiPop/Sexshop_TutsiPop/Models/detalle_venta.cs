@@ -23,7 +23,6 @@ namespace Sexshop_TutsiPop.Models
         [DisplayName("Cantidad")]
         public int cantidad { get; set; }
 
-
         [DisplayName("Descuento")]
         public decimal descuento { get; set; } = 0.00M;
 

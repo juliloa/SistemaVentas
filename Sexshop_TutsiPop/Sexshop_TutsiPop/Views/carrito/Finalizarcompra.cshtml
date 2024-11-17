@@ -1,0 +1,38 @@
+﻿@model FinalizarCompraViewModel
+
+<h2>Finalizar Compra</h2>
+
+<h3>Cliente: @Model.Cliente.nombre @Model.Cliente.apellido</h3>
+<p><strong>Correo:</strong> @Model.Cliente.correo</p>
+<p><strong>Teléfono:</strong> @Model.Cliente.numero_telefono</p>
+<p><strong>Dirección:</strong> @Model.Cliente.id_direccion</p>
+
+<h3>Productos en el carrito:</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Carrito)
+        {
+            <tr>
+                <td>@item.id_producto/td>
+                <td>@item.cantidad</td>
+                <td>@item.precio.ToString("C")</td>
+                <td>@(item.cantidad * item.precio).ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Total de la compra: @Model.TotalCompra.ToString("C")</h3>
+
+<form method="post" action="@Url.Action("RealizarCompra", "Carrito")">
+    <input type="hidden" name="clienteId" value="@Model.Cliente.cedula_cliente" />
+    <button type="submit" class="btn btn-success">Confirmar Compra</button>
+</form>

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Threading.Tasks;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -23,6 +23,272 @@ namespace Sexshop_TutsiPop.Controllers
         {
             _context = context;
         }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> RealizarCompra(clientes cliente, int? empleadoId)
+        {
+            var usuario = await _context.usuarios.FirstOrDefaultAsync(u => u.nombre == User.Identity.Name);
+            if (usuario == null)
+            {
+                return Unauthorized();
+            }
+            var clienteExistente = await _context.clientes
+        .FirstOrDefaultAsync(c => c.correo == usuario.email);
+
+            var carrito = await _context.carrito
+                .Where(c => c.id_usuario == usuario.id_usuario)
+                .ToListAsync();
+
+            if (!carrito.Any())
+            {
+                return RedirectToAction("IndexUsuario", "Home");
+            }
+
+            var empleado = empleadoId.HasValue
+            ? await _context.empleados.FirstOrDefaultAsync(e => e.cedula_empleado == empleadoId.Value.ToString()) // Convertir a string
+            : await _context.empleados.OrderBy(e => Guid.NewGuid()).FirstOrDefaultAsync();
+
+            await _context.SaveChangesAsync();
+
+            // Crear la venta
+            var venta = new ventas
+            {
+                cedula_cliente = clienteExistente.cedula_cliente,
+                cedula_empleado = empleado.cedula_empleado,
+                fecha_venta = DateTime.UtcNow
+            };
+
+            _context.ventas.Add(venta);
+            await _context.SaveChangesAsync();
+            int idVenta = venta.id_venta;
+            if (venta.id_venta == 0)
+            {
+                // Esto indica que no se ha asignado correctamente el ID, lo cual es muy raro
+                return BadRequest("Hubo un problema al guardar la venta.");
+            }
+            // Crear los detalles de la venta
+            foreach (var item in carrito)
+            {
+                var detalle = new detalle_venta
+                {
+                    id_venta = venta.id_venta,
+                    id_producto = item.id_producto,
+                    cantidad = item.cantidad,
+               
+                };
+                _context.detalle_venta.Add(detalle);
+            }
+
+            await _context.SaveChangesAsync();
+
+            // Limpiar el carrito
+            _context.carrito.RemoveRange(carrito);
+            await _context.SaveChangesAsync();
+
+            // Generar la factura en PDF
+            return await GenerarFacturaPDF(idVenta);
+        }
+
+        public async Task<IActionResult> GenerarFacturaPDF(int idVenta)
+        {
+            // Obtener la venta con detalles de productos, cliente, y empleado
+            var venta = await (from v in _context.ventas
+                               where v.id_venta == idVenta
+                               join d in _context.detalle_venta on v.id_venta equals d.id_venta
+                               join p in _context.productos on d.id_producto equals p.id_producto
+                               join c in _context.clientes on v.cedula_cliente equals c.cedula_cliente
+                               join e in _context.empleados on v.cedula_empleado equals e.cedula_empleado
+                               join mp in _context.metodos_pago on v.id_metodo_pago equals mp.id_metodo into mpJoin
+                               from mp in mpJoin.DefaultIfEmpty() // Esto asegura que incluso si el metodo de pago es null, se incluya
+                               where v.id_venta == idVenta // Asegúrate de que el ID de la venta sea correcto
+                               select new
+                               {
+                                   v.id_venta,
+                                   v.fecha_venta,
+                                   ClienteNombre = c.nombre,
+                                   ClienteApellido = c.apellido,
+                                   ClienteCorreo = c.correo,
+                                   ClienteDireccion = c.id_direccion,
+                                   EmpleadoNombre = e.nombre,
+                                   EmpleadoApellido = e.apellido,
+                                   MetodoPago = mp != null ? mp.metodo_pago : "No especificado", // Maneja el caso donde mp es null
+                                   Detalles = new
+                                   {
+                                       ProductoNombre = p.nombre_producto,
+                                       d.cantidad,
+                                       p.precio,
+                                       Subtotal = (d.cantidad * p.precio * (1 - d.descuento))
+                                   }
+                               }).ToListAsync();
+
+
+            if (venta == null || !venta.Any())
+            {
+                return NotFound();
+            }
+
+            using (var stream = new MemoryStream())
+            {
+                var documento = new Document();
+                PdfWriter.GetInstance(documento, stream);
+                documento.Open();
+
+                // Encabezado de la factura
+                documento.Add(new Paragraph("Factura de Compra"));
+                documento.Add(new Paragraph($"ID Venta: {venta.First().id_venta}"));
+                documento.Add(new Paragraph($"Fecha: {venta.First().fecha_venta.ToString("dd/MM/yyyy")}"));
+                documento.Add(new Paragraph($"Empleado: {venta.First().EmpleadoNombre} {venta.First().EmpleadoApellido}"));
+                documento.Add(new Paragraph($"Método de Pago: {venta.First().MetodoPago}"));
+                documento.Add(new Paragraph("\n"));
+
+                // Información del Cliente
+                var cliente = venta.First();
+                documento.Add(new Paragraph($"Cliente: {cliente.ClienteNombre} {cliente.ClienteApellido}"));
+                documento.Add(new Paragraph($"Correo: {cliente.ClienteCorreo}"));
+                documento.Add(new Paragraph($"Dirección: {(cliente.ClienteDireccion.HasValue ? cliente.ClienteDireccion.ToString() : "Sin Dirección")}"));
+                documento.Add(new Paragraph("\n"));
+
+                // Tabla con detalles de la venta
+                var tabla = new PdfPTable(4);
+                tabla.AddCell("Producto");
+                tabla.AddCell("Cantidad");
+                tabla.AddCell("Precio Unitario");
+                tabla.AddCell("Subtotal");
+
+                // Añadir detalles de los productos a la tabla
+                decimal totalVenta = 0;
+                foreach (var detalle in venta)
+                {
+                    tabla.AddCell(detalle.Detalles.ProductoNombre);
+                    tabla.AddCell(detalle.Detalles.cantidad.ToString());
+                    tabla.AddCell(detalle.Detalles.precio.ToString("C"));
+                    tabla.AddCell(detalle.Detalles.Subtotal.ToString("C"));
+                    totalVenta += detalle.Detalles.Subtotal;
+                }
+
+                documento.Add(tabla);
+                documento.Add(new Paragraph("\n"));
+
+                // Total de la venta
+                documento.Add(new Paragraph($"Total: {totalVenta.ToString("C")}", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+
+                // Cerrar el documento PDF
+                documento.Close();
+
+                // Devolver el PDF como archivo de descarga
+                return File(stream.ToArray(), "application/pdf", "Factura_" + venta.First().id_venta + ".pdf");
+            }
+        }
+        public async Task<IActionResult> FinalizarCompra()
+        {
+            // Obtén el usuario actual
+            var usuario = await _context.usuarios
+                .FirstOrDefaultAsync(u => u.nombre == User.Identity.Name);
+
+            if (usuario == null)
+            {
+                return Unauthorized(); // Si no existe el usuario, redirige a la página de error o login
+            }
+
+            // Busca al cliente usando el correo del usuario
+            var cliente = await _context.clientes
+                .FirstOrDefaultAsync(c => c.correo == usuario.email);  // Comparar por correo
+
+            if (cliente == null)
+            {
+                // Si no se encuentra el cliente, redirige a la vista para crear un cliente
+                return RedirectToAction("CrearCliente");
+            }
+
+            // Obtén los productos del carrito del usuario
+            var carrito = await _context.carrito
+                .Where(c => c.id_usuario == usuario.id_usuario)  // Asegúrate de que el id_usuario del carrito coincida
+                .ToListAsync();
+
+            // Calcula el total de la compra
+            var totalCompra = carrito.Sum(item => item.precio * item.cantidad);
+
+            // Crea el ViewModel para pasar a la vista
+            var viewModel = new FinalizarCompraViewModel
+            {
+                Carrito = carrito,
+                Cliente = cliente,
+                TotalCompra = totalCompra
+            };
+
+            // Devuelve la vista con los datos del carrito, cliente y total
+            return View(viewModel);
+        }
+
+        public IActionResult CrearCliente()
+        {
+            // Inicializamos el modelo para asegurarnos de que no sea null
+            var modelo = new clientes(); // Crea una nueva instancia del modelo
+            return View(modelo); // Pasa el modelo a la vista
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> GuardarCliente(clientes cliente)
+        {
+            // Verificar si el cliente ya existe usando la cédula o algún otro identificador
+            var clienteExistente = await _context.clientes
+                                   .FirstOrDefaultAsync(c => c.cedula_cliente == cliente.cedula_cliente);
+
+            if (clienteExistente != null)
+                {
+                    // Si el cliente ya existe, redirigir directamente a 'FinalizarCompra'
+                    return RedirectToAction("FinalizarCompra", new { clienteId = cliente.cedula_cliente });
+                }
+
+                if (ModelState.IsValid)
+                {
+                    // Si el cliente no existe, agregarlo a la base de datos
+                    _context.clientes.Add(cliente);
+                    await _context.SaveChangesAsync();
+
+                    // Redirigir a la vista de 'FinalizarCompra' con el cliente recién creado
+                    return RedirectToAction("FinalizarCompra", new { clienteId = cliente.cedula_cliente });
+                }
+
+                // Si hay un error en el modelo, volver a la vista de creación
+                return View(cliente);
+
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> GuardarDireccion(direcciones direccion)
+        {
+            var usuario = await _context.usuarios.FirstOrDefaultAsync(u => u.nombre == User.Identity.Name);
+            if (usuario == null)
+            {
+                return Json(new { success = false, message = "Usuario no autorizado" });
+            }
+
+            direccion.id_direccion = 0; // Aseguramos que se cree un nuevo registro
+            _context.direcciones.Add(direccion);
+            await _context.SaveChangesAsync();
+
+            // Actualizar el cliente con la nueva dirección
+            var cliente = await _context.clientes.FirstOrDefaultAsync(c => c.cedula_cliente == usuario.nombre);
+            if (cliente != null)
+            {
+                // Si el cliente existe, asociamos la nueva dirección
+                cliente.id_direccion = direccion.id_direccion;
+                _context.Update(cliente);
+                await _context.SaveChangesAsync();
+
+                // Redirigir a la vista de 'Finalizarcompra' con el cliente ya existente
+                return RedirectToAction("Finalizarcompra", new { clienteId = cliente.cedula_cliente });
+            }
+            else
+            {
+                // Si el cliente no existe, redirigir a la vista para crear el cliente
+                return RedirectToAction("CrearCliente");
+            }
+        }
+
 
         [HttpPost]
         public IActionResult UpdateQuantity(int carritoId, int nuevaCantidad)

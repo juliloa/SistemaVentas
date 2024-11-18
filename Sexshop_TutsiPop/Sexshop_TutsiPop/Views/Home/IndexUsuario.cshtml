@@ -13,6 +13,11 @@
     <title>TutsiPop</title>
 
     <!-- Estilos generales -->
+    <!-- Fuentes y Estilos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="~/css/navIndexs.css" />
     <link rel="stylesheet" href="~/css/StyleIndex.css" />
     <link rel="stylesheet" href="~/css/contenedorProductos.css" />
@@ -25,12 +30,8 @@
 
     <!-- Cargar jQuery y otros scripts de librerías externas -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
+    
 </head>
 <body>
 
@@ -45,6 +46,10 @@
                         <i class='bx bx-log-out-circle'></i>
                         <span>Cerrar Sesión</span>
                     </a>
+                    <a class="navbar-login" asp-area="" asp-controller="carrito" asp-action="Index">
+                        <i class="bx bx-cart"></i>
+                        <span>Ver Carrito</span>
+                    </a>
                 }
                 else
                 {
@@ -57,11 +62,11 @@
                         <span>Registrarse</span>
                     </a>
                 }
-                <a class="navbar-login" asp-area="" asp-controller="carrito" asp-action="Index">
-                    <i class="bx bx-cart"></i>
-                    <span>Ver Carrito</span>
-                </a>
-            </div>
+                </div>
+            <!-- Slider main container (fuera del navbar) -->
+
+
+
         </div>
     </nav>
     <!-- Swiper Hero -->
@@ -72,11 +77,11 @@
             <div class="swiper-slide"><img src="~/images/freepik__upload__51895.jpeg" /></div>
             <div class="swiper-slide"><img src="~/images/freepik__upload__3037.jpeg" /></div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-    </div>
+            <div class="swiper-pagination"></div>
 
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div> 
+    </div>
     <!-- Productos -->
     <div class="productos-container">
         @if (Model != null && Model.Any())
@@ -106,10 +111,7 @@
         {
             <p>No hay productos disponibles.</p>
         }
-
     </div>
-
-
     <div class="educate-container">
         <!-- Sección de Texto -->
         <div class="educate-text">

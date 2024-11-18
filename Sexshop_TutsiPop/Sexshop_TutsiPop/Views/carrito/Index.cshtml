@@ -156,63 +156,46 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
-        var totalCarrito = 0;
-        $('#productos-seleccionados span[id^="precio-total-"]').each(function () {
-            var carritoId = $(this).attr('id').split('-')[2];
-            var cantidad = parseInt($('#cantidad-' + carritoId).text());
-            var precioUnitario = parseFloat($('#precio-unitario-' + carritoId).text().replace('$', '').replace(',', ''));
-            var precioTotal = cantidad * precioUnitario;
-
-            // Mostrar el precio total de cada producto
-            $('#precio-total-' + carritoId).text('$' + precioTotal.toFixed(2));
-
-            // Sumar al total del carrito
-            totalCarrito += precioTotal;
-        });
-
-        // Mostrar el total del carrito
-        $('#total-carrito').text('$' + totalCarrito.toFixed(2));
+        // Cálculo inicial del total del carrito
+        actualizarTotalCarrito();
     });
 
-    function updateQuantity(carritoId, cambio) {
-        var cantidadElement = document.getElementById("cantidad-" + carritoId);
-        var precioUnitario = parseFloat(document.getElementById("precio-unitario-" + carritoId).innerText.replace('$', '').replace(',', ''));
-        var stock = parseInt($('#cantidad-' + carritoId).attr('data-stock'));  // Aquí se obtiene el stock disponible
-        var cantidadActual = parseInt(cantidadElement.innerText); //
+    function updateQuantity(carrito_id, cambio) {
+        var cantidadElement = document.getElementById("cantidad-" + carrito_id);
+        var precioUnitario = parseFloat(document.getElementById("precio-unitario-" + carrito_id).innerText.replace('$', '').replace(',', ''));
+        var stock = parseInt(cantidadElement.getAttribute("data-stock"));
+        var cantidadActual = parseInt(cantidadElement.innerText);
+
         const nuevaCantidad = cantidadActual + cambio;
 
-        if (nuevaCantidad < 1) return; // Evita que la cantidad sea menor a 1
-        if (nuevaCantidad > stock) return; // Evita que la cantidad sea mayor que el stock
+        // Validar límites (mayor o igual a 1, no superar el stock)
+        if (nuevaCantidad < 1 || nuevaCantidad > stock) {
+            alert("Cantidad fuera de los límites permitidos.");
+            return;
+        }
 
-        cantidadElement.innerText = nuevaCantidad;//
-
-        var nuevoPrecioTotal = nuevaCantidad * precioUnitario; // Calcula el nuevo precio total
-        document.getElementById("precio-total-" + carritoId).innerText = "$" + nuevoPrecioTotal.toFixed(2);
-
-        // Actualizar el total del carrito
-        var totalCarrito = 0;
-        $('#productos-seleccionados span[id^="precio-total-"]').each(function () {
-            totalCarrito += parseFloat($(this).text().replace('$', '').replace(',', ''));
-        });
-
-        // Actualizar el total general del carrito
-        $('#total-carrito').text('$' + totalCarrito.toFixed(2));
-
-        // Envía la actualización de la cantidad al servidor para ajustar el stock
+        // Enviar la nueva cantidad al servidor
         var token = $('input[name="__RequestVerificationToken"]').val();
         $.ajax({
-            url: '@Url.Action("UpdateQuantity", "carrito")',
+            url: '@Url.Action("UpdateQuantity", "Carrito")',
             type: 'POST',
             data: {
-                carritoId: carritoId,
+                carrito_id: carrito_id,
                 nuevaCantidad: nuevaCantidad,
                 __RequestVerificationToken: token
             },
             success: function (response) {
                 if (response.success) {
+                    // Actualiza la cantidad en el DOM
                     cantidadElement.innerText = nuevaCantidad;
+
+                    // Actualiza el precio total del producto en el DOM
+                    document.getElementById("precio-total-" + carrito_id).innerText = "$" + response.precio.toFixed(2);
+
+                    // Recalcular el total del carrito
+                    actualizarTotalCarrito();
                 } else {
-                    alert("Error al actualizar la cantidad");
+                    alert(response.message || "Error al actualizar la cantidad.");
                 }
             },
             error: function () {
@@ -222,4 +205,16 @@
     }
 
 
+    function actualizarTotalCarrito() {
+        var totalCarrito = 0;
+
+        // Recorre todos los precios totales de productos individuales
+        $('#productos-seleccionados span[id^="precio-total-"]').each(function () {
+            totalCarrito += parseFloat($(this).text().replace('$', '').replace(',', ''));
+        });
+
+        // Actualiza el total general del carrito
+        $('#total-carrito').text('$' + totalCarrito.toFixed(2));
+    }
 </script>
+    

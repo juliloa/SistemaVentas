@@ -291,48 +291,40 @@ namespace Sexshop_TutsiPop.Controllers
 
 
         [HttpPost]
-        public IActionResult UpdateQuantity(int carritoId, int nuevaCantidad)
+        public IActionResult UpdateQuantity(int carrito_id, int nuevaCantidad)
         {
             using (var connection = (NpgsqlConnection)_context.Database.GetDbConnection())
             {
                 connection.Open();
 
-                // Verificar stock antes de actualizar
-                using (var checkStockCommand = new NpgsqlCommand(@"
-                    SELECT p.unidades_stock AS  Stock 
-                    FROM carrito c 
-                    JOIN productos p ON c.id_producto = p.id_producto 
-                    WHERE c.carrito_id = @carrito_id", connection))
+                using (var transaction = connection.BeginTransaction())
                 {
-                    checkStockCommand.Parameters.AddWithValue("carrito_id", carritoId);
-                    var result = checkStockCommand.ExecuteScalar();
-
-                    if (result == null)
+                    try
                     {
-                        return Json(new { success = false, message = "Producto no encontrado" });
-                    }
-                    int unidadesStock = (int)result;
+                        // Usar función almacenada para actualizar y devolver nuevo precio
+                        using (var command = new NpgsqlCommand(
+                            "SELECT actualizar_cantidad_producto(@carrito_id, @nueva_cantidad)", connection, transaction))
+                        {
+                            command.Parameters.AddWithValue("carrito_id", carrito_id);
+                            command.Parameters.AddWithValue("nueva_cantidad", nuevaCantidad);
 
-                    if (nuevaCantidad > unidadesStock)
+                            var nuevoPrecio = (decimal)command.ExecuteScalar();
+
+                            // Confirmar transacción
+                            transaction.Commit();
+
+                            return Json(new { success = true, precio = nuevoPrecio });
+                        }
+                    }
+                    catch (Exception ex)
                     {
-                        return Json(new { success = false, message = "No hay suficiente stock disponible" });
+                        transaction.Rollback();
+                        return Json(new { success = false, message = "Error al actualizar la cantidad", error = ex.Message });
                     }
-                }
-
-                // Usar CommandType.Text para llamar a la función y obtener su retorno
-                using (var command = new NpgsqlCommand("SELECT actualizar_cantidad_producto(@carrito_id, @nueva_cantidad)", connection))
-                {
-                    command.CommandType = CommandType.Text;
-                    command.Parameters.AddWithValue("carrito_id", carritoId);
-                    command.Parameters.AddWithValue("nueva_cantidad", nuevaCantidad);
-
-                    // Ejecuta la función y obtiene el nuevo precio
-                    var nuevoPrecio = (decimal)command.ExecuteScalar();
-
-                    return Json(new { success = true, precio = nuevoPrecio });
                 }
             }
         }
+
 
 
 

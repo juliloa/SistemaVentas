@@ -1,0 +1,95 @@
+﻿/* Estilo general para el formulario */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para los grupos de formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Estilo para las etiquetas */
+label {
+    display: block;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+/* Estilo para los campos de entrada */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+    .form-control:focus {
+        border-color: #007bff; /* Color de borde al estar enfocado */
+        outline: none;
+    }
+
+/* Estilo para el subtítulo */
+.subtitulo {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555; /* Color gris para diferenciar del título */
+    margin-bottom: 20px; /* Espacio inferior para separar del formulario */
+    font-style: italic; /* Añade un estilo en cursiva */
+}
+/* Estilo para el título */
+.titulo {
+    text-align: center;
+    font-size: 2rem;
+    color: #004d70; /* Azul del tema */
+    margin-bottom: 20px; /* Espacio inferior para separar del formulario */
+    font-weight: bold;
+}
+/* Estilo para el botón */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 5px;
+    background-color: transparent; /* Fondo transparente */
+    border: 2px solid #004d70; /* Borde azul */
+    color: #004d70; /* Texto azul */
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 5px;
+}
+
+    .btn:hover {
+        background-color: #004d70; /* Fondo azul al pasar el ratón */
+        color: white; /* Texto blanco al pasar el ratón */
+    }
+
+/* Estilo para el botón de envío */
+button[type="submit"] {
+    width: 100%;
+}
+
+/* Mejorar la accesibilidad en dispositivos pequeños */
+@media (max-width: 600px) {
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control, .btn {
+        font-size: 0.9rem;
+    }
+}
+
+este es mi css modificalo con lo que me mandaste

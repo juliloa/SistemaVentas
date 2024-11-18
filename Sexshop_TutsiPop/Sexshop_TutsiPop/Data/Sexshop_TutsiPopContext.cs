@@ -35,6 +35,7 @@ namespace Sexshop_TutsiPop.Data
         public DbSet<Sexshop_TutsiPop.Models.detalle_venta> detalle_venta { get; set; }
         public DbSet<Sexshop_TutsiPop.Models.entregas> entregas { get; set; }
         public DbSet<Sexshop_TutsiPop.Models.carrito> carrito { get; set; }
+        public DbSet<Sexshop_TutsiPop.Models.auditoria> auditoria { get; set; }
 
 
     }

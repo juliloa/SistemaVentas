@@ -241,18 +241,18 @@ namespace Sexshop_TutsiPop.Controllers
                     return RedirectToAction("FinalizarCompra", new { clienteId = cliente.cedula_cliente });
                 }
 
-                if (ModelState.IsValid)
-                {
-                    // Si el cliente no existe, agregarlo a la base de datos
-                    _context.clientes.Add(cliente);
-                    await _context.SaveChangesAsync();
+            if (ModelState.IsValid)
+            {
+                // Si el cliente no existe, agregarlo a la base de datos
+                _context.clientes.Add(cliente);
+                await _context.SaveChangesAsync();
 
-                    // Redirigir a la vista de 'FinalizarCompra' con el cliente recién creado
-                    return RedirectToAction("FinalizarCompra", new { clienteId = cliente.cedula_cliente });
-                }
+                // Redirigir a la vista de 'FinalizarCompra' con el cliente recién creado
+                return RedirectToAction("FinalizarCompra", new { clienteId = cliente.cedula_cliente });
+            }
 
-                // Si hay un error en el modelo, volver a la vista de creación
-                return View(cliente);
+            // Si hay un error en el modelo, volver a la vista de creación
+            return View(cliente);
 
         }
 

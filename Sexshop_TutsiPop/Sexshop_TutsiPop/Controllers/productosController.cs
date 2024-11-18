@@ -241,7 +241,7 @@ namespace Sexshop_TutsiPop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id_producto,nombre_producto,id_categoria,id_proveedor,unidades_stock,precio,activo")] productos productos)
+        public async Task<IActionResult> Edit(int id, [Bind("id_producto,nombre_producto,id_categoria,id_proveedor,unidades_stock,precio,activo,imagen_url")] productos productos)
         {
             
 

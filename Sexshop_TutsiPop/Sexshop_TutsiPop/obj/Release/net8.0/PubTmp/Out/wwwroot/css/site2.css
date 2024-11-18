@@ -1,0 +1,105 @@
+﻿
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+    height: 100%; /* Asegura que el cuerpo cubra toda la pantalla */
+}
+
+/* Estilo del cuerpo y fondo de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../Images/pixelcut-export.png'); /* Ruta de la imagen */
+    background-size: 100% 100%; /* Ajusta el fondo para cubrir todo el ancho y alto */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Mantiene el fondo fijo mientras se desplaza la página */
+}
+
+/* Personaliza el botón de ver contraseña */
+/* Eliminar bordes del botón */
+.btn-outline-secondary {
+    border: none; /* Quita el borde */
+    box-shadow: none; /* Quita cualquier sombra */
+    background-color: transparent; /* Opcional: hace que el fondo sea transparente */
+}
+
+
+/* Asegúrate de que el grupo de entrada esté alineado correctamente */
+.input-group {
+    display: flex; /* Asegúrate de que los elementos estén en línea */
+    align-items: center; /* Centra verticalmente los elementos */
+}
+/* Contenedor del formulario */
+.form-container {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+    /* Título del formulario */
+    .form-container h2 {
+        text-align: center;
+        color: #d70067;
+    }
+
+/* Etiquetas del formulario */
+label {
+    font-weight: bold;
+}
+
+/* Inputs del formulario */
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Botón de enviar del formulario */
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #d70067;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .btn-submit:hover {
+        background-color: #bf0054;
+    }
+
+/* Enlace de retroceso */
+.link-back {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #d70067;
+    text-decoration: none;
+}
+
+    .link-back:hover {
+        text-decoration: underline;
+    }
+
+/* Enlaces dentro de botones de enlace */
+.btn-link {
+    color: #a00f63; /* Cambia el color del texto */
+    text-decoration: none; /* Quita el subrayado */
+}
+
+    .btn-link:hover {
+        color: #a00f63; /* Mantiene el mismo color al pasar el mouse */
+        text-decoration: underline; /* Puedes mantener el subrayado si lo deseas */
+    }
+
+    .btn-link:focus {
+        color: #a00f63; /* Mantiene el mismo color al hacer foco */
+        outline: none; /* Quita el contorno de foco */
+    }

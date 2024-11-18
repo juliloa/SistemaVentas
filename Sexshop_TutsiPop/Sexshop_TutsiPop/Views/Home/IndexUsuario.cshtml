@@ -14,12 +14,8 @@
 
     <!-- Estilos generales -->
     <!-- Fuentes y Estilos -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="~/css/StyleIndex.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/navIndexs.css" />
-    <link rel="stylesheet" href="~/css/StyleIndex.css" />
     <link rel="stylesheet" href="~/css/contenedorProductos.css" />
     <link rel="stylesheet" href="~/css/footer.css" />
     <link href="~/css/containerAcategoria.css" rel="stylesheet" />
@@ -29,18 +25,23 @@
     <link href="~/css/btnWhatsapp.css" rel="stylesheet" />
 
     <!-- Cargar jQuery y otros scripts de librerías externas -->
+    <script src="~/js/btn.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
-
     <!-- Barra de Navegación -->
     <nav class="navbar">
         <div class="navbar-container">
             <a href="#" class="navbar-logo">TutsiPop</a>
             <div class="navbar-links">
                 @if (User.Identity.IsAuthenticated)
+
                 {
                     <a class="navbar-login" asp-area="" asp-controller="Inicio" asp-action="Logout">
                         <i class='bx bx-log-out-circle'></i>
@@ -50,8 +51,11 @@
                         <i class="bx bx-cart"></i>
                         <span>Ver Carrito</span>
                     </a>
+
                 }
+
                 else
+
                 {
                     <a class="navbar-login" asp-area="" asp-controller="Inicio" asp-action="Login">
                         <i class='bx bxs-user-circle'></i>
@@ -62,25 +66,29 @@
                         <span>Registrarse</span>
                     </a>
                 }
-                </div>
+            </div>
             <!-- Slider main container (fuera del navbar) -->
 
 
 
         </div>
     </nav>
-    <!-- Swiper Hero -->
     <div class="swiper swiper-hero">
+        <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
+            <!-- Slides -->
             <div class="swiper-slide"><img src="~/images/close-up-sex-toys (2).jpg" /></div>
             <div class="swiper-slide"><img src="~/images/close-up-sex-toys.jpg" /></div>
             <div class="swiper-slide"><img src="~/images/freepik__upload__51895.jpeg" /></div>
             <div class="swiper-slide"><img src="~/images/freepik__upload__3037.jpeg" /></div>
         </div>
-            <div class="swiper-pagination"></div>
 
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div> 
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
     </div>
     <!-- Productos -->
     <div class="productos-container">
@@ -174,7 +182,7 @@
         </a>
     </div>
 
-    <script src="~/js/btn.js"></script>
+    
     <!-- Scripts de Swiper -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>

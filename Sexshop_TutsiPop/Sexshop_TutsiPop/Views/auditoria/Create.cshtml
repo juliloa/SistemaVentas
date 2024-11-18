@@ -1,0 +1,58 @@
+﻿@model Sexshop_TutsiPop.Models.auditoria
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>auditoria</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nombreauditoria" class="control-label"></label>
+                <input asp-for="nombreauditoria" class="form-control" />
+                <span asp-validation-for="nombreauditoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tipooperacion" class="control-label"></label>
+                <input asp-for="tipooperacion" class="form-control" />
+                <span asp-validation-for="tipooperacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="datosantiguos" class="control-label"></label>
+                <input asp-for="datosantiguos" class="form-control" />
+                <span asp-validation-for="datosantiguos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="datosnuevos" class="control-label"></label>
+                <input asp-for="datosnuevos" class="form-control" />
+                <span asp-validation-for="datosnuevos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fecha" class="control-label"></label>
+                <input asp-for="fecha" class="form-control" />
+                <span asp-validation-for="fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="usuario" class="control-label"></label>
+                <input asp-for="usuario" class="form-control" />
+                <span asp-validation-for="usuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

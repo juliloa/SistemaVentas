@@ -1,0 +1,54 @@
+﻿@model Sexshop_TutsiPop.Models.auditoria
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>auditoria</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nombreauditoria)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nombreauditoria)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tipooperacion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tipooperacion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.datosantiguos)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.datosantiguos)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.datosnuevos)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.datosnuevos)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.fecha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.usuario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.usuario)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.pkauditoria">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

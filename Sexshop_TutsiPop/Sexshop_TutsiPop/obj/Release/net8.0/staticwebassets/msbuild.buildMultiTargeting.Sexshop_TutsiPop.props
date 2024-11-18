@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Sexshop_TutsiPop.props" />
+</Project>

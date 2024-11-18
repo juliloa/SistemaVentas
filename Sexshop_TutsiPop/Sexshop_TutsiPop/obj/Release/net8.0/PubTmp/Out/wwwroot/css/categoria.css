@@ -1,0 +1,60 @@
+﻿/* Estilo general de la tarjeta */
+.card {
+    width: 360px; /* Tamaño de la tarjeta */
+    height: 360px; /* Tamaño de la tarjeta */
+    margin: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para el contenedor de la imagen */
+.card-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: transform 0.3s ease; /* Suaviza el efecto de zoom */
+}
+
+/* Efecto de zoom en la imagen cuando el cursor pasa sobre la tarjeta */
+.card:hover .card-image {
+    transform: scale(1.1); /* Aplica el zoom */
+}
+
+/* Estilo para la imagen */
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajuste sin recorte */
+}
+
+/* Estilo para el título centrado */
+.card-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra el texto */
+    color: white;
+    font-weight: bold;
+    font-size: 24px; /* Tamaño del texto */
+    background-color: rgba(0, 0, 0, 0); /* Fondo semitransparente */
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Contenedor de cuadrícula */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); /* Tamaño de las tarjetas */
+    gap: 15px;
+    padding: 20px;
+}

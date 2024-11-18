@@ -1,0 +1,7 @@
+﻿.titulo-categorias {
+    text-align: center; /* Centra el título en la página */
+    color: #FFB6C1; /* Color rosado claro */
+    font-size: 2em; /* Tamaño de fuente grande */
+    margin-bottom: 20px; /* Espacio entre el título y el contenedor de tarjetas */
+    padding-top: 20px; /* Espacio superior para separarlo del borde de la página */
+}

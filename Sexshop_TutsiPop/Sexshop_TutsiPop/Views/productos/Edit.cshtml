@@ -115,8 +115,6 @@
                 <div class="container-fluid px-4">
                     <!-- Aquí va el contenido específico de la vista Edit -->
                     <h1>Modificar</h1>
-
-
                         <hr />
                         <div class="row">
                             <div class="col-md-4">
@@ -150,6 +148,11 @@
                                         <input asp-for="precio" class="form-control" />
                                         <span asp-validation-for="precio" class="text-danger"></span>
                                     </div>
+                                <div class="form-group">
+                                    <label asp-for="imagen_url" class="control-label"></label>
+                                    <input asp-for="imagen_url" class="form-control" />
+                                    <span asp-validation-for="imagen_url" class="text-danger"></span>
+                                </div>
                                     <div class="form-group form-check">
                                         <label class="form-check-label">
                                             <input class="form-check-input" asp-for="activo" /> @Html.DisplayNameFor(model => model.activo)

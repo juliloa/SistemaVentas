@@ -89,97 +89,128 @@ namespace Sexshop_TutsiPop.Controllers
             return await GenerarFacturaPDF(idVenta);
         }
 
-        public async Task<IActionResult> GenerarFacturaPDF(int idVenta)
-        {
-            // Obtener la venta con detalles de productos, cliente, y empleado
-            var venta = await (from v in _context.ventas
-                               where v.id_venta == idVenta
-                               join d in _context.detalle_venta on v.id_venta equals d.id_venta
-                               join p in _context.productos on d.id_producto equals p.id_producto
-                               join c in _context.clientes on v.cedula_cliente equals c.cedula_cliente
-                               join e in _context.empleados on v.cedula_empleado equals e.cedula_empleado
-                               join mp in _context.metodos_pago on v.id_metodo_pago equals mp.id_metodo into mpJoin
-                               from mp in mpJoin.DefaultIfEmpty() // Esto asegura que incluso si el metodo de pago es null, se incluya
-                               where v.id_venta == idVenta // Asegúrate de que el ID de la venta sea correcto
-                               select new
-                               {
-                                   v.id_venta,
-                                   v.fecha_venta,
-                                   ClienteNombre = c.nombre,
-                                   ClienteApellido = c.apellido,
-                                   ClienteCorreo = c.correo,
-                                   ClienteDireccion = c.id_direccion,
-                                   EmpleadoNombre = e.nombre,
-                                   EmpleadoApellido = e.apellido,
-                                   MetodoPago = mp != null ? mp.metodo_pago : "No especificado", // Maneja el caso donde mp es null
-                                   Detalles = new
-                                   {
-                                       ProductoNombre = p.nombre_producto,
-                                       d.cantidad,
-                                       p.precio,
-                                       Subtotal = (d.cantidad * p.precio * (1 - d.descuento))
-                                   }
-                               }).ToListAsync();
-
-
-            if (venta == null || !venta.Any())
+            public async Task<IActionResult> GenerarFacturaPDF(int idVenta)
             {
-                return NotFound();
-            }
+			var venta = await (from v in _context.ventas
+							   where v.id_venta == idVenta
+							   join d in _context.detalle_venta on v.id_venta equals d.id_venta
+							   join p in _context.productos on d.id_producto equals p.id_producto
+							   join c in _context.clientes on v.cedula_cliente equals c.cedula_cliente
+							   join e in _context.empleados on v.cedula_empleado equals e.cedula_empleado
+							   select new
+							   {
+								   v.id_venta,
+								   v.fecha_venta,
+								   ClienteNombre = c.nombre,
+								   ClienteApellido = c.apellido,
+								   ProductoNombre = p.nombre_producto,
+								   d.cantidad,
+								   p.precio,
+								   Subtotal = d.cantidad * p.precio
+							   }).ToListAsync();
 
-            using (var stream = new MemoryStream())
-            {
-                var documento = new Document();
-                PdfWriter.GetInstance(documento, stream);
-                documento.Open();
+			if (!venta.Any())
+			{
+				return NotFound("No se encontraron detalles para esta venta.");
+			}
 
-                // Encabezado de la factura
-                documento.Add(new Paragraph("Factura de Compra"));
-                documento.Add(new Paragraph($"ID Venta: {venta.First().id_venta}"));
-                documento.Add(new Paragraph($"Fecha: {venta.First().fecha_venta.ToString("dd/MM/yyyy")}"));
-                documento.Add(new Paragraph($"Empleado: {venta.First().EmpleadoNombre} {venta.First().EmpleadoApellido}"));
-                documento.Add(new Paragraph($"Método de Pago: {venta.First().MetodoPago}"));
-                documento.Add(new Paragraph("\n"));
+			using (var stream = new MemoryStream())
+			{
+				var documento = new Document(PageSize.A4, 36, 36, 100, 50); // Margen superior ajustado
+				var writer = PdfWriter.GetInstance(documento, stream);
+				writer.CloseStream = false;
 
-                // Información del Cliente
-                var cliente = venta.First();
-                documento.Add(new Paragraph($"Cliente: {cliente.ClienteNombre} {cliente.ClienteApellido}"));
-                documento.Add(new Paragraph($"Correo: {cliente.ClienteCorreo}"));
-                documento.Add(new Paragraph($"Dirección: {(cliente.ClienteDireccion.HasValue ? cliente.ClienteDireccion.ToString() : "Sin Dirección")}"));
-                documento.Add(new Paragraph("\n"));
+				documento.Open();
 
-                // Tabla con detalles de la venta
-                var tabla = new PdfPTable(4);
-                tabla.AddCell("Producto");
-                tabla.AddCell("Cantidad");
-                tabla.AddCell("Precio Unitario");
-                tabla.AddCell("Subtotal");
+				// Centrar el logo
+				var logoPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "gift.png");
+				if (System.IO.File.Exists(logoPath))
+				{
+					var logo = Image.GetInstance(logoPath);
+					logo.ScaleAbsolute(150, 150); // Tamaño más grande del logo
+					logo.Alignment = Element.ALIGN_CENTER; // Centrar el logo
+					documento.Add(logo);
+				}
 
-                // Añadir detalles de los productos a la tabla
-                decimal totalVenta = 0;
-                foreach (var detalle in venta)
-                {
-                    tabla.AddCell(detalle.Detalles.ProductoNombre);
-                    tabla.AddCell(detalle.Detalles.cantidad.ToString());
-                    tabla.AddCell(detalle.Detalles.precio.ToString("C"));
-                    tabla.AddCell(detalle.Detalles.Subtotal.ToString("C"));
-                    totalVenta += detalle.Detalles.Subtotal;
-                }
+				// Espacio después del logo
+				documento.Add(new Paragraph("\n\n"));
 
-                documento.Add(tabla);
-                documento.Add(new Paragraph("\n"));
+				// Encabezado estilizado
+				var titulo = new Paragraph("Factura de Compra", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 24))
+				{
+					Alignment = Element.ALIGN_CENTER,
+					SpacingAfter = 15
+				};
+				documento.Add(titulo);
 
-                // Total de la venta
-                documento.Add(new Paragraph($"Total: {totalVenta.ToString("C")}", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+				// Información de la venta
+				documento.Add(new Paragraph($"Venta ID: {idVenta}", FontFactory.GetFont(FontFactory.HELVETICA, 12))
+				{
+					Alignment = Element.ALIGN_CENTER
+				});
+				documento.Add(new Paragraph($"Fecha: {venta.First().fecha_venta:dd/MM/yyyy}", FontFactory.GetFont(FontFactory.HELVETICA, 12))
+				{
+					Alignment = Element.ALIGN_CENTER
+				});
+				documento.Add(new Paragraph("\n"));
 
-                // Cerrar el documento PDF
-                documento.Close();
+				//// Información del Cliente
+				//var clienteInfo = new Paragraph($"Cliente: {venta.First().ClienteNombre} {venta.First().ClienteApellido}", FontFactory.GetFont(FontFactory.HELVETICA, 12))
+				//{
+				//	SpacingAfter = 10,
+				//	Alignment = Element.ALIGN_LEFT
+				//};
+				//documento.Add(clienteInfo);
 
-                // Devolver el PDF como archivo de descarga
-                return File(stream.ToArray(), "application/pdf", "Factura_" + venta.First().id_venta + ".pdf");
-            }
-        }
-        public async Task<IActionResult> FinalizarCompra()
+				// Tabla de Detalles de Venta
+				var tabla = new PdfPTable(4)
+				{
+					WidthPercentage = 100
+				};
+				tabla.SetWidths(new float[] { 3, 1, 2, 2 });
+
+				// Encabezado de la tabla
+				var cellHeaderStyle = new PdfPCell(new Phrase("Producto", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)))
+				{
+					BackgroundColor = new BaseColor(0, 102, 204),
+					HorizontalAlignment = Element.ALIGN_CENTER,
+					Padding = 8
+				};
+
+				tabla.AddCell(cellHeaderStyle);
+				tabla.AddCell(new PdfPCell(new Phrase("Cantidad", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12))) { BackgroundColor = cellHeaderStyle.BackgroundColor, HorizontalAlignment = Element.ALIGN_CENTER, Padding = 8 });
+				tabla.AddCell(new PdfPCell(new Phrase("Precio Unitario", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12))) { BackgroundColor = cellHeaderStyle.BackgroundColor, HorizontalAlignment = Element.ALIGN_CENTER, Padding = 8 });
+				tabla.AddCell(new PdfPCell(new Phrase("Subtotal", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12))) { BackgroundColor = cellHeaderStyle.BackgroundColor, HorizontalAlignment = Element.ALIGN_CENTER, Padding = 8 });
+
+				decimal totalVenta = 0;
+				foreach (var item in venta)
+				{
+					tabla.AddCell(new PdfPCell(new Phrase(item.ProductoNombre, FontFactory.GetFont(FontFactory.HELVETICA, 10))) { Padding = 5 });
+					tabla.AddCell(new PdfPCell(new Phrase(item.cantidad.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10))) { HorizontalAlignment = Element.ALIGN_CENTER, Padding = 5 });
+					tabla.AddCell(new PdfPCell(new Phrase(item.precio.ToString("C"), FontFactory.GetFont(FontFactory.HELVETICA, 10))) { HorizontalAlignment = Element.ALIGN_CENTER, Padding = 5 });
+					tabla.AddCell(new PdfPCell(new Phrase(item.Subtotal.ToString("C"), FontFactory.GetFont(FontFactory.HELVETICA, 10))) { HorizontalAlignment = Element.ALIGN_CENTER, Padding = 5 });
+					totalVenta += item.Subtotal;
+				}
+
+				documento.Add(tabla);
+				documento.Add(new Paragraph("\n"));
+
+				// Total
+				var total = new Paragraph($"Total: {totalVenta.ToString("C")}", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14))
+				{
+					Alignment = Element.ALIGN_RIGHT,
+					SpacingBefore = 10
+				};
+				documento.Add(total);
+
+				documento.Close();
+
+				stream.Position = 0;
+				return File(stream.ToArray(), "application/pdf", $"Factura_{idVenta}.pdf");
+			}
+
+		}
+		public async Task<IActionResult> FinalizarCompra()
         {
             // Obtén el usuario actual
             var usuario = await _context.usuarios

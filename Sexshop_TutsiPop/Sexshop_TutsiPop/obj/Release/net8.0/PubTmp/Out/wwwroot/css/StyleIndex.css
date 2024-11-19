@@ -71,6 +71,7 @@ h1 {
 .swiper-hero {
     width: 100%;
     max-width: 1600px;
+    margin-bottom: 0;
 }
 
     .swiper-hero img {
@@ -79,7 +80,7 @@ h1 {
         object-fit: cover;
     }
 
-@media (min-width: 1024px) {
+  @media (min-width: 1024px) {
     .swiper-hero img {
         height: 344px;
     }

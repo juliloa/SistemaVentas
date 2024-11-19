@@ -26,6 +26,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Usuario\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/auditoria/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYXVkaXRvcmlhXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/auditoria/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYXVkaXRvcmlhXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/auditoria/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYXVkaXRvcmlhXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/auditoria/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYXVkaXRvcmlhXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/auditoria/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYXVkaXRvcmlhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/carrito/CrearCliente.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2Fycml0b1xDcmVhckNsaWVudGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mxRfUH1039EcYc8rp21VXdyYazrZ+cxchreuIjm9Hfk=",
+  "Hash": "7g9dqH74DDhiBZwRKbD5uT4TLh+FwB6+MGrwFBEVi90=",
   "Source": "Sexshop_TutsiPop",
   "BasePath": "_content/Sexshop_TutsiPop",
   "Mode": "Default",
@@ -148,25 +148,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\error-404-monochrome.svg"
-    },
-    {
-      "Identity": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\bannerGuantes.css",
-      "SourceId": "Sexshop_TutsiPop",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\",
-      "BasePath": "_content/Sexshop_TutsiPop",
-      "RelativePath": "css/bannerGuantes.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\bannerGuantes.css"
     },
     {
       "Identity": "C:\\Users\\Usuario\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\btnWhatsapp.css",

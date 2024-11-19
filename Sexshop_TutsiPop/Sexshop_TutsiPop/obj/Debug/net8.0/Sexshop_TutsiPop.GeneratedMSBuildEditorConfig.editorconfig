@@ -17,415 +17,415 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Sexshop_TutsiPop
 build_property.RootNamespace = Sexshop_TutsiPop
-build_property.ProjectDir = C:\Users\Usuario\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop\
+build_property.ProjectDir = C:\Users\gabri\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Usuario\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop
+build_property.MSBuildProjectDirectory = C:\Users\gabri\Desktop\SistemaVentas\Sexshop_TutsiPop\Sexshop_TutsiPop
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/auditoria/Create.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/auditoria/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYXVkaXRvcmlhXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/auditoria/Delete.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/auditoria/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYXVkaXRvcmlhXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/auditoria/Details.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/auditoria/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYXVkaXRvcmlhXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/auditoria/Edit.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/auditoria/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYXVkaXRvcmlhXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/auditoria/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/auditoria/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYXVkaXRvcmlhXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/carrito/CrearCliente.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/carrito/CrearCliente.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2Fycml0b1xDcmVhckNsaWVudGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/carrito/Create.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/carrito/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2Fycml0b1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/carrito/Delete.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/carrito/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2Fycml0b1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/carrito/Details.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/carrito/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2Fycml0b1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/carrito/Edit.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/carrito/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2Fycml0b1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/carrito/Finalizarcompra.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/carrito/Finalizarcompra.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2Fycml0b1xGaW5hbGl6YXJjb21wcmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/carrito/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/carrito/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2Fycml0b1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/categorias/cosmeticos.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/categorias/cosmeticos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2F0ZWdvcmlhc1xjb3NtZXRpY29zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/categorias/Create.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/categorias/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2F0ZWdvcmlhc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/categorias/Delete.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/categorias/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2F0ZWdvcmlhc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/categorias/Details.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/categorias/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2F0ZWdvcmlhc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/categorias/Edit.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/categorias/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2F0ZWdvcmlhc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/categorias/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/categorias/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2F0ZWdvcmlhc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/categorias/juguetes.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/categorias/juguetes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2F0ZWdvcmlhc1xqdWd1ZXRlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/categorias/lenceria.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/categorias/lenceria.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2F0ZWdvcmlhc1xsZW5jZXJpYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/clientes/Create.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/clientes/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2xpZW50ZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/clientes/Delete.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/clientes/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2xpZW50ZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/clientes/Details.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/clientes/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2xpZW50ZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/clientes/Edit.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/clientes/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2xpZW50ZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/clientes/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/clientes/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2xpZW50ZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_pedido/Create.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_pedido/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGV0YWxsZV9wZWRpZG9cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_pedido/Delete.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_pedido/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGV0YWxsZV9wZWRpZG9cRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_pedido/Details.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_pedido/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGV0YWxsZV9wZWRpZG9cRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_pedido/Edit.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_pedido/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGV0YWxsZV9wZWRpZG9cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_pedido/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_pedido/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGV0YWxsZV9wZWRpZG9cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_venta/Create.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_venta/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGV0YWxsZV92ZW50YVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_venta/Delete.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_venta/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGV0YWxsZV92ZW50YVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_venta/Details.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_venta/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGV0YWxsZV92ZW50YVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_venta/Edit.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_venta/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGV0YWxsZV92ZW50YVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_venta/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/detalle_venta/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGV0YWxsZV92ZW50YVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/direcciones/Create.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/direcciones/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGlyZWNjaW9uZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/direcciones/Delete.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/direcciones/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGlyZWNjaW9uZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/direcciones/Details.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/direcciones/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGlyZWNjaW9uZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/direcciones/Edit.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/direcciones/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGlyZWNjaW9uZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/direcciones/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/direcciones/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGlyZWNjaW9uZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/empleados/Create.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/empleados/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZW1wbGVhZG9zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/empleados/Delete.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/empleados/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZW1wbGVhZG9zXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/empleados/Details.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/empleados/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZW1wbGVhZG9zXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/empleados/Edit.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/empleados/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZW1wbGVhZG9zXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/empleados/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/empleados/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZW1wbGVhZG9zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/entregas/Create.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/entregas/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZW50cmVnYXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/entregas/Delete.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/entregas/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZW50cmVnYXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/entregas/Details.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/entregas/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZW50cmVnYXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/entregas/Edit.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/entregas/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZW50cmVnYXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/entregas/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/entregas/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZW50cmVnYXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/estado_pedido/Create.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/estado_pedido/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZXN0YWRvX3BlZGlkb1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/estado_pedido/Delete.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/estado_pedido/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZXN0YWRvX3BlZGlkb1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/estado_pedido/Details.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/estado_pedido/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZXN0YWRvX3BlZGlkb1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/estado_pedido/Edit.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/estado_pedido/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZXN0YWRvX3BlZGlkb1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/estado_pedido/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/estado_pedido/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZXN0YWRvX3BlZGlkb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Home/Admin.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Home/Admin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Home/Alerta.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Home/Alerta.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBbGVydGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Home/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Home/IndexUsuario.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Home/IndexUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleFVzdWFyaW8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Home/Privacy.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Inicio/Actualizar.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Inicio/Actualizar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5pY2lvXEFjdHVhbGl6YXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Inicio/Confirmar.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Inicio/Confirmar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5pY2lvXENvbmZpcm1hci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Inicio/Login.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Inicio/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5pY2lvXExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Inicio/Registrar.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Inicio/Registrar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5pY2lvXFJlZ2lzdHJhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Inicio/Restablecer.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Inicio/Restablecer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5pY2lvXFJlc3RhYmxlY2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/metodos_pago/Create.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/metodos_pago/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbWV0b2Rvc19wYWdvXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/metodos_pago/Delete.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/metodos_pago/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbWV0b2Rvc19wYWdvXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/metodos_pago/Details.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/metodos_pago/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbWV0b2Rvc19wYWdvXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/metodos_pago/Edit.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/metodos_pago/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbWV0b2Rvc19wYWdvXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/metodos_pago/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/metodos_pago/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbWV0b2Rvc19wYWdvXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/pedidos/Create.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/pedidos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGVkaWRvc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/pedidos/Delete.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/pedidos/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGVkaWRvc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/pedidos/Details.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/pedidos/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGVkaWRvc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/pedidos/Edit.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/pedidos/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGVkaWRvc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/pedidos/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/pedidos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGVkaWRvc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/productos/Create.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/productos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjdG9zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/productos/Delete.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/productos/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjdG9zXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/productos/Details.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/productos/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjdG9zXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/productos/Edit.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/productos/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjdG9zXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/productos/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/productos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjdG9zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/proveedores/Create.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/proveedores/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvdmVlZG9yZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/proveedores/Delete.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/proveedores/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvdmVlZG9yZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/proveedores/Details.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/proveedores/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvdmVlZG9yZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/proveedores/Edit.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/proveedores/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvdmVlZG9yZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/proveedores/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/proveedores/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvdmVlZG9yZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Shared/Error.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Shared/_LayoutAdmin.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Usuarios/Create.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Usuarios/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Usuarios/Delete.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Usuarios/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Usuarios/Details.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Usuarios/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Usuarios/Edit.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Usuarios/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Usuarios/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Usuarios/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/ventas/Create.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/ventas/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdmVudGFzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/ventas/Delete.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/ventas/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdmVudGFzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/ventas/Details.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/ventas/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdmVudGFzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/ventas/Edit.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/ventas/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdmVudGFzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/ventas/Index.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/ventas/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdmVudGFzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/_ViewImports.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/_ViewStart.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Shared/_Layout.cshtml]
+[C:/Users/gabri/Desktop/SistemaVentas/Sexshop_TutsiPop/Sexshop_TutsiPop/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-gsd4hgdciq

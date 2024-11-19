@@ -41,7 +41,7 @@
                                         </div>
                                         <div class="precio-total mt-2">
                                             <small>Total:</small>
-                                            <span id="precio-total-@item.CarritoId">@(item.Precio * item.Cantidad)</span>
+                                            <span id="precio-total-@item.CarritoId">@((item.Precio * item.Cantidad).ToString("C"))</span>
                                         </div>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                         <!-- Total del carrito -->
                         <div class="d-flex justify-content-between mt-4">
                             <strong>Total Carrito: </strong>
-                            <span id="total-carrito">$0.00</span>
+                            <span id="total-carrito">$00000.00</span>
                         </div>
                     </div>
                 </div>

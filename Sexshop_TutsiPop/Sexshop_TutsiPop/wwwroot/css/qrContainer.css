@@ -1,0 +1,42 @@
+﻿.qr-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9; /* Fondo suave */
+    border: 1px solid #ddd; /* Borde suave */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+    padding: 20px 40px; /* Espaciado interno */
+    margin: 30px 80px; /* Separación externa */
+}
+
+.qr {
+    flex: 1;
+    text-align: center; /* Centrar todo el texto */
+}
+
+    .qr h2 {
+        font-size: 24px;
+        color: #333; /* Color de encabezado */
+        font-weight: bold;
+    }
+
+    .qr p {
+        font-size: 16px;
+        color: #666; /* Color de texto */
+        margin-top: 10px;
+    }
+
+.qr-image {
+    flex: 0 0 200px; /* Ajuste dinámico del tamaño */
+    max-width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .qr-image img {
+        width: 100%;
+        border-radius: 10px; /* Esquinas redondeadas */
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil para el QR */
+    }

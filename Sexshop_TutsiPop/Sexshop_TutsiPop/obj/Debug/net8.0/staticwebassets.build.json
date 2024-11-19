@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ksuYfnmE2GBTfxCCK8sB1JMZ4iE7rHRNiDx5J0EvHMU=",
+  "Hash": "PpoX6HM+xgnnqE6JUVAg4kmKt+8yRsK9qBy/DV6OURE=",
   "Source": "Sexshop_TutsiPop",
   "BasePath": "_content/Sexshop_TutsiPop",
   "Mode": "Default",
@@ -397,6 +397,25 @@
       "OriginalItemSpec": "wwwroot\\css\\ExcelStyle.css"
     },
     {
+      "Identity": "C:\\Users\\gabri\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\finalizarCompra.css",
+      "SourceId": "Sexshop_TutsiPop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\gabri\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\",
+      "BasePath": "_content/Sexshop_TutsiPop",
+      "RelativePath": "css/finalizarCompra.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\finalizarCompra.css"
+    },
+    {
       "Identity": "C:\\Users\\gabri\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\footer.css",
       "SourceId": "Sexshop_TutsiPop",
       "SourceType": "Discovered",
@@ -490,6 +509,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\navIndexs.css"
+    },
+    {
+      "Identity": "C:\\Users\\gabri\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\qrContainer.css",
+      "SourceId": "Sexshop_TutsiPop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\gabri\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\",
+      "BasePath": "_content/Sexshop_TutsiPop",
+      "RelativePath": "css/qrContainer.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\qrContainer.css"
     },
     {
       "Identity": "C:\\Users\\gabri\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\site.css",

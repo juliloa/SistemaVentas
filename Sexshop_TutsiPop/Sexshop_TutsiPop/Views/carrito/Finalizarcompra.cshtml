@@ -9,104 +9,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finalizar Compra</title>
-    <link rel="stylesheet" href="Carrito.css"> <!-- Asegúrate de enlazar tu archivo CSS -->
-    <style>
-        /* Estilo general */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #ffffff; /* Fondo blanco */
-            color: #333; /* Texto oscuro */
-            margin: 0;
-            padding: 20px;
-        }
+    <link href="~/css/finalizarCompra.css" rel="stylesheet" /> <!-- Asegúrate de enlazar tu archivo CSS -->
+    <link href="~/css/qrContainer.css" rel="stylesheet" /> <!-- Asegúrate de enlazar tu archivo CSS -->
 
-        h2, h3 {
-            color: #004d70; /* Rosa fuerte */
-            text-align: center;
-        }
-
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-            background-color: #ffffff; /* Fondo blanco */
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-        }
-
-        table thead {
-                background-color: #004d70; /* Rosa fuerte */
-            color: white;
-        }
-
-        table th, table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        table tr:last-child td {
-            border-bottom: none;
-        }
-
-        table tbody tr:nth-child(odd) {
-            background-color: #f9f9f9; /* Gris claro */
-        }
-
-        table tbody tr:nth-child(even) {
-            background-color: #ffffff; /* Fondo blanco */
-        }
-
-        table tbody td {
-            color: #333; /* Texto oscuro */
-        }
-
-        h3 {
-            margin-top: 30px;
-        }
-
-        /* Botón de Confirmar Compra */
-        button.btn-success {
-            background-color: #004d70; /* Rosa fuerte */
-            border: none;
-            color: white;
-            padding: 12px 20px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 8px;
-            cursor: pointer;
-            display: block;
-            margin: 20px auto;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        button.btn-success:hover {
-            background-color: lightblue; /* Rosa claro */
-            transform: scale(1.05);
-        }
-
-        button.btn-success:active {
-            background-color: darkblue; /* Un rosa más oscuro */
-        }
-
-        /* Responsividad */
-        @@media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            table th, table td {
-                padding: 8px;
-            }
-
-            button.btn-success {
-                font-size: 1rem;
-                padding: 10px 16px;
-            }
-        }
-    </style>
 </head>
 <body>
     <h2>Finalizar Compra</h2>
@@ -128,10 +33,10 @@
                     <td>@item.id_producto</td>
                     <td>@item.cantidad</td>
                     <td>@item.precio.ToString("C")</td>
-                    <td>@(item.cantidad * item.precio)</td>
-                </tr>
-            }
-        </tbody>
+                    <td>@((item.cantidad * item.precio).ToString("C"))</td> <!-- Aplicar formato de moneda -->
+            </tr>
+        }
+    </tbody>
     </table>
 
     <h3>Total de la compra: @Model.TotalCompra.ToString("C")</h3>
@@ -140,5 +45,15 @@
         <input type="hidden" name="clienteId" value="@Model.Cliente.cedula_cliente" />
         <button type="submit" class="btn btn-success">Confirmar Compra</button>
     </form>
+<div class="qr-container">
+    <div class="qr">
+        <h2>¡Escanéame!</h2>
+        <p>Escanea el QR para validar el pago</p>
+    </div>
+
+    <div class="qr-image">
+        <img src="~/images/qrcode-generado.png" alt="QR Tutsipop">
+    </div>
+</div>
 </body>
 </html>

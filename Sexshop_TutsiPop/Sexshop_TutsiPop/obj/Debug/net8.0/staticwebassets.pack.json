@@ -125,6 +125,10 @@
       "PackagePath": "staticwebassets\\css\\educacionSexual.css"
     },
     {
+      "Id": "C:\\Users\\gabri\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\finalizarCompra.css",
+      "PackagePath": "staticwebassets\\css\\finalizarCompra.css"
+    },
+    {
       "Id": "C:\\Users\\gabri\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\footer.css",
       "PackagePath": "staticwebassets\\css\\footer.css"
     },
@@ -139,6 +143,10 @@
     {
       "Id": "C:\\Users\\gabri\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\navIndexs.css",
       "PackagePath": "staticwebassets\\css\\navIndexs.css"
+    },
+    {
+      "Id": "C:\\Users\\gabri\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\qrContainer.css",
+      "PackagePath": "staticwebassets\\css\\qrContainer.css"
     },
     {
       "Id": "C:\\Users\\gabri\\Desktop\\SistemaVentas\\Sexshop_TutsiPop\\Sexshop_TutsiPop\\wwwroot\\css\\site.css",
